@@ -30,7 +30,7 @@ public class PostService {
 
 		List<PostListDto> result = new ArrayList<>();
 		var sql = new StringBuffer("""
-				select p.id, p.title, p.post_date, p.memebers_id, m.name, m.loginId from posts p 
+				select p.id, p.title, p.post_date, p.members_id, m.name, m.loginId from posts p 
 				join members m on m.id = p.members_id where 1 = 1""");
 		
 		var params = new ArrayList<Object>();

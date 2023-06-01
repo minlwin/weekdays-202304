@@ -28,7 +28,7 @@ public class SecurityServlet extends BaseServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		if(req.getServletPath().equals("/signout")) {
-			req.logout();
+			req.getSession().invalidate();
 			redirect(resp, "/home");
 		} else {
 			forward(req, resp, req.getServletPath());
@@ -38,7 +38,7 @@ public class SecurityServlet extends BaseServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		if(req.getServletPath().equals("/siginin")) {
+		if(req.getServletPath().equals("/signin")) {
 			signIn(req, resp);
 		} else {
 			signUp(req, resp);
