@@ -26,8 +26,8 @@ public class PublicHomeServlet extends BaseServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Search Posts
 		var keyword = req.getParameter("keyword");
-		var myPost = service.search(null, keyword);
-		req.setAttribute("myPost", myPost);
+		var list = service.search(null, keyword);
+		req.setAttribute("list", list);
 		
 		forward(req, resp, "/home");
 	}

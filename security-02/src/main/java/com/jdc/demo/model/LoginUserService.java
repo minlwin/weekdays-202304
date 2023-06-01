@@ -1,19 +1,13 @@
 package com.jdc.demo.model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import com.jdc.demo.model.dto.LoginUser;
 
-public class LoginUserService {
-	
-	private DataSource dataSource;
+public class LoginUserService extends AbstractMemberService{
 	
 	public LoginUserService(DataSource dataSource) {
-		super();
-		this.dataSource = dataSource;
+		super(dataSource);
 	}
 
 	public LoginUser findUserByLoginId(String loginId) {
@@ -26,22 +20,10 @@ public class LoginUserService {
 			
 			var rs = stmt.executeQuery();
 			
-			return getData(rs);
+			return getLoginUser(rs);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-		return null;
-	}
-
-	private LoginUser getData(ResultSet rs) throws SQLException {
-		
-		while(rs.next()) {
-			return new LoginUser(rs.getInt("id"), 
-					rs.getString("loginId"), 
-					rs.getString("name"), 
-					rs.getString("role"));
 		}
 		
 		return null;

@@ -58,8 +58,8 @@ public class PostService {
 				var post = getPost(rs);
 				result.add(new PostListDto(post, 
 						this.photoService.getCoverPhoto(post.id()), 
-						this.commentService.getCommentSize(post.id()), 
-						this.photoService.getPhotoSize(post.id())));
+						this.commentService.getCountForPost(post.id()), 
+						this.photoService.getCountForPost(post.id())));
 			}
 			
 		} catch (Exception e) {
@@ -88,6 +88,26 @@ public class PostService {
 		}
 		return null;
 	}
+	
+	public long findCountForMember(int id) {
+		var sql = "select count(id) from posts where members_id = ?";
+
+		try (var conn = dataSource.getConnection(); 
+				var stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, id);
+			
+			var rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				return rs.getLong(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 
 	private PostDto getPost(ResultSet rs) throws SQLException {
 		return new PostDto(rs.getInt("id"), 

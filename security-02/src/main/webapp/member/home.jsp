@@ -11,7 +11,7 @@
 <body>
 
 <jsp:include page="/includes/public-nav.jsp" >
-	<jsp:param value="home" name="view"/>
+	<jsp:param value="memberHome" name="view"/>
 </jsp:include>
 
 
@@ -35,9 +35,9 @@
 	<!-- Result Grid -->
 	<div class="mt-4">
 		<c:choose>
-			<c:when test="${not empty myPost}">
+			<c:when test="${not empty list}">
 			<div class="row-cols-3">
-				<c:forEach items="${myPost}" var="post">
+				<c:forEach items="${list}" var="post">
 					
 				</c:forEach>			
 			</div>

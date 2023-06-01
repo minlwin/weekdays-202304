@@ -33,8 +33,8 @@ public class MemberHomeServlet extends BaseServlet{
 		// prepare data
 		if(req.getServletPath().equals("/member/home")) {
 			var keyword = req.getParameter("keyword");
-			var myPost = service.search(req.getRemoteUser(), keyword);
-			req.setAttribute("myPost", myPost);
+			var list = service.search(req.getRemoteUser(), keyword);
+			req.setAttribute("list", list);
 		} else {
 			
 			var id = req.getParameter("id");

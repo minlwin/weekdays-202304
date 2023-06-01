@@ -11,7 +11,7 @@
 <body>
 
 <jsp:include page="/includes/public-nav.jsp" >
-	<jsp:param value="home" name="view"/>
+	<jsp:param value="memberHome" name="view"/>
 </jsp:include>
 
 </body>

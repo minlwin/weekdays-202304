@@ -19,8 +19,27 @@ public class CommentService {
 		this.dataSource = dataSource;
 	}
 	
-	public long getCommentSize(int id) {
+	public long getCountForPost(int id) {
 		var sql = "select count(id) from comments where posts_id = ?";
+
+		try (var conn = dataSource.getConnection(); 
+				var stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, id);
+			
+			var rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				return rs.getLong(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public long findCountForMember(int id) {
+		var sql = "select count(id) from comments where members_id = ?";
 
 		try (var conn = dataSource.getConnection(); 
 				var stmt = conn.prepareStatement(sql)) {
@@ -72,5 +91,7 @@ public class CommentService {
 						rs.getString("loginId"), 
 						rs.getString("name")));
 	}
+
+
 
 }

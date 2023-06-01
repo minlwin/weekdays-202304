@@ -38,7 +38,7 @@ public class PhotoService {
 		return null;
 	}
 	
-	public long getPhotoSize(int id) {
+	public long getCountForPost(int id) {
 		var sql = "select count(id) from posts_photos where posts_id = ?";
 
 		try (var conn = dataSource.getConnection(); 
