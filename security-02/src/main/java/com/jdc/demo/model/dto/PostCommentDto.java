@@ -1,5 +1,9 @@
 package com.jdc.demo.model.dto;
 
-public record PostCommentDto() {
+import java.time.LocalDateTime;
+
+public record PostCommentDto(
+		int id, String details, LocalDateTime commentAt, MemberDto member
+		) {
 
 }

@@ -2,12 +2,9 @@ package com.jdc.demo;
 
 import java.io.IOException;
 
-import javax.sql.DataSource;
-
 import com.jdc.demo.model.LoginUserService;
 import com.jdc.demo.util.BaseServlet;
 
-import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,9 +18,6 @@ public class SecurityServlet extends BaseServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private LoginUserService service;
-	
-	@Resource(name = "jdbc/instaAppDS")
-	private DataSource dataSource;
 	
 	@Override
 	public void init() throws ServletException {

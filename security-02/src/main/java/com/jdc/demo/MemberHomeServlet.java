@@ -23,19 +23,27 @@ public class MemberHomeServlet extends BaseServlet{
 	private PostService service;
 
 	@Override
+	public void init() throws ServletException {
+		service = new PostService(dataSource);
+	}
+
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// prepare data
 		if(req.getServletPath().equals("/member/home")) {
 			var keyword = req.getParameter("keyword");
-			var myPost = service.search(keyword);
+			var myPost = service.search(req.getRemoteUser(), keyword);
 			req.setAttribute("myPost", myPost);
 		} else {
 			
 			var id = req.getParameter("id");
 			if(null != id && !id.isBlank()) {
 				var post = service.findDetailsById(Integer.parseInt(id));
+				req.setAttribute("dto", post);
 			}		
 		}
+		
+		forward(req, resp, req.getServletPath());
 	}
 }

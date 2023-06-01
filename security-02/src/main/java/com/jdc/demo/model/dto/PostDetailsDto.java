@@ -1,5 +1,11 @@
 package com.jdc.demo.model.dto;
 
-public record PostDetailsDto() {
+import java.util.List;
+
+public record PostDetailsDto(
+		PostDto post, 
+		List<PostPhotoDto> photos, 
+		List<PostCommentDto> comments
+		) {
 
 }
