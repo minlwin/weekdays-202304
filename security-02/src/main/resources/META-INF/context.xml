@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  	<Resource auth="Container" type="javax.sql.DataSource" name="jdbc/instaAppDS"
+  		url="jdbc:mysql://localhost:3306/instadb" username="instadb" password="instadb" />	
+</Context>
