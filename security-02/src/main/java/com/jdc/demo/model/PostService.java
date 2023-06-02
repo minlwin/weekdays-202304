@@ -2,6 +2,9 @@ package com.jdc.demo.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,6 +126,34 @@ public class PostService {
 		return new PostDetailsDto(post, 
 				photoService.getPhotos(post.id()), 
 				commentService.getComment(post.id()));
+	}
+
+	public int create(String title, List<String> imageFileNames, int loginUserId) {
+		
+		var sql = "insert into posts(title, members_id, post_date) values (?, ?, ?)";
+
+		try (var conn = dataSource.getConnection(); 
+				var stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+			stmt.setString(1, title);
+			stmt.setInt(2, loginUserId);
+			stmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+			
+			stmt.executeUpdate();
+			
+			var rs = stmt.getGeneratedKeys();
+			
+			if(rs.next()) {
+				var id = rs.getInt(1);
+				photoService.create(id, imageFileNames);
+				
+				return id;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 
 }

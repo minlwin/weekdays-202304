@@ -85,4 +85,25 @@ public class PhotoService {
 				rs.getString("description"));
 	}
 
+	public void create(int id, List<String> images) {
+		
+		var sql = "insert into posts_photos(posts_id, path) values (?, ?) ";
+
+		try (var conn = dataSource.getConnection(); 
+				var stmt = conn.prepareStatement(sql)) {
+			
+			for(var image : images) {
+				stmt.setInt(1, id);
+				stmt.setString(2, image);
+				
+				stmt.addBatch();
+			}
+			
+			stmt.executeBatch();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

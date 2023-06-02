@@ -19,6 +19,12 @@
 	
 	<c:url value="/signin" var="action"></c:url>
 	<form action="${action}" method="post" class="w-50">
+	
+		<c:if test="${not empty param.error}">
+			<div class="alert alert-info">
+				Please check your login information.
+			</div>		
+		</c:if>
 		
 		<div class="mb-3">
 			<label class="form-label">Login Id</label>

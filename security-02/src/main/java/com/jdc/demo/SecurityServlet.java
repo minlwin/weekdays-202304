@@ -47,17 +47,21 @@ public class SecurityServlet extends BaseServlet{
 
 	private void signIn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		var loginId = req.getParameter("loginId");
-		var password = req.getParameter("password");
-		
-		req.login(loginId, password);
-		
-		var loginUser = service.findUserByLoginId(loginId);
-		
-		req.getSession(true).setAttribute("loginUser", loginUser);
-		
-		redirect(resp, loginUser.role().equals("Member") ? "/member/home" : "/admin/home");
-		
+		try {
+			var loginId = req.getParameter("loginId");
+			var password = req.getParameter("password");
+			
+			req.login(loginId, password);
+			
+			var loginUser = service.findUserByLoginId(loginId);
+			
+			req.getSession(true).setAttribute("loginUser", loginUser);
+			
+			redirect(resp, loginUser.role().equals("Member") ? "/member/home" : "/admin/home");
+			
+		} catch (ServletException e) {
+			redirect(resp, "/signin?error=1");
+		}
 	}
 
 	private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
