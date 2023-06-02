@@ -2,6 +2,8 @@ package com.jdc.demo.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,6 +92,23 @@ public class CommentService {
 				new MemberDto(rs.getInt("members_id"), 
 						rs.getString("loginId"), 
 						rs.getString("name")));
+	}
+
+	public void create(int postId, int loginUserId, String details) {
+		var sql = "insert into comments(posts_id, members_id, details, comment_at) values (?, ?, ?, ?)";
+
+		try (var conn = dataSource.getConnection(); var stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setInt(1, postId);
+			stmt.setInt(2, loginUserId);
+			stmt.setString(3, details);
+			stmt.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+			
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 

@@ -75,7 +75,7 @@ public class PostService {
 	public PostDetailsDto findDetailsById(int id) {
 
 		var sql = """
-				select p.id, p.title, p.post_date, p.memebers_id, m.name, m.loginId from posts p 
+				select p.id, p.title, p.post_date, p.members_id, m.name, m.loginId from posts p 
 				join members m on m.id = p.members_id where p.id = ?""";
 
 		try (var conn = dataSource.getConnection(); var stmt = conn.prepareStatement(sql)) {
@@ -116,7 +116,7 @@ public class PostService {
 		return new PostDto(rs.getInt("id"), 
 				rs.getString("title"), 
 				rs.getTimestamp("post_date").toLocalDateTime(), 
-				new MemberDto(rs.getInt("memebers_id"), 
+				new MemberDto(rs.getInt("members_id"), 
 						rs.getString("loginId"), 
 						rs.getString("loginId")));
 	}

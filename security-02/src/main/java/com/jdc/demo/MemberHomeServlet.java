@@ -2,7 +2,9 @@ package com.jdc.demo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.jdc.demo.model.CommentService;
 import com.jdc.demo.model.ImageStorageService;
 import com.jdc.demo.model.PostService;
 import com.jdc.demo.model.dto.LoginUser;
@@ -18,7 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 		urlPatterns = {
 				"/member/home",
 				"/member/post-edit",
-				"/member/post-details"
+				"/member/post-details",
+				"/member/post-comment"
 		})
 @MultipartConfig
 public class MemberHomeServlet extends BaseServlet{
@@ -26,10 +29,12 @@ public class MemberHomeServlet extends BaseServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private PostService service;
+	private CommentService commentService;
 
 	@Override
 	public void init() throws ServletException {
 		service = new PostService(dataSource);
+		commentService = new CommentService(dataSource);
 	}
 
 	@Override
@@ -55,14 +60,24 @@ public class MemberHomeServlet extends BaseServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		var imageStorage = new ImageStorageService();
-		
-		var imageFileNames = imageStorage.saveImages(getServletContext().getRealPath("/images"), new ArrayList<>(req.getParts()));
-		
-		var title = req.getParameter("title");
 		var loginUser = (LoginUser)req.getSession().getAttribute("loginUser");
-		var id = service.create(title, imageFileNames, loginUser.id());
-		
-		redirect(resp, "/member/post-details?id=%d".formatted(id));
+
+		if("/member/post-comment".equals(req.getServletPath())) {
+			var id = req.getParameter("id");
+			var details = req.getParameter("details");
+			
+			commentService.create(Integer.parseInt(id), loginUser.id(), details);
+			
+			redirect(resp, "/member/post-details?id=%s".formatted(id));
+
+		} else {
+			var imageStorage = new ImageStorageService();
+			var imageFileNames = imageStorage.saveImages(getServletContext().getRealPath("/images"), List.of(req.getPart("photo")));
+			
+			var title = req.getParameter("title");
+			var id = service.create(title, imageFileNames, loginUser.id());
+			
+			redirect(resp, "/member/post-details?id=%d".formatted(id));
+		}
 	}
 }

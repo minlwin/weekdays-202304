@@ -44,8 +44,14 @@ public class ImageStorageService {
 		FileName(int index, Part part) {
 			this.index = index;
 			
-			var array = part.getSubmittedFileName().split("\\.");
-			extension = array[array.length - 1];
+			var name = part.getSubmittedFileName();
+			
+			if(null != name) {
+				var array = part.getSubmittedFileName().split("\\.");
+				extension = array[array.length - 1];
+			} else {
+				extension = "png";
+			}			
 		}
 		
 		String getValue() {

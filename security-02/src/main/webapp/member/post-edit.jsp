@@ -26,7 +26,7 @@
 		
 		<div class="mb-3">
 			<label class="form-label">Image Files</label>
-			<input name="images" type="file" multiple="multiple" class="form-control" required="required" />
+			<input name="photo" type="file" class="form-control" />
 		</div>
 		
 		<button class="btn btn-outline-danger" type="submit">Upload</button>
