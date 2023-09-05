@@ -15,6 +15,7 @@ import com.jdc.locations.model.entity.Division;
 import com.jdc.locations.model.repo.DivisionRepo;
 
 @Service
+@Transactional(readOnly = true)
 public class DivisionService {
 	
 	@Autowired
