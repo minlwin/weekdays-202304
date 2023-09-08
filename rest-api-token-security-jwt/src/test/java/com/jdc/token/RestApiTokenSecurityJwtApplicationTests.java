@@ -39,7 +39,7 @@ class RestApiTokenSecurityJwtApplicationTests {
 		
 		System.out.println(token);
 		
-		var parsedResult = jwtTokenProvider.parse(token);
+		var parsedResult = jwtTokenProvider.authenticate(token);
 		assertEquals("admin@gmail.com", parsedResult.getName());
 		assertEquals("Admin,Read,Write", 
 				parsedResult.getAuthorities().stream()

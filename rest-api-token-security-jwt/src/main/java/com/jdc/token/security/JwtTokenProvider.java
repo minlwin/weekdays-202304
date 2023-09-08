@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,61 +22,57 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtTokenProvider {
-	
+
 	private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-	
+
 	@Value("${com.jdc.jwt.issuer}")
 	private String issuer;
 
 	@Value("${com.jdc.jwt.expiration}")
 	private int expireAt;
+	
+	private Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
-	public Authentication parse(String token) {
-		
-		if(StringUtils.hasLength(token)) {
-			var jws = Jwts.parserBuilder()
-				.requireIssuer(issuer)
-				.setSigningKey(secretKey)
-				.build()
-				.parseClaimsJws(token.substring("Bearer ".length()));
-			
-			var username = jws.getBody().getSubject();
-			var authoritieString = jws.getBody().get("roles").toString();
-			var authorities = Arrays.stream(authoritieString.split(","))
-						.map(a -> new SimpleGrantedAuthority(a))
+	public Authentication authenticate(String token) {
+
+		try {
+			if (StringUtils.hasLength(token)) {
+				var jws = Jwts.parserBuilder().requireIssuer(issuer).setSigningKey(secretKey).build()
+						.parseClaimsJws(token.substring("Bearer ".length()));
+
+				var username = jws.getBody().getSubject();
+				var authoritieString = jws.getBody().get("roles").toString();
+				var authorities = Arrays.stream(authoritieString.split(",")).map(a -> new SimpleGrantedAuthority(a))
 						.toList();
-			
-			return UsernamePasswordAuthenticationToken.authenticated(username, null, authorities);
+
+				return UsernamePasswordAuthenticationToken.authenticated(username, null, authorities);
+			}
+		} catch (Exception e) {
+			logger.info("Invalid Token : %s".formatted(e.getMessage()));
 		}
-		
+
 		return null;
 	}
 
 	public String generate(Authentication authentication) {
-		
-		if(null != authentication 
-				&& authentication.isAuthenticated() 
+
+		if (null != authentication && authentication.isAuthenticated()
 				&& !(authentication instanceof AnonymousAuthenticationToken)) {
-			
+
 			var now = new Date();
 			var calendar = Calendar.getInstance();
 			calendar.setTime(now);
 			calendar.add(Calendar.MINUTE, expireAt);
-			
-			var jwtToken = Jwts.builder()
-					.setIssuer(issuer)
-					.setIssuedAt(now)
-					.setExpiration(calendar.getTime())
-					.setSubject(authentication.getName())
-					.claim("roles", authentication.getAuthorities()
-							.stream().map(a -> a.getAuthority()).collect(Collectors.joining(",")))
-					.signWith(secretKey)
-					.compact();
-			
+
+			var jwtToken = Jwts.builder().setIssuer(issuer).setIssuedAt(now).setExpiration(calendar.getTime())
+					.setSubject(authentication.getName()).claim("roles", authentication.getAuthorities().stream()
+							.map(a -> a.getAuthority()).collect(Collectors.joining(",")))
+					.signWith(secretKey).compact();
+
 			return "Bearer %s".formatted(jwtToken);
 		}
-		
+
 		return null;
 	}
-	
+
 }
