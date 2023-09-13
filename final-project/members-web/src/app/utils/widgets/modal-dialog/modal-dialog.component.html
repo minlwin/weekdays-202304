@@ -1,0 +1,17 @@
+<div class="modal fade" [id]="modalId" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5"><i class="bi {{ modalIcon }}"></i> {{ modalTitle }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ng-content select="[body]"></ng-content>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        <ng-content select="[footer]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

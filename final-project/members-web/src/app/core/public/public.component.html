@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/public']">Public</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="publicNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/public', 'home']" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/public', 'catalog']" routerLinkActive="active">Catalog</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-9">
+        <li class="nav-item">
+          <button class="btn btn-warning" (click)="openForm()">
+            <i class="bi bi-unlock"></i> Sign In
+          </button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<section class="container mt-4">
+  <router-outlet></router-outlet>
+</section>
+
+<form [formGroup]="form">
+  <app-modal-dialog modalId="signInModalId" modalIcon="bi-box-arrow-right" modalTitle="Sign In">
+
+    <ng-container body>
+
+      <app-form-group label="Email" icon="bi-envelope" [valid]="email.valid" [margin]="true">
+        <input formControlName="email" type="email" id="email" class="form-control" placeholder="Email">
+      </app-form-group>
+
+      <app-form-group label="Password" icon="bi-key" [valid]="password.valid">
+        <input formControlName="password" type="password" id="password" class="form-control" placeholder="Password">
+      </app-form-group>
+    </ng-container>
+
+    <button footer class="btn btn-outline-dark">
+      <i class="bi bi-unlock"></i> Sign In
+    </button>
+
+  </app-modal-dialog>
+</form>
