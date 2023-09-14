@@ -11,7 +11,7 @@ import { CustomerDetailComponent } from './customer-management/customer-detail/c
 const routes: Routes = [
   { path: '', component: EmployeeComponent, children: [
     { path: 'sale', component: PosComponent, title: 'Employee | Sale' },
-    { path: 'category', component: CategoryManagementComponent, title: 'Emplyee | Category Management' },
+    { path: 'category', component: CategoryManagementComponent, title: 'Employee | Category Management' },
     { path: 'catalog', children: [
       { path: 'management', component: CatalogManagementComponent, title: 'Employee | Catalog Management' },
       { path: 'detail', component: CatalogDetailComponent, title: 'Employee | Catalog Detail' }

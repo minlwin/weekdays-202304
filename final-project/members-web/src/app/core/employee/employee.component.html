@@ -9,36 +9,30 @@
         </a>
       </div>
 
-      <div class="list-group mt-4 text-center text-lg-start">
-        <span class="list-group-item disabled d-none d-lg-block">
+      <div class="mt-4 text-center text-lg-start pt-2 ps-2">
+        <span class="text-muted d-none d-lg-block">
           <small>MENU</small>
         </span>
 
-        <a [routerLink]="['/employee', 'sale']" routerLinkActive="active"
-          class="list-group-item list-group-item-action">
+        <a [routerLink]="['/employee', 'sale']" routerLinkActive="active" class="nav-menu-link mt-3 ps-lg-2 ps-md-0">
           <i class="bi bi-cart"></i>
           <span class="d-none d-lg-inline"> Pos</span>
         </a>
-        <a [routerLink]="['/employee', 'category']" routerLinkActive="active"
-          class="list-group-item list-group-item-action">
+        <a [routerLink]="['/employee', 'category']" routerLinkActive="active" class="nav-menu-link ps-lg-2 ps-md-0">
           <i class="bi bi-tags"></i>
           <span class="d-none d-lg-inline"> Category</span>
         </a>
         <a [routerLink]="['/employee', 'catalog', 'management']" routerLinkActive="active"
-          class="list-group-item list-group-item-action">
+          class="nav-menu-link ps-lg-2 ps-md-0">
           <i class="bi bi-layers-half"></i>
           <span class="d-none d-lg-inline"> Catalog</span>
         </a>
         <a [routerLink]="['/employee', 'customer', 'management']" routerLinkActive="active"
-          class="list-group-item list-group-item-action">
+          class="nav-menu-link ps-lg-2 ps-md-0">
           <i class="bi bi-person-raised-hand"></i>
           <span class="d-none d-lg-inline"> Customer</span>
         </a>
       </div>
-
-      <button style="margin-top: 290px;" class="btn btn-outline-dark w-100">
-        <i class="bi bi-box-arrow-left"></i> Log Out
-      </button>
     </nav>
 
     <main class="col-10">

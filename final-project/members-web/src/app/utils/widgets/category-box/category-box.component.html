@@ -1,7 +1,7 @@
-<div class="cat-box d-flex border border-secondary p-3 align-items-center">
+<div class="cat-box p-2 ps-3 d-flex align-items-center">
   <i class="h4 text-dark bi me-2" [ngClass]="icon ?? 'bi-x-diamond-fill'"></i>
-  <p class="fs-5 text-start me-3 w-100 mt-2">{{ name ?? 'Category' }}</p>
-  <div style="width: 20%">
+  <p class="fs-5 text-start w-100 mt-2 ">{{ name ?? 'Category' }}</p>
+  <div>
     <ng-content></ng-content>
   </div>
 </div>

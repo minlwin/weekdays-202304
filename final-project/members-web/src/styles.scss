@@ -26,6 +26,21 @@ body {
   bottom: 0;
 }
 
+.left-nav .nav-menu-link {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  height: 40px;
+  color: #373636;
+  line-height: 40px;
+}
+
+.left-nav .nav-menu-link:hover, .left-nav .active {
+  background-color: $success;
+  border-radius: 5px;
+  color: $light;
+}
+
 main {
   position: absolute;
   left: 16.3%;
@@ -57,6 +72,11 @@ main {
 
 .btn-tbl {
   border-radius: 4px;
+}
+
+.cat-box {
+  border: 1px solid $dark;
+  border-left: 7px solid $dark;
 }
 
 .cat-box:hover {
