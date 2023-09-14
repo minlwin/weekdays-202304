@@ -1,7 +1,7 @@
-<app-master-layout viewIcon="bi-tags" viewTitle="Catalog Management">
+<app-master-layout viewIcon="bi-layers-half" viewTitle="Catalog Management">
   <div class="row" search>
     <div class="col-lg-5 col-md col-sm">
-      <form class="form-inline d-flex">
+      <form class="form-inline d-flex master-search">
         <input type="text" class="form-control input-search" placeholder="Search">
 
         <button type="button" class="btn btn-light btn-add ms-2">
@@ -15,12 +15,19 @@
     </div>
   </div>
 
-  <div list class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2">
+  <div list class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-3">
     <app-catalog-box>
       <a href="" class="btn-link text-decoration-none"><i class="bi bi-send"></i> Detail </a>
     </app-catalog-box>
-    <app-catalog-box></app-catalog-box>
-    <app-catalog-box></app-catalog-box>
+    <app-catalog-box>
+      <a href="" class="btn-link text-decoration-none"><i class="bi bi-send"></i> Detail </a>
+    </app-catalog-box>
+    <app-catalog-box>
+      <a href="" class="btn-link text-decoration-none"><i class="bi bi-send"></i> Detail </a>
+    </app-catalog-box>
+    <app-catalog-box>
+      <a href="" class="btn-link text-decoration-none"><i class="bi bi-send"></i> Detail </a>
+    </app-catalog-box>
   </div>
 </app-master-layout>
 

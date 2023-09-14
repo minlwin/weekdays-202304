@@ -1,38 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/employee']">Employee</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="publicNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/employee', 'sale']" routerLinkActive="active">Pos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/employee', 'category']" routerLinkActive="active">Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/employee', 'catalog', 'management']"
-            routerLinkActive="active">Catalog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/employee', 'customer-management']" routerLinkActive="active">Customer</a>
-        </li>
-      </ul>
+<div class="container-fluid">
+  <div class="row g-3">
 
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <button class="btn btn-warning" (click)="logOut()">
-            <i class="bi bi-box-arrow-left"></i> Log Out
-          </button>
-        </li>
-      </ul>
+    <nav class="col-2 bg-light pr-3 pt-2">
+      <a [routerLink]="['/employee']" class="fs-4 text-dark text-decoration-none btn-link">
+        <i class="bi bi-house"></i>
+        <span class="d-none d-lg-inline"> Dashboard</span>
+      </a>
 
-    </div>
+      <div class="list-group mt-4 text-center text-lg-start">
+        <span class="list-group-item disabled d-none d-lg-block">
+          <small>ACTIONS</small>
+        </span>
+
+        <a [routerLink]="['/employee', 'sale']" routerLinkActive="active"
+          class="list-group-item list-group-item-action">
+          <i class="bi bi-cart"></i>
+          <span class="d-none d-lg-inline"> Pos</span>
+        </a>
+        <a [routerLink]="['/employee', 'category']" routerLinkActive="active"
+          class="list-group-item list-group-item-action">
+          <i class="bi bi-tags"></i>
+          <span class="d-none d-lg-inline"> Category</span>
+        </a>
+        <a [routerLink]="['/employee', 'catalog', 'management']" routerLinkActive="active"
+          class="list-group-item list-group-item-action">
+          <i class="bi bi-layers-half"></i>
+          <span class="d-none d-lg-inline"> Catalog</span>
+        </a>
+        <a [routerLink]="['/employee', 'customer', 'management']" routerLinkActive="active"
+          class="list-group-item list-group-item-action">
+          <i class="bi bi-person-raised-hand"></i>
+          <span class="d-none d-lg-inline"> Customer</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="col-10">
+      <div class="my-3">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
   </div>
-</nav>
-
-<section class="container mt-4">
-  <router-outlet></router-outlet>
-</section>
+</div>

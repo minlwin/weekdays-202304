@@ -6,6 +6,7 @@ import { SimpleFormComponent } from './simple-form/simple-form.component';
 import { MasterLayoutComponent } from './master-layout/master-layout.component';
 import { MasterSearchComponent } from './master-search/master-search.component';
 import { CatalogBoxComponent } from './catalog-box/catalog-box.component';
+import { CategoryBoxComponent } from './category-box/category-box.component';
 
 
 
@@ -16,7 +17,8 @@ import { CatalogBoxComponent } from './catalog-box/catalog-box.component';
     SimpleFormComponent,
     MasterLayoutComponent,
     MasterSearchComponent,
-    CatalogBoxComponent
+    CatalogBoxComponent,
+    CategoryBoxComponent
   ],
   imports: [
     CommonModule
@@ -26,7 +28,8 @@ import { CatalogBoxComponent } from './catalog-box/catalog-box.component';
     FormGroupComponent,
     SimpleFormComponent,
     MasterLayoutComponent,
-    CatalogBoxComponent
+    CatalogBoxComponent,
+    CategoryBoxComponent
   ]
 })
 export class WidgetsModule { }

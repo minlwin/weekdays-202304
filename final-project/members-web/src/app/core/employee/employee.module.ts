@@ -10,6 +10,7 @@ import { CatalogDetailComponent } from './catalog-management/catalog-detail/cata
 import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
 import { CategoryManagmentComponent } from './category-managment/category-managment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CatalogManagementComponent,
     PosComponent,
     CatalogDetailComponent,
-    CategoryManagmentComponent
+    CategoryManagmentComponent,
+    CustomerDetailComponent
   ],
   imports: [
     CommonModule,

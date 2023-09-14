@@ -1,1 +1,39 @@
-<p>category-managment works!</p>
+<app-master-layout viewIcon="bi-tags" viewTitle="Category Management">
+  <div class="row" search>
+    <div class="col-lg-5 col-md col-sm">
+      <form class="form-inline d-flex master-search">
+        <input type="text" class="form-control input-search" placeholder="Search">
+
+        <button type="button" class="btn btn-light btn-add ms-2">
+          <i class="bi bi-search"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-add ms-2">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <div list class="row g-3 mt-3">
+    <app-category-box class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <i class="bi bi-pencil-square text-primary btn-link me-lg-2 me-md-2"></i>
+      <i class="bi bi-trash text-danger btn-link"></i>
+    </app-category-box>
+
+    <app-category-box class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <i class="bi bi-pencil-square text-primary btn-link me-lg-2 me-md-2"></i>
+      <i class="bi bi-trash text-danger btn-link"></i>
+    </app-category-box>
+
+    <app-category-box class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <i class="bi bi-pencil-square text-primary btn-link me-lg-2 me-md-2"></i>
+      <i class="bi bi-trash text-danger btn-link"></i>
+    </app-category-box>
+
+    <app-category-box class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <i class="bi bi-pencil-square text-primary btn-link me-lg-2 me-md-2"></i>
+      <i class="bi bi-trash text-danger btn-link"></i>
+    </app-category-box>
+  </div>
+</app-master-layout>

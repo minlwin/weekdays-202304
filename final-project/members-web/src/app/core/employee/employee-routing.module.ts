@@ -6,6 +6,7 @@ import { CatalogManagementComponent } from './catalog-management/catalog-managem
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
 import { CatalogDetailComponent } from './catalog-management/catalog-detail/catalog-detail.component';
 import { CategoryManagmentComponent } from './category-managment/category-managment.component';
+import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
 
 const routes: Routes = [
   { path: '', component: EmployeeComponent, children: [
@@ -15,7 +16,10 @@ const routes: Routes = [
       { path: 'management', component: CatalogManagementComponent, title: 'Employee | Catalog Management' },
       { path: 'detail', component: CatalogDetailComponent, title: 'Employee | Catalog Detail' }
     ]},
-    { path: 'customer-management', component: CustomerManagementComponent, title: 'Employee | Customer Management' },
+    { path: 'customer', children: [
+      { path: 'management', component: CustomerManagementComponent, title: 'Employee | Customer Management' },
+      { path: 'detail', component: CustomerDetailComponent, title: 'Employee | Customer Detail' }
+    ]},
     { path: '', redirectTo: '/employee/sale', pathMatch: 'full' }
   ]}
 ];

@@ -12,9 +12,13 @@ $light: #fefefe;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 .master-search {
-  background-color: $secondary;
-  border-radius: $spacer;
-  padding: $spacer;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.master-search input[type=text], .master-search button {
+  box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.08);
 }
 
 .input-search[type=text] {
@@ -24,4 +28,22 @@ $light: #fefefe;
 
 .btn-add {
   border-radius: 100px;
+}
+
+.list-group .active {
+  background-color: #666;
+  border: none;
+}
+
+.btn-tbl {
+  border-radius: 4px;
+}
+
+.cat-box:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.cat-box div i:hover {
+  cursor: pointer;
+  color: $dark;
 }
