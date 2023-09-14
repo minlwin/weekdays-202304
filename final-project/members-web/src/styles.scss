@@ -7,6 +7,21 @@ $success: #009b4d;
 $warning: #ffcc00;
 $info: #0099e1;
 $dark: #000000;
-$light: #FAF5E9;
+$light: #fefefe;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.master-search {
+  background-color: $secondary;
+  border-radius: $spacer;
+  padding: $spacer;
+}
+
+.input-search[type=text] {
+  border-radius: $spacer;
+  padding-left: $spacer;
+}
+
+.btn-add {
+  border-radius: 100px;
+}

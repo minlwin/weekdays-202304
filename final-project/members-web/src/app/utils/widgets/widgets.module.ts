@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { SimpleFormComponent } from './simple-form/simple-form.component';
+import { MasterLayoutComponent } from './master-layout/master-layout.component';
+import { MasterSearchComponent } from './master-search/master-search.component';
+import { CatalogBoxComponent } from './catalog-box/catalog-box.component';
 
 
 
@@ -10,7 +13,10 @@ import { SimpleFormComponent } from './simple-form/simple-form.component';
   declarations: [
     ModalDialogComponent,
     FormGroupComponent,
-    SimpleFormComponent
+    SimpleFormComponent,
+    MasterLayoutComponent,
+    MasterSearchComponent,
+    CatalogBoxComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +24,9 @@ import { SimpleFormComponent } from './simple-form/simple-form.component';
   exports: [
     ModalDialogComponent,
     FormGroupComponent,
-    SimpleFormComponent
+    SimpleFormComponent,
+    MasterLayoutComponent,
+    CatalogBoxComponent
   ]
 })
 export class WidgetsModule { }

@@ -1,1 +1,38 @@
-<p>employee works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/employee']">Employee</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="publicNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/employee', 'sale']" routerLinkActive="active">Pos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/employee', 'category']" routerLinkActive="active">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/employee', 'catalog', 'management']"
+            routerLinkActive="active">Catalog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/employee', 'customer-management']" routerLinkActive="active">Customer</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button class="btn btn-warning" (click)="logOut()">
+            <i class="bi bi-box-arrow-left"></i> Log Out
+          </button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<section class="container mt-4">
+  <router-outlet></router-outlet>
+</section>

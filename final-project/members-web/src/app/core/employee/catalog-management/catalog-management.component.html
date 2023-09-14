@@ -1,0 +1,39 @@
+<app-master-layout viewIcon="bi-tags" viewTitle="Catalog Management">
+  <div class="row" search>
+    <div class="col-lg-5 col-md col-sm">
+      <form class="form-inline d-flex">
+        <input type="text" class="form-control input-search" placeholder="Search">
+
+        <button type="button" class="btn btn-light btn-add ms-2">
+          <i class="bi bi-search"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-add ms-2" (click)="openCatalogForm()">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <div list class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2">
+    <app-catalog-box>
+      <a href="" class="btn-link text-decoration-none"><i class="bi bi-send"></i> Detail </a>
+    </app-catalog-box>
+    <app-catalog-box></app-catalog-box>
+    <app-catalog-box></app-catalog-box>
+  </div>
+</app-master-layout>
+
+<form [formGroup]="form">
+  <app-modal-dialog modalId="catalogEditModalId" modalTitle="CatalogForm" modalIcon="bi-pen">
+    <ng-container body>
+      <app-form-group label="Name" icon="bi-type" [margin]="true">
+        <input type="text" id="name" class="form-control" placeholder="Catalog name">
+      </app-form-group>
+    </ng-container>
+
+    <button footer class="btn btn-outline-dark">
+      <i class="bi bi-save"></i> Save
+    </button>
+  </app-modal-dialog>
+</form>

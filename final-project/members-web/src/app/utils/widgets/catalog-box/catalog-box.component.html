@@ -1,0 +1,15 @@
+<div class="card mb-lg-0 mb-md-0 mb-sm-3">
+  <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top">
+  <div class="card-body">
+    <div class="card-title">
+      <h4>{{ name ?? 'Default Name for Catalog Card' }}</h4>
+    </div>
+    <p class="text-muted">{{ category ?? 'Default Category' }}</p>
+    <p>Price: {{ price ?? '1000' | number }} MMK</p>
+    <p>Weight: {{ weight ?? '10' | number }} YWE</p>
+  </div>
+  <div class="card-footer d-flex flex-columns justify-content-between">
+    <span class="d-block">Rating: {{ rating ?? 0 }}</span>
+    <ng-content class="d-block"></ng-content>
+  </div>
+</div>
