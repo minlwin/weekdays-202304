@@ -8,17 +8,37 @@ $warning: #ffcc00;
 $info: #0099e1;
 $dark: #000000;
 $light: #fefefe;
+$ptf: 'PT Serif', serif;
+$popf: 'Poppins', sans-serif;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  font-family: $ptf;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.left-nav {
+  position: fixed;
+  top: -1;
+  left: 0;
+  bottom: 0;
+}
+
+main {
+  position: absolute;
+  left: 16.3%;
+}
 
 .master-search {
   border-radius: 5px;
   padding: 15px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.1);
 }
 
 .master-search input[type=text], .master-search button {
-  box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .input-search[type=text] {
@@ -45,5 +65,5 @@ $light: #fefefe;
 
 .cat-box div i:hover {
   cursor: pointer;
-  color: $dark;
+  color: grey !important;
 }

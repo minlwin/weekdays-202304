@@ -7,15 +7,18 @@
         <button type="button" class="btn btn-light btn-add ms-2">
           <i class="bi bi-search"></i>
         </button>
-        <button type="button" class="btn btn-light btn-add ms-2">
+        <button type="button" class="btn btn-light btn-add ms-2" (click)="categoryForm?.openCategoryForm()">
           <i class="bi bi-plus-lg"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-add ms-2">
+          <i class="bi bi-upload"></i>
         </button>
 
       </form>
     </div>
   </div>
 
-  <div list class="row g-3 mt-3">
+  <div list class="row g-3">
     <app-category-box class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
       <i class="bi bi-pencil-square text-primary btn-link me-lg-2 me-md-2"></i>
       <i class="bi bi-trash text-danger btn-link"></i>
@@ -37,3 +40,5 @@
     </app-category-box>
   </div>
 </app-master-layout>
+
+<app-category-form></app-category-form>

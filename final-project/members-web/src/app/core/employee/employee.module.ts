@@ -8,9 +8,12 @@ import { CatalogManagementComponent } from './catalog-management/catalog-managem
 import { PosComponent } from './pos/pos.component';
 import { CatalogDetailComponent } from './catalog-management/catalog-detail/catalog-detail.component';
 import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
-import { CategoryManagmentComponent } from './category-managment/category-managment.component';
+import { CategoryManagementComponent } from './category-management/category-management.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
+import { CategoryFormComponent } from './category-management/category-form/category-form.component';
+import { CatalogFormComponent } from './catalog-management/catalog-form/catalog-form.component';
+import { CustomerFormComponent } from './customer-management/customer-form/customer-form.component';
 
 
 @NgModule({
@@ -20,8 +23,11 @@ import { CustomerDetailComponent } from './customer-management/customer-detail/c
     CatalogManagementComponent,
     PosComponent,
     CatalogDetailComponent,
-    CategoryManagmentComponent,
-    CustomerDetailComponent
+    CategoryManagementComponent,
+    CustomerDetailComponent,
+    CategoryFormComponent,
+    CatalogFormComponent,
+    CustomerFormComponent
   ],
   imports: [
     CommonModule,
