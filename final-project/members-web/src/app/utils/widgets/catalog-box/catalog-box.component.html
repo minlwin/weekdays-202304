@@ -1,4 +1,6 @@
-<div class="card mb-3">
+<div class="card mb-3 position-relative">
+  <span *ngIf="badgeText" class="position-absolute top-0 end-0 me-2 mt-2 badge rounded-pill bg-success">{{
+    badgeText }}</span>
   <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top img-fluid">
   <div class="card-body">
     <div class="card-title">

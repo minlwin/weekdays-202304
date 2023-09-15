@@ -24,4 +24,7 @@ export class CatalogBoxComponent {
   @Input()
   rating?: number
 
+  @Input()
+  badgeText?: string
+
 }
