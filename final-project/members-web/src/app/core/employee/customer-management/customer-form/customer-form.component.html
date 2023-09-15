@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <app-modal-dialog modalId="customerEditModalId" modalTitle="Customer Form" modalIcon="bi-pen">
+    <ng-container body>
+      <app-form-group label="Name" icon="bi-type" [margin]="true">
+        <input type="text" id="name" class="form-control" placeholder="Catalog name">
+      </app-form-group>
+    </ng-container>
+
+    <button footer class="btn btn-outline-dark">
+      <i class="bi bi-save"></i> Save
+    </button>
+  </app-modal-dialog>
+</form>

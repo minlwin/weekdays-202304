@@ -1,0 +1,17 @@
+<div class="card mb-3 position-relative">
+  <span *ngIf="badgeText" class="position-absolute top-0 end-0 me-2 mt-2 badge rounded-pill bg-success">{{
+    badgeText }}</span>
+  <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top img-fluid">
+  <div class="card-body">
+    <div class="card-title">
+      <h5>{{ name ?? 'Catalog Name' }}</h5>
+    </div>
+    <p class="text-muted" style="font-size: 12px">{{ category ?? 'Default Category' }}</p>
+    <p>Price: {{ price ?? '1000' | number }} MMK</p>
+    <p>Weight: {{ weight ?? '10' | number }} YWE</p>
+  </div>
+  <div class="card-footer d-flex flex-columns justify-content-between">
+    <span class="d-block">Rating: {{ rating ?? 0 }}</span>
+    <ng-content class="d-block"></ng-content>
+  </div>
+</div>

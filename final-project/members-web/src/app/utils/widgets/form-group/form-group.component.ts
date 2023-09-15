@@ -18,7 +18,4 @@ export class FormGroupComponent {
   @Input()
   valid?: boolean
 
-  @Input()
-  pristine?: boolean
-
 }

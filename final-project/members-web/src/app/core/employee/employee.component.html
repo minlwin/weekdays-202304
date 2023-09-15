@@ -1,1 +1,45 @@
-<p>employee works!</p>
+<div class="container-fluid h-100">
+  <div class="row g-3 h-100">
+
+    <nav class="left-nav col-2 pr-3 pt-2 shadow h-100">
+      <div class="text-center">
+        <a [routerLink]="['/employee']" class="fs-4 text-dark text-decoration-none btn-link fw-bold">
+          <i class="bi bi-house"></i>
+          <span class="d-none d-lg-inline"> Dashboard</span>
+        </a>
+      </div>
+
+      <div class="mt-4 text-center text-lg-start pt-2 ps-2">
+        <span class="text-muted d-none d-lg-block">
+          <small>MENU</small>
+        </span>
+
+        <a [routerLink]="['/employee', 'sale']" routerLinkActive="active" class="nav-menu-link mt-3 ps-lg-2 ps-md-0">
+          <i class="bi bi-cart"></i>
+          <span class="d-none d-lg-inline"> Pos</span>
+        </a>
+        <a [routerLink]="['/employee', 'category']" routerLinkActive="active" class="nav-menu-link ps-lg-2 ps-md-0">
+          <i class="bi bi-tags"></i>
+          <span class="d-none d-lg-inline"> Category</span>
+        </a>
+        <a [routerLink]="['/employee', 'catalog', 'management']" routerLinkActive="active"
+          class="nav-menu-link ps-lg-2 ps-md-0">
+          <i class="bi bi-layers-half"></i>
+          <span class="d-none d-lg-inline"> Catalog</span>
+        </a>
+        <a [routerLink]="['/employee', 'customer', 'management']" routerLinkActive="active"
+          class="nav-menu-link ps-lg-2 ps-md-0">
+          <i class="bi bi-person-raised-hand"></i>
+          <span class="d-none d-lg-inline"> Customer</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="col-10">
+      <div class="my-3 ps-3">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+  </div>
+</div>

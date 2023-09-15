@@ -1,0 +1,7 @@
+<div class="cat-box p-2 ps-3 d-flex align-items-center">
+  <i class="h4 text-dark bi me-2" [ngClass]="icon ?? 'bi-x-diamond-fill'"></i>
+  <p class="fs-5 text-start w-100 mt-2 ">{{ name ?? 'Category' }}</p>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</div>

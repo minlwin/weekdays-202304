@@ -1,0 +1,48 @@
+<app-master-layout viewIcon="bi-person-raised-hand" viewTitle="Customer Management">
+  <div class="row" search>
+    <div class="col-lg-5 col-md col-sm">
+      <form class="form-inline d-flex master-search">
+        <input type="text" class="form-control input-search" placeholder="Search">
+
+        <button type="button" class="btn btn-light btn-add ms-2">
+          <i class="bi bi-search"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-add ms-2" (click)="customerForm?.openCustomerForm()">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <table list class="table">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td></td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Emily Rudd</td>
+        <td>+130203030</td>
+        <td>artist@emilyrudd@gmail.com</td>
+        <td>Arizona</td>
+        <td>
+          <button class="btn btn-tbl btn-sm btn-outline-primary me-2">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <a [routerLink]="['/employee', 'customer', '#']" class="btn btn-tbl btn-sm btn-outline-dark">
+            <i class="bi bi-send"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</app-master-layout>
+
+<app-customer-form></app-customer-form>

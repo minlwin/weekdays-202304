@@ -7,6 +7,83 @@ $success: #009b4d;
 $warning: #ffcc00;
 $info: #0099e1;
 $dark: #000000;
-$light: #FAF5E9;
+$light: #fefefe;
+$ptf: 'PT Serif', serif;
+$popf: 'Poppins', sans-serif;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  font-family: $ptf;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.left-nav {
+  position: fixed;
+  top: -1;
+  left: 0;
+  bottom: 0;
+}
+
+.left-nav .nav-menu-link {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  height: 40px;
+  color: #373636;
+  line-height: 40px;
+}
+
+.left-nav .nav-menu-link:hover, .left-nav .active {
+  background-color: $success;
+  border-radius: 5px;
+  color: $light;
+}
+
+main {
+  position: absolute;
+  left: 16.3%;
+}
+
+.master-search {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.1);
+}
+
+.master-search input[type=text], .master-search button {
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.input-search[type=text] {
+  border-radius: $spacer;
+  padding-left: $spacer;
+}
+
+.btn-add {
+  border-radius: 100px;
+}
+
+.list-group .active {
+  background-color: #666;
+  border: none;
+}
+
+.btn-tbl {
+  border-radius: 4px;
+}
+
+.cat-box {
+  border: 1px solid $dark;
+  border-left: 7px solid $dark;
+}
+
+.cat-box:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.cat-box div i:hover {
+  cursor: pointer;
+  color: grey !important;
+}
