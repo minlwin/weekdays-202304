@@ -14,10 +14,9 @@
 
 ## Class Design
 
-![Class Design](document/images/construction.webp)
+![Class Design](document/images/3-packages.png)
 
-### Input Classes
-
-### Output Classes
 
 ### Entity Classes
+
+![Class Design](document/images/construction.webp)
