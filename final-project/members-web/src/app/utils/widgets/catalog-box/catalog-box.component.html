@@ -1,15 +1,16 @@
 <div class="mb-3 position-relative catalog-box">
   <div class="card">
-    <span *ngIf="badgeText" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">{{
-      badgeText }}</span>
-    <a [routerLink]="['/employee', 'catalog', 'detail']">
-      <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top" height="230px">
+    <span *ngIf="data.status" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">{{
+      data.status }}</span>
+    <a [routerLink]="role == 'Employee' ? ['/employee', 'catalog', 'detail'] : ['/public', 'catalog', 'detail']">
+      <img [src]="data.images[0] ?? 'assets/default-image.png'" class="card-img-top" height="230px">
       <div class="card-body">
         <div class="card-title">
-          <h5>{{ name ?? 'Catalog Name' }}</h5>
+          <h5>{{ data.name ?? 'Catalog Name' }}</h5>
         </div>
-        <p class="catalog-box-description">Lorem ipsum dolor sit, consectetur adipisicing elit. Fugiat aliquam magni
-          vel sequi officiis odio eaque.</p>
+        <p class="catalog-box-description">{{ data.description ?? 'Lorem ipsum dolor sit, consectetur adipisicing elit.
+          Fugiat aliquam magni
+          vel sequi officiis odio eaque.' }}</p>
         <div class="stars mb-3">
           <i class="bi bi-star-fill me-1"></i>
           <i class="bi bi-star-fill me-1"></i>
@@ -19,10 +20,10 @@
         </div>
         <div class="infos">
           <div class="cat-weight">
-            <div>Category</div>
-            <div>14 YWE</div>
+            <div>{{ data.category ?? 'Category' }}</div>
+            <div>{{ data.weight ?? 14 }} YWE</div>
           </div>
-          <div class="align-self-center price">{{ '350000' | number }}</div>
+          <div class="align-self-center price">{{ data.price ?? '350000' | number }}</div>
         </div>
       </div>
     </a>

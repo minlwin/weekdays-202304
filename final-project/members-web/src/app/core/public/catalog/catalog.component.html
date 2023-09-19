@@ -1,1 +1,15 @@
-<p>catalog works!</p>
+<form class="row justify-content-lg-end justify-content-md-center g-2 mb-3">
+  <div class="col-lg-auto col-md-auto col-9">
+    <input type="text" class="form-control" placeholder="Search Catalog">
+  </div>
+  <div class="col-lg-auto col-md-auto col-3">
+    <button class="btn btn-success">
+      <i class="bi bi-search"></i>
+      <span class="d-none d-md-inline"> Search</span>
+    </button>
+  </div>
+</form>
+
+<div class="row g-3 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols">
+  <app-catalog-box *ngFor="let item of catalogs" [data]="item"></app-catalog-box>
+</div>

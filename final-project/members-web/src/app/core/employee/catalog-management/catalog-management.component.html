@@ -16,13 +16,7 @@
   </div>
 
   <div list class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-3">
-    <app-catalog-box
-      cardImage="https://images.unsplash.com/photo-1611107683227-e9060eccd846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-      badgeText="Special">
-    </app-catalog-box>
-    <app-catalog-box
-      cardImage="https://images.unsplash.com/photo-1567523977592-7959bc5df51e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1402&q=80"
-      badgeText="Popular">
+    <app-catalog-box role="Employee" *ngFor="let item of catalogs" [data]="item">
     </app-catalog-box>
   </div>
 </app-master-layout>

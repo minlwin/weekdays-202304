@@ -9,6 +9,7 @@ import { CategoryBoxComponent } from './category-box/category-box.component';
 import { NoDataComponent } from './no-data/no-data.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { RouterModule } from '@angular/router';
+import { CatalogDetailBoxComponent } from './catalog-detail-box/catalog-detail-box.component';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     CatalogBoxComponent,
     CategoryBoxComponent,
     NoDataComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    CatalogDetailBoxComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { RouterModule } from '@angular/router';
     MasterLayoutComponent,
     CatalogBoxComponent,
     CategoryBoxComponent,
-    NoDataComponent
+    NoDataComponent,
+    CatalogDetailBoxComponent
   ]
 })
 export class WidgetsModule { }

@@ -7,13 +7,15 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { HomeComponent } from './home/home.component';
 import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailComponent } from './catalog/detail/detail.component';
 
 
 @NgModule({
   declarations: [
     PublicComponent,
     CatalogComponent,
-    HomeComponent
+    HomeComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

@@ -7,24 +7,12 @@ import { Component, Input } from '@angular/core';
 export class CatalogBoxComponent {
 
   @Input()
-  name?: string
+  role: any
 
   @Input()
-  cardImage?: string
-
-  @Input()
-  category?: string
-
-  @Input()
-  price?: number
-
-  @Input()
-  weight?: number
+  data?: any
 
   @Input()
   rating?: number
-
-  @Input()
-  badgeText?: string
 
 }
