@@ -1,17 +1,30 @@
-<div class="card mb-3 position-relative">
-  <span *ngIf="badgeText" class="position-absolute top-0 end-0 me-2 mt-2 badge rounded-pill bg-success">{{
-    badgeText }}</span>
-  <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top img-fluid">
-  <div class="card-body">
-    <div class="card-title">
-      <h5>{{ name ?? 'Catalog Name' }}</h5>
-    </div>
-    <p class="text-muted" style="font-size: 12px">{{ category ?? 'Default Category' }}</p>
-    <p>Price: {{ price ?? '1000' | number }} MMK</p>
-    <p>Weight: {{ weight ?? '10' | number }} YWE</p>
-  </div>
-  <div class="card-footer d-flex flex-columns justify-content-between">
-    <span class="d-block">Rating: {{ rating ?? 0 }}</span>
-    <ng-content class="d-block"></ng-content>
+<div class="mb-3 position-relative catalog-box">
+  <div class="card">
+    <span *ngIf="badgeText" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">{{
+      badgeText }}</span>
+    <a [routerLink]="['/employee', 'catalog', 'detail']">
+      <img [src]="cardImage ?? 'assets/default-image.png'" class="card-img-top" height="230px">
+      <div class="card-body">
+        <div class="card-title">
+          <h5>{{ name ?? 'Catalog Name' }}</h5>
+        </div>
+        <p class="catalog-box-description">Lorem ipsum dolor sit, consectetur adipisicing elit. Fugiat aliquam magni
+          vel sequi officiis odio eaque.</p>
+        <div class="stars mb-3">
+          <i class="bi bi-star-fill me-1"></i>
+          <i class="bi bi-star-fill me-1"></i>
+          <i class="bi bi-star-fill me-1"></i>
+          <i class="bi bi-star-fill me-1"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <div class="infos">
+          <div class="cat-weight">
+            <div>Category</div>
+            <div>14 YWE</div>
+          </div>
+          <div class="align-self-center price">{{ '350000' | number }}</div>
+        </div>
+      </div>
+    </a>
   </div>
 </div>

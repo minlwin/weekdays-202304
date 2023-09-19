@@ -1,0 +1,60 @@
+<h3 class="fw-bold mb-4">
+  <i class="bi bi-cart-check"></i> Check out
+</h3>
+
+<div class="row g-3 ps-2">
+  <!-- Catalog Item Detail -->
+  <div class="col-lg-7 col-12">
+    <button class="btn btn-outline-success">
+      <i class="bi bi-x-lg"></i> Clear Catalogs
+    </button>
+    <hr class="me-2">
+
+    <div class="row align-items-center mb-5">
+      <div class="col">Catalog Name</div>
+      <div class="col">Catalog Price</div>
+      <div class="col">
+        <button class="checkout-catalog-btn"><i class="bi bi-dash"></i></button>
+        <span> Quantity </span>
+        <button class="checkout-catalog-btn"><i class="bi bi-plus"></i></button>
+      </div>
+    </div>
+    <div class="row align-items-center mb-2">
+      <div class="col">Catalog Name</div>
+      <div class="col">Catalog Price</div>
+      <div class="col">
+        <button class="checkout-catalog-btn"><i class="bi bi-dash"></i></button>
+        <span> Quantity </span>
+        <button class="checkout-catalog-btn"><i class="bi bi-plus"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Price -->
+  <div class="col">
+
+    <div class="cart">
+      <div class="cart-header">
+        <h4 class="fw-bold">Sub Total</h4>
+      </div>
+      <div class="cart-body">
+        <p>Amount - {{ amount || 0 | number }}</p>
+        <hr>
+        <div class="text-end">
+          <button class="btn btn-success" style="width: 130px;">
+            Confirm Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <form class="row g-3 p-3">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Enter referral code">
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-success" style="width: 130px;">Apply</button>
+      </div>
+    </form>
+  </div>
+</div>

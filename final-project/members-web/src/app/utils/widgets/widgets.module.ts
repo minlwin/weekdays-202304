@@ -6,6 +6,9 @@ import { SimpleFormComponent } from './simple-form/simple-form.component';
 import { MasterLayoutComponent } from './master-layout/master-layout.component';
 import { CatalogBoxComponent } from './catalog-box/catalog-box.component';
 import { CategoryBoxComponent } from './category-box/category-box.component';
+import { NoDataComponent } from './no-data/no-data.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,10 +19,13 @@ import { CategoryBoxComponent } from './category-box/category-box.component';
     SimpleFormComponent,
     MasterLayoutComponent,
     CatalogBoxComponent,
-    CategoryBoxComponent
+    CategoryBoxComponent,
+    NoDataComponent,
+    CheckOutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     ModalDialogComponent,
@@ -27,7 +33,8 @@ import { CategoryBoxComponent } from './category-box/category-box.component';
     SimpleFormComponent,
     MasterLayoutComponent,
     CatalogBoxComponent,
-    CategoryBoxComponent
+    CategoryBoxComponent,
+    NoDataComponent
   ]
 })
 export class WidgetsModule { }

@@ -2,7 +2,7 @@
 
 $enable-rounded: false;
 $primary: #0074c0;
-$secondary: #9eafa2;
+$secondary: #bbbfbc;
 $success: #009b4d;
 $warning: #ffcc00;
 $info: #0099e1;
@@ -13,10 +13,31 @@ $popf: 'Poppins', sans-serif;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+.btn-success {
+  color: $light;
+}
+
+.btn-success:hover {
+  background-color: #00c361;
+  color: $light;
+}
+
+.btn-outline-success:hover {
+  background-color: $success;
+  color: $light;
+}
+
 body {
   font-family: $ptf;
   font-size: 17px;
   font-weight: 400;
+}
+
+.no-data {
+  margin: $spacer 0;
+  padding: $spacer;
+  border: 1px solid $warning;
+  border-left: 5px solid $warning;
 }
 
 .left-nav {
@@ -37,7 +58,7 @@ body {
 
 .left-nav .nav-menu-link:hover, .left-nav .active {
   background-color: $success;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   color: $light;
 }
 
@@ -65,25 +86,96 @@ main {
   border-radius: 100px;
 }
 
-.list-group .active {
-  background-color: #666;
-  border: none;
-}
-
 .btn-tbl {
   border-radius: 4px;
 }
 
 .cat-box {
   border: 1px solid $dark;
-  border-left: 7px solid $dark;
+  border-left: 5px solid $dark;
 }
 
-.cat-box:hover {
+.cat-box:hover, .catalog-box:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .cat-box div i:hover {
   cursor: pointer;
   color: grey !important;
+}
+
+.catalog-box {
+  font-family: $popf;
+}
+
+.catalog-box a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.catalog-box h5 {
+  font-size: 21px;
+  font-weight: 500px;
+}
+
+.catalog-box .catalog-box-description {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 0;
+}
+
+.catalog-box .stars i{
+  color: #333;
+}
+
+.catalog-box .infos {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.catalog-box .infos > .cat-weight {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.catalog-box .infos > .price {
+  font-size: 18px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.carousel-item > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-img {
+  width: calc((100% / 5) - 2px);
+  height: auto;
+  cursor: grab;
+}
+
+.detail-card {
+  height: 100%;
+}
+
+.catalog-descritpion {
+  overflow: scroll;
+  text-overflow: ellipsis;
+}
+
+.cart > .cart-header {
+  background-color: $success;
+  padding: $spacer;
+  border-radius: 5px;
+  color: $light;
+}
+
+.cart > .cart-body {
+  padding: $spacer;
 }

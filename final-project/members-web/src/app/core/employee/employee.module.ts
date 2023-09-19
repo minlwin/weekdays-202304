@@ -14,6 +14,8 @@ import { CustomerDetailComponent } from './customer-management/customer-detail/c
 import { CategoryFormComponent } from './category-management/category-form/category-form.component';
 import { CatalogFormComponent } from './catalog-management/catalog-form/catalog-form.component';
 import { CustomerFormComponent } from './customer-management/customer-form/customer-form.component';
+import { PosCustomerComponent } from './pos/pos-customer/pos-customer.component';
+import { PosCatalogComponent } from './pos/pos-catalog/pos-catalog.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { CustomerFormComponent } from './customer-management/customer-form/custo
     CustomerDetailComponent,
     CategoryFormComponent,
     CatalogFormComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    PosCustomerComponent,
+    PosCatalogComponent
   ],
   imports: [
     CommonModule,
