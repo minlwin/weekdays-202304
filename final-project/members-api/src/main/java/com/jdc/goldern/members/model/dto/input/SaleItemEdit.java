@@ -2,14 +2,17 @@ package com.jdc.goldern.members.model.dto.input;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class SaleItemEdit {
 
-	private int catalogId;
+	@NotNull(message = "Please select catalog.")
+	private Integer catalogId;
 
-	private int quantity;
+	@NotNull(message = "Please select quantity.")
+	private Integer quantity;
 
 	private BigDecimal customerReward;
 

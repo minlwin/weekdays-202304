@@ -6,25 +6,33 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.jdc.goldern.members.model.entity.consts.Role;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class EmployeeEdit {
 
+	@NotBlank(message = "Please enter employee name.")
 	private String name;
 
+	@NotBlank(message = "Please enter phone number.")
 	private String phone;
 
+	@NotBlank(message = "Please enter email for login.")
 	private String email;
 
+	@NotBlank(message = "Please enter NRC number.")
 	private String nrcNumber;
 
+	@NotNull(message = "Please enter assign date.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate assignDate;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate retireDate;
 
+	@NotNull(message = "Please define role for employee.")
 	private Role role;
 
 	private String remark;
