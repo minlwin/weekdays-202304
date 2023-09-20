@@ -1,5 +1,8 @@
 package com.jdc.goldern.members.model.repo;
 
-public interface DivisionRepo {
+import com.jdc.goldern.members.model.BaseRepository;
+import com.jdc.goldern.members.model.entity.Division;
+
+public interface DivisionRepo extends BaseRepository<Division, Integer> {
 
 }

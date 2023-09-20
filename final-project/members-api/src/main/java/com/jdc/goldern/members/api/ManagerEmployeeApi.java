@@ -1,5 +1,6 @@
 package com.jdc.goldern.members.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,39 +16,38 @@ import com.jdc.goldern.members.model.dto.input.EmployeeEdit;
 import com.jdc.goldern.members.model.dto.input.EmployeeSearch;
 import com.jdc.goldern.members.model.dto.output.EmployeeDetails;
 import com.jdc.goldern.members.model.dto.output.EmployeeList;
+import com.jdc.goldern.members.model.service.EmployeeService;
 
 @RestController
 @RequestMapping("manager/employees")
 public class ManagerEmployeeApi {
+	
+	@Autowired
+	private EmployeeService service;
 
 	@GetMapping
 	public PageResponse<EmployeeList> search(EmployeeSearch form) {
-		// TODO implement here
-		return null;
+		return service.search(form);
 	}
 
 	@GetMapping("{id}")
 	public EmployeeDetails findById(@PathVariable int id) {
-		// TODO implement here
-		return null;
+		return service.findById(id);
 	}
 
 	@GetMapping("{id}/edit")
 	public EmployeeEdit findByIdForEdit(@PathVariable int id) {
-		// TODO implement here
-		return null;
+		return service.findForEdit(id);
 	}
 
 	@PostMapping
 	public EmployeeDetails create(@Validated @RequestBody EmployeeEdit form, BindingResult result) {
-		// TODO implement here
-		return null;
+		return service.create(form);
 	}
 
 	@PutMapping("{id}")
 	public EmployeeDetails update(@PathVariable int id, @Validated @RequestBody EmployeeEdit form, BindingResult result) {
-		// TODO implement here
-		return null;
+		return service.update(id, form);
 	}
 
 }

@@ -1,9 +1,8 @@
 package com.jdc.goldern.members.model.repo;
 
-import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
-
+import com.jdc.goldern.members.model.BaseRepository;
 import com.jdc.goldern.members.model.entity.Reward;
 
-public interface RewardRepo extends JpaRepositoryImplementation<Reward, Long>{
+public interface RewardRepo extends BaseRepository<Reward, Long>{
 
 }

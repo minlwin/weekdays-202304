@@ -1,14 +1,14 @@
 package com.jdc.goldern.members.model.dto.output;
 
-import lombok.Data;
+import com.jdc.goldern.members.model.entity.Category;
 
-@Data
-public class CategoryList {
-
-	private int id;
-
-	private String name;
-
-	private long items;
-
+public record CategoryList(
+	int id,
+	String name,
+	long items
+) {
+	
+	public static CategoryList from(Category entity) {
+		return new CategoryList(entity.getId(), entity.getName(), entity.getCatalogs().size());
+	}
 }

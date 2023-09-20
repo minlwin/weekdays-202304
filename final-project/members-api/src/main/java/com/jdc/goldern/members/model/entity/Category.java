@@ -1,5 +1,6 @@
 package com.jdc.goldern.members.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -31,5 +32,5 @@ public class Category extends AuditingEntity{
 	private String name;
 
 	@ManyToMany
-	private List<Catalog> catalogs;
+	private List<Catalog> catalogs = new ArrayList<>();
 }
