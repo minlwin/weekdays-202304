@@ -5,5 +5,9 @@ public enum Role {
 	Employee,
 	Manager,
 	Owner,
-	Admin
+	Admin;
+	
+	public String getValue() {
+		return "ROLE_%s".formatted(name().toUpperCase());
+	}
 }

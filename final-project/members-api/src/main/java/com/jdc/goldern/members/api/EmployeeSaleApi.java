@@ -1,34 +1,51 @@
 package com.jdc.goldern.members.api;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.jdc.goldern.members.model.dto.PageResponse;
 import com.jdc.goldern.members.model.dto.input.SaleEdit;
 import com.jdc.goldern.members.model.dto.input.SaleSearch;
 import com.jdc.goldern.members.model.dto.output.SaleDetails;
 import com.jdc.goldern.members.model.dto.output.SaleList;
 
+@RestController
+@RequestMapping("employee/sales")
 public class EmployeeSaleApi {
 
+	@GetMapping
 	public PageResponse<SaleList> search(SaleSearch form) {
 		// TODO implement here
 		return null;
 	}
 
-	public SaleDetails findById(long id) {
+	@GetMapping("{id}")
+	public SaleDetails findById(@PathVariable long id) {
 		// TODO implement here
 		return null;
 	}
 
-	public SaleDetails create(SaleEdit form) {
+	@PostMapping
+	public SaleDetails create(@Validated @RequestBody SaleEdit form, BindingResult result) {
+		// TODO implement here
+		return null;
+	}
+	
+	@PutMapping("{id}")
+	public SaleDetails update(@PathVariable long id, @Validated @RequestBody SaleEdit form, BindingResult result) {
 		// TODO implement here
 		return null;
 	}
 
-	public SaleDetails update(long id, SaleEdit form) {
-		// TODO implement here
-		return null;
-	}
-
-	public SaleEdit findByIdForEdit(long id) {
+	@PutMapping("{id}/edit")
+	public SaleEdit findByIdForEdit(@PathVariable long id) {
 		// TODO implement here
 		return null;
 	}

@@ -12,7 +12,7 @@ public class ApplicationAuditorAwareBean implements AuditorAware<String>{
 
 	@Override
 	public Optional<String> getCurrentAuditor() {
-		return Optional.of(SecurityContextHolder.getContext().getAuthentication())
+		return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
 				.filter(a -> !(a instanceof AnonymousAuthenticationToken))
 				.filter(a -> a.isAuthenticated())
 				.map(a -> a.getName()).or(() -> Optional.of("No User"));
