@@ -3,7 +3,9 @@ package com.jdc.goldern.members.model.dto.input;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.jdc.goldern.members.model.entity.Employee;
 import com.jdc.goldern.members.model.entity.consts.Role;
 
 import jakarta.validation.constraints.NotBlank;
@@ -36,5 +38,33 @@ public class EmployeeEdit {
 	private Role role;
 
 	private String remark;
+	
+	
+	public static EmployeeEdit from(Employee entity) {
+		var dto = new EmployeeEdit();
+		dto.setName(entity.getName());
+		dto.setPhone(entity.getPhone());
+		dto.setEmail(entity.getEmail());
+		dto.setNrcNumber(entity.getNrcNumber());
+		dto.setAssignDate(LocalDate.now());
+		dto.setRetireDate(entity.getRetireAt());
+		dto.setRole(entity.getRole());
+		dto.setRemark(entity.getRemark());
+		return dto;
+	}
 
+
+	public Employee entity(PasswordEncoder encoder) {
+		var dto = new Employee();
+		dto.setName(name);
+		dto.setPhone(phone);
+		dto.setPassword(encoder.encode(phone));
+		dto.setEmail(email);
+		dto.setNrcNumber(nrcNumber);
+		dto.setRole(role);
+		dto.setRemark(remark);
+		dto.setAssignAt(assignDate);
+		dto.setRetireAt(retireDate);
+		return dto;
+	}
 }

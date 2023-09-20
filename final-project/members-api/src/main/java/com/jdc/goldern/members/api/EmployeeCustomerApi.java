@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jdc.goldern.members.model.dto.PageResponse;
@@ -26,8 +27,10 @@ public class EmployeeCustomerApi {
 	private CustomerService service;
 
 	@GetMapping
-	public PageResponse<CustomerList> search(CustomerSearch form) {
-		return service.search(form);
+	public PageResponse<CustomerList> search(CustomerSearch form,
+			@RequestParam(defaultValue = "1") int page,  
+			@RequestParam(defaultValue = "10") int max) {
+		return service.search(form, page, max);
 	}
 
 	@GetMapping("{id}")

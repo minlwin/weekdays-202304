@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jdc.goldern.members.model.dto.PageResponse;
 import com.jdc.goldern.members.model.dto.input.EmployeeEdit;
 import com.jdc.goldern.members.model.dto.input.EmployeeSearch;
 import com.jdc.goldern.members.model.dto.output.EmployeeDetails;
-import com.jdc.goldern.members.model.dto.output.EmployeeList;
+import com.jdc.goldern.members.model.dto.output.EmployeeDto;
 import com.jdc.goldern.members.model.service.EmployeeService;
 
 @RestController
@@ -26,17 +27,19 @@ public class ManagerEmployeeApi {
 	private EmployeeService service;
 
 	@GetMapping
-	public PageResponse<EmployeeList> search(EmployeeSearch form) {
-		return service.search(form);
+	public PageResponse<EmployeeDto> search(EmployeeSearch form,
+			@RequestParam(defaultValue = "1") int page,  
+			@RequestParam(defaultValue = "10") int max) {
+		return service.search(form, page, max);
 	}
 
 	@GetMapping("{id}")
-	public EmployeeDetails findById(@PathVariable int id) {
+	public EmployeeDetails findById(@PathVariable long id) {
 		return service.findById(id);
 	}
 
 	@GetMapping("{id}/edit")
-	public EmployeeEdit findByIdForEdit(@PathVariable int id) {
+	public EmployeeEdit findByIdForEdit(@PathVariable long id) {
 		return service.findForEdit(id);
 	}
 
@@ -46,7 +49,7 @@ public class ManagerEmployeeApi {
 	}
 
 	@PutMapping("{id}")
-	public EmployeeDetails update(@PathVariable int id, @Validated @RequestBody EmployeeEdit form, BindingResult result) {
+	public EmployeeDetails update(@PathVariable long id, @Validated @RequestBody EmployeeEdit form, BindingResult result) {
 		return service.update(id, form);
 	}
 

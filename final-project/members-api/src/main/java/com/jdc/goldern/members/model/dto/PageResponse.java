@@ -2,13 +2,11 @@ package com.jdc.goldern.members.model.dto;
 
 import java.util.List;
 
-import lombok.Data;
+import org.springframework.data.domain.Page;
 
-@Data
-public class PageResponse<T> {
+public record PageResponse<T>(List<T> content, PageInfo page) {
 
-	private List<T> content;
-
-	private PageInfo page;
-
+	public static<T> PageResponse<T> from(Page<T> result) {
+		return new PageResponse<T>(result.getContent(), new PageInfo(result.getNumber(), result.getSize(), result.getTotalElements()));
+	}
 }
