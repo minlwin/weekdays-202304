@@ -2,6 +2,8 @@ package com.jdc.goldern.members.model.dto.input;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.jdc.goldern.members.model.entity.consts.Gender;
 
 import lombok.Data;
@@ -19,6 +21,7 @@ public class CustomerEdit {
 
 	private Gender gender;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateOfBirth;
 
 	private String address;

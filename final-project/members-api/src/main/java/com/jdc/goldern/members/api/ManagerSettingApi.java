@@ -1,20 +1,23 @@
 package com.jdc.goldern.members.api;
 
-import com.jdc.goldern.members.model.dto.input.SaleItemEdit;
+import java.util.List;
+
+import com.jdc.goldern.members.model.dto.input.SettingEdit;
+import com.jdc.goldern.members.model.dto.output.SettingDto;
 
 public class ManagerSettingApi {
 
-	public SaleItemEdit find() {
+	public List<SettingDto> find() {
 		// TODO implement here
 		return null;
 	}
 
-	public SaleItemEdit findForEdit() {
+	public SettingDto save(SettingEdit form) {
 		// TODO implement here
 		return null;
 	}
 
-	public SaleItemEdit save(SaleItemEdit form) {
+	public SettingEdit findForEdit() {
 		// TODO implement here
 		return null;
 	}
