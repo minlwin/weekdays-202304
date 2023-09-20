@@ -6,9 +6,6 @@ import com.jdc.goldern.members.model.dto.output.ReferDetails;
 
 public class CustomerReferApi {
 
-	public CustomerReferApi() {
-	}
-
 	public PageResponse<CustomerList> search(long customerId) {
 		// TODO implement here
 		return null;

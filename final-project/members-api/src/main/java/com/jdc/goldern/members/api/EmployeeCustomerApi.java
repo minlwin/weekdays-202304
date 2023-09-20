@@ -8,9 +8,6 @@ import com.jdc.goldern.members.model.dto.output.CustomerList;
 
 public class EmployeeCustomerApi {
 
-	public EmployeeCustomerApi() {
-	}
-
 	public PageResponse<CustomerList> search(CustomerSearch form) {
 		// TODO implement here
 		return null;

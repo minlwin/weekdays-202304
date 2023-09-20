@@ -8,13 +8,11 @@ import com.jdc.goldern.members.model.dto.PageResponse;
 import com.jdc.goldern.members.model.dto.input.CatalogEdit;
 import com.jdc.goldern.members.model.dto.input.CatalogSearch;
 import com.jdc.goldern.members.model.dto.output.CatalogDetails;
+import com.jdc.goldern.members.model.dto.output.CatalogList;
 
 public class EmployeeCatalogApi {
 
-	public EmployeeCatalogApi() {
-	}
-
-	public PageResponse search(CatalogSearch form) {
+	public PageResponse<CatalogList> search(CatalogSearch form) {
 		// TODO implement here
 		return null;
 	}

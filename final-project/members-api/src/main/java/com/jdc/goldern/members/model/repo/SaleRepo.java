@@ -1,7 +1,9 @@
 package com.jdc.goldern.members.model.repo;
 
-import java.util.*;
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
-public interface SaleRepo {
+import com.jdc.goldern.members.model.entity.Sale;
+
+public interface SaleRepo extends JpaRepositoryImplementation<Sale, Long>{
 
 }

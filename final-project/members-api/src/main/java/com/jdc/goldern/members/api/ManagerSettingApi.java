@@ -4,9 +4,6 @@ import com.jdc.goldern.members.model.dto.input.SaleItemEdit;
 
 public class ManagerSettingApi {
 
-	public ManagerSettingApi() {
-	}
-
 	public SaleItemEdit find() {
 		// TODO implement here
 		return null;

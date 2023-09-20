@@ -7,9 +7,6 @@ import com.jdc.goldern.members.model.dto.output.CategoryList;
 
 public class EmployeeCategoryApi {
 
-	public EmployeeCategoryApi() {
-	}
-
 	public List<CategoryList> search() {
 		// TODO implement here
 		return null;

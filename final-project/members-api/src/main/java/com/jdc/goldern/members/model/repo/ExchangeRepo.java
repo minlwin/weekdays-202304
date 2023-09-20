@@ -1,7 +1,9 @@
 package com.jdc.goldern.members.model.repo;
 
-import java.util.*;
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
-public interface ExchangeRepo {
+import com.jdc.goldern.members.model.entity.Exchange;
+
+public interface ExchangeRepo extends JpaRepositoryImplementation<Exchange, Long>{
 
 }

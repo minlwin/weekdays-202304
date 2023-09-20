@@ -1,7 +1,9 @@
 package com.jdc.goldern.members.model.repo;
 
-import java.util.*;
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
-public interface RewardTransactionRepo {
+import com.jdc.goldern.members.model.entity.RewardTransaction;
+
+public interface RewardTransactionRepo extends JpaRepositoryImplementation<RewardTransaction, Long>{
 
 }

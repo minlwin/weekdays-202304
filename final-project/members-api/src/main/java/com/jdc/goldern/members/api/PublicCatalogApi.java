@@ -7,9 +7,6 @@ import com.jdc.goldern.members.model.dto.output.CatalogList;
 
 public class PublicCatalogApi {
 
-	public PublicCatalogApi() {
-	}
-
 	public PageResponse<CatalogList> search(CatalogSearch form) {
 		// TODO implement here
 		return null;
