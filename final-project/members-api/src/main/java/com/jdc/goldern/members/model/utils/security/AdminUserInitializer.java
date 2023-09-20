@@ -29,6 +29,7 @@ public class AdminUserInitializer {
 			admin.setEmail("admin@gmail.com");
 			admin.setRole(Role.Admin);
 			admin.setNrcNumber("admin");
+			admin.setPhone("09782003098");
 			admin.setPassword(passwordEncoder.encode("pass@123"));
 			repo.save(admin);
 		}

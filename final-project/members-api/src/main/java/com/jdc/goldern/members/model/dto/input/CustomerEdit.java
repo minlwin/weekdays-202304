@@ -3,7 +3,9 @@ package com.jdc.goldern.members.model.dto.input;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.jdc.goldern.members.model.entity.Customer;
 import com.jdc.goldern.members.model.entity.consts.Gender;
 
 import jakarta.validation.constraints.NotBlank;
@@ -41,5 +43,13 @@ public class CustomerEdit {
 	private Long refererId;
 
 	private boolean deleted;
+	
+	public static CustomerEdit from(Customer dto) {
+		return null;
+	}
+	
+	public Customer entity(PasswordEncoder passwordEncoder) {
+		return null;
+	}
 
 }

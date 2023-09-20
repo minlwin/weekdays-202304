@@ -3,6 +3,7 @@ package com.jdc.goldern.members.model.dto.output;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jdc.goldern.members.model.entity.Customer;
 
 import lombok.Data;
 
@@ -23,7 +24,10 @@ public class CustomerList {
 	private LocalDateTime registAt;
 
 	private String remark;
-
 	private boolean deleted;
+	
+	public static CustomerList from(Customer entity) {
+		return null;
+	}
 
 }
