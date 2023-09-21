@@ -14,6 +14,7 @@ import com.jdc.goldern.members.model.entity.Category;
 import com.jdc.goldern.members.model.repo.CategoryRepo;
 
 import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 
 @Service
 @Transactional(readOnly = true)
@@ -31,7 +32,7 @@ public class CategoryService {
 			var query = cb.createQuery(CategoryList.class);
 			var root = query.from(Category.class);
 			
-			Join<Category, Catalog> catalog = root.join("catalogs");
+			Join<Category, Catalog> catalog = root.join("catalogs", JoinType.LEFT);
 			query.multiselect(root.get("id"), root.get("name"), cb.count(catalog));
 			query.groupBy(root.get("id"), root.get("name"));
 			
