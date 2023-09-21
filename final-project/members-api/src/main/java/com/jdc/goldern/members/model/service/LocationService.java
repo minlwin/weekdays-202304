@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.goldern.members.model.dto.output.DivisionDto;
 import com.jdc.goldern.members.model.dto.output.TownshipDto;
+import com.jdc.goldern.members.model.entity.Division;
 import com.jdc.goldern.members.model.entity.Township;
 import com.jdc.goldern.members.model.repo.DivisionRepo;
 import com.jdc.goldern.members.model.repo.TownshipRepo;
@@ -24,7 +25,13 @@ public class LocationService {
 	private TownshipRepo townshipRepo;
 
 	public List<DivisionDto> getAllDivisions() {
-		return divisionRepo.findAll().stream().map(DivisionDto::from).toList();
+		return divisionRepo.findAll(cb -> {
+			var cq = cb.createQuery(DivisionDto.class);
+			var root = cq.from(Division.class);
+			DivisionDto.select(cq, root, cb);
+			cq.groupBy(root.get("id"), root.get("name"));
+			return cq;
+		});
 	}
 
 	public List<TownshipDto> searchTownship(Optional<Integer> division) {
