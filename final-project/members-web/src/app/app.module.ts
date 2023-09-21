@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
-import { ErrorInterceptor } from './utils/apis/error/error-interceptor';
+import { HttpClientModule } from '@angular/common/http'
 import { AppErrorHandler } from './utils/apis/error/app-error-handler';
 import { WidgetsModule } from './utils/widgets/widgets.module';
 
@@ -19,8 +18,6 @@ import { WidgetsModule } from './utils/widgets/widgets.module';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler,
       useClass: AppErrorHandler }
   ],

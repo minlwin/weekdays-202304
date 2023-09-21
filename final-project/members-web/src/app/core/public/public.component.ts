@@ -44,7 +44,7 @@ export class PublicComponent {
           if(resp) {
             this.securitycontextHolder.activeUser = resp
             this.modalDialog?.hideDialog()
-            this.router.navigate(['/', resp.role.toLowerCase()])
+            this.router.navigate(['/', resp.role == 'Admin' ? 'manager' : resp.role.toLowerCase()])
           }
         })
   }

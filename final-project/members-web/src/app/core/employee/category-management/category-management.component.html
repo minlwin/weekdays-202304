@@ -36,11 +36,11 @@
 
     <app-category-box [count]="category.items" [name]="category.name" class="col-lg-3 col-md-3 col-sm-4 col-xs-12"
       *ngFor="let category of categories">
+      <button class="col btn btn-sm btn-secondary" (click)="deleteCategory(category.id)">
+        <i class="bi bi-trash"></i>
+      </button>
       <button class="col btn btn-sm btn-dark" (click)="editCategory(category)">
         <i class="bi bi-pencil-square"></i>
-      </button>
-      <button class="col btn btn-sm btn-warning" (click)="deleteCategory(category.id)">
-        <i class="bi bi-trash"></i>
       </button>
     </app-category-box>
 

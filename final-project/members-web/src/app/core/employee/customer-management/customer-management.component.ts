@@ -17,4 +17,7 @@ export class CustomerManagementComponent {
     this.form = fb.group({})
   }
 
+  openCustomerForm() {
+    this.customerForm?.openCustomerForm()
+  }
 }
