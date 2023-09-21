@@ -2,7 +2,7 @@
 
 $enable-rounded: false;
 $primary: #0074c0;
-$secondary: #bbbfbc;
+$secondary: #afafaf;
 $success: #009b4d;
 $warning: #ffcc00;
 $info: #0099e1;
@@ -31,6 +31,15 @@ body {
   font-family: $ptf;
   font-size: 17px;
   font-weight: 400;
+}
+
+.text-overflow-ellipse {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: normal;
 }
 
 .no-data {
@@ -67,41 +76,15 @@ main {
   left: 16.3%;
 }
 
-.master-search {
-  border-radius: 5px;
-  padding: 15px;
-  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.1);
+.category-box {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-left: 5px solid rgba(0, 0, 0, 0.7);
+  font-family: $popf;
 }
 
-.master-search input[type=text], .master-search button {
-  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-.input-search[type=text] {
-  border-radius: $spacer;
-  padding-left: $spacer;
-}
-
-.btn-add {
-  border-radius: 100px;
-}
-
-.btn-tbl {
-  border-radius: 4px;
-}
-
-.cat-box {
-  border: 1px solid $dark;
-  border-left: 5px solid $dark;
-}
-
-.cat-box:hover, .catalog-box:hover {
+.category-box:hover, .catalog-box:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-.cat-box div i:hover {
-  cursor: pointer;
-  color: grey !important;
 }
 
 .catalog-box {
@@ -126,6 +109,10 @@ main {
   margin-bottom: 0;
 }
 
+.stars {
+  letter-spacing: 5px;
+}
+
 .catalog-box .stars i{
   color: #333;
 }
@@ -148,6 +135,12 @@ main {
   font-weight: 600;
 }
 
+.catalog-box .catalog-box-footer {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  padding: $spacer;
+  border-top: none;
+}
+
 .carousel-item > img {
   height: 300px;
   width: 100%;
@@ -156,7 +149,7 @@ main {
 
 .carousel-img {
   width: calc((100% / 5) - 2px);
-  height: auto;
+  height: 120px;
   cursor: grab;
 }
 
@@ -169,6 +162,26 @@ main {
   text-overflow: ellipsis;
 }
 
+.catalog-tab {
+  height: 40px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 1px;
+}
+
+.catalog-tab > .catalog-item {
+  text-align: center;
+  padding: 0.5rem $spacer;
+  width: 130px;
+  cursor: pointer;
+}
+
+.catalog-tab > .catalog-item:hover, .catalog-tab > .active {
+  border-bottom: 4px solid $success;
+  color: #333;
+}
+
 .cart > .cart-header {
   background-color: $success;
   padding: $spacer;
@@ -179,3 +192,97 @@ main {
 .cart > .cart-body {
   padding: $spacer;
 }
+
+.filter-category-name-wrapper {
+  margin-top: 1px;
+}
+
+.filter-category-name-wrapper span {
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: #333;
+  color: $light;
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+
+.floating-cart button {
+  background: #ecf0f3;
+  position: relative;
+  height: 60px;
+  width: 60px;
+  margin: 0 10px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: all 0.3s;
+  box-shadow: -3px -3px 7px #ffffff,
+              3px 3px 5px #ceced1;
+}
+
+.floating-cart button:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #ecf0f3;
+  box-shadow: inset -3px -3px 7px #ffffff,
+              inset 3px 3px 5px #ceced1;
+}
+
+.floating-cart button i {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  line-height: 60px;
+}
+
+.floating-cart button span {
+  position: absolute;
+  top: 5%;
+  left: 45%;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.floating-cart button:hover i {
+  transform: scale(0.9);
+}
+
+.floating-cart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+// .floating-cart-btn {
+//   height: 45px;
+//   width: 45px;
+//   border: none;
+//   background-color: #2ddf5c;
+//   color: #065a1c;
+//   border-radius: 4px;
+//   box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.1);
+// }
+
+// .floating-cart-btn > span {
+//   display: inline-block;
+//   width: 28px;
+//   height: 28px;
+//   font-size: 0.8rem;
+//   border-radius: 50px;
+//   background-color: #0a952f;
+//   color: $light;
+// }
+
+// .floating-cart-btn:hover {
+//   cursor: pointer;
+//   background-color: #47f676;
+// }

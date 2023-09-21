@@ -1,0 +1,33 @@
+<div [id]="id" class="row">
+  <div class="col-lg col-md col-12">
+
+    <app-no-data *ngIf="data.length == 0" text="Review"></app-no-data>
+
+    <div class="border-bottom mb-3" *ngFor="let item of data" style="color: #666">
+      <div class="text-end mb-2">
+        <app-star-rating [rating]="item.rating" [isBlock]="true"></app-star-rating>
+      </div>
+      <p style="text-align: justify">
+        {{ item.comment }}
+      </p>
+      <div class="mb-4">
+        By <span style="color: #333">{{ item.reviewer }} <span style="color: #666">&CircleDot;</span> {{
+          item.commentDate | date: 'dd MMM
+          yyyy' }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <form class="col-lg col-md col-12 mt-lg-0 mt-md-0 mt-2">
+    <div class="text-center">
+      <i class="bi fs-3 {{ i == stars.length - 1 ? '' : 'me-2'}}" *ngFor="let item of stars; index as i"
+        [ngClass]="item" (click)="select(i)"></i>
+    </div>
+    <div class="my-3">
+      <label for="comment" class="form-label">Comment</label>
+      <textarea name="" id="comment" cols="auto" rows="5" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-success">Give Review</button>
+  </form>
+</div>

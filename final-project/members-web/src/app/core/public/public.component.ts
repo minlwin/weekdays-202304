@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalDialogComponent } from 'src/app/utils/widgets/modal-dialog/modal-dialog.component';
+import { Router } from '@angular/router';
+import { SecurityContextHolder } from 'src/app/utils/apis/security/security-context-holder';
+import { SecurityService } from 'src/app/utils/apis/services/security.service';
+import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-public',
@@ -13,10 +16,13 @@ export class PublicComponent {
   @ViewChild(ModalDialogComponent)
   modalDialog?: ModalDialogComponent
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder,
+    private securityService: SecurityService,
+    private securitycontextHolder: SecurityContextHolder,
+    private router: Router) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]{8,}')]]
+      password: ['', [Validators.required, Validators.minLength(5)]] // Validators.pattern('[a-zA-Z0-9]{8,}')
     })
   }
 
@@ -30,6 +36,17 @@ export class PublicComponent {
 
   openForm() {
     this.modalDialog?.openDialog()
+  }
+
+  signIn() {
+    this.securityService.singIn(this.form.value)
+        .subscribe(resp => {
+          if(resp) {
+            this.securitycontextHolder.activeUser = resp
+            this.modalDialog?.hideDialog()
+            this.router.navigate(['/', resp.role.toLowerCase()])
+          }
+        })
   }
 
 }

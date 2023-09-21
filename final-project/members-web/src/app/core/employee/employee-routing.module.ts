@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
 import { PosComponent } from './pos/pos.component';
-import { CatalogManagementComponent } from './catalog-management/catalog-management.component';
+import { EmployeeCatalogManagementComponent } from './employee-catalog-management/employee-catalog-management.component';
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
-import { CatalogDetailComponent } from './catalog-management/catalog-detail/catalog-detail.component';
+import { EmployeeCatalogDetailComponent } from './employee-catalog-management/employee-catalog-detail/employee-catalog-detail.component';
 import { CategoryManagementComponent } from './category-management/category-management.component';
 import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
 import { CheckOutComponent } from 'src/app/utils/widgets/check-out/check-out.component';
@@ -17,8 +17,8 @@ const routes: Routes = [
     ]},
     { path: 'category', component: CategoryManagementComponent, title: 'Employee | Category Management' },
     { path: 'catalog', children: [
-      { path: 'management', component: CatalogManagementComponent, title: 'Employee | Catalog Management' },
-      { path: 'detail', component: CatalogDetailComponent, title: 'Employee | Catalog Detail' },
+      { path: 'management', component: EmployeeCatalogManagementComponent, title: 'Employee | Catalog Management' },
+      { path: 'detail', component: EmployeeCatalogDetailComponent, title: 'Employee | Catalog Detail' },
       { path: '', redirectTo: '/employee/catalog/management', pathMatch: 'full' }
     ]},
     { path: 'customer', children: [

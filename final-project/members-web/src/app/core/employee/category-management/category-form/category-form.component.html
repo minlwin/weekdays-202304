@@ -1,12 +1,18 @@
 <form [formGroup]="form">
-  <app-modal-dialog modalTitle="Category Form" modalIcon="bi-pen" modalId="categoryFormModalId">
+  <app-modal-dialog [modalTitle]="id.value > 0 ? 'Category Edit' : 'Add Category'"
+    [modalIcon]="id.value > 0 ? 'bi-pencil-square' : 'bi-plus-square'" modalId="categoryFormModalId">
     <ng-container body>
-      <app-form-group label="Name" icon="bi-type" [margin]="true">
-        <input type="text" id="name" class="form-control" placeholder="Catalog name">
+      <app-form-group label="Name" icon="bi-type" [margin]="true" [valid]="name.valid">
+        <input formControlName="name" type="text" id="name" class="form-control" placeholder="Catalog name">
       </app-form-group>
+
+      <div>
+        <input formControlName="deleted" id="deleted" type="checkbox" class="form-check-inline me-1">
+        <label for="deleted" class="form-check-label">Deleted</label>
+      </div>
     </ng-container>
 
-    <button footer class="btn btn-outline-dark">
+    <button footer class="btn btn-outline-dark" (click)="saveCategory()">
       <i class="bi bi-save"></i> Save
     </button>
   </app-modal-dialog>

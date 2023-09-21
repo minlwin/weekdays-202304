@@ -12,4 +12,7 @@ export class MasterLayoutComponent {
   @Input()
   viewIcon?: string
 
+  @Input()
+  middle = false
+
 }

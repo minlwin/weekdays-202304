@@ -32,7 +32,7 @@
 
       </div>
 
-      <div class="ps-2 h-100 row align-items-center">
+      <div class="ps-2 row align-items-end" style="height: calc(100% - 255px)">
         <div class="col">
           <button class="btn btn-outline-success w-100">
             <i class="bi bi-box-arrow-right"></i>
@@ -43,6 +43,14 @@
     </nav>
 
     <main class="col-10">
+
+      <div class="floating-cart">
+        <button>
+          <span>10</span>
+          <i class="bi bi-cart-check-fill"></i>
+        </button>
+      </div>
+
       <div class="mt-3 ps-3">
         <router-outlet></router-outlet>
       </div>

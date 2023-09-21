@@ -10,6 +10,6 @@ export class CategoryBoxComponent {
   name?: string
 
   @Input()
-  icon?: string
+  count: any
 
 }

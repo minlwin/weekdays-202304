@@ -1,19 +1,19 @@
 <app-master-layout viewIcon="bi-person-raised-hand" viewTitle="Customer Management">
-  <div class="row" search>
-    <div class="col-lg-5 col-md col-sm">
-      <form class="form-inline d-flex master-search">
-        <input type="text" class="form-control input-search" placeholder="Search">
-
-        <button type="button" class="btn btn-light btn-add ms-2">
-          <i class="bi bi-search"></i>
-        </button>
-        <button type="button" class="btn btn-light btn-add ms-2" (click)="customerForm?.openCustomerForm()">
-          <i class="bi bi-plus-lg"></i>
-        </button>
-
-      </form>
+  <form search class="row g-2 mb-3 mt-4">
+    <div class="col-lg-auto col-md-auto col-12">
+      <input type="text" class="form-control" placeholder="Search customer">
     </div>
-  </div>
+    <div class="col-lg-auto col-md-auto col-6">
+      <button class="btn btn-outline-success w-100">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+    <div class="col-lg-auto col-md-auto col-6">
+      <button class="btn btn-success w-100">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </div>
+  </form>
 
   <table list class="table">
     <thead>

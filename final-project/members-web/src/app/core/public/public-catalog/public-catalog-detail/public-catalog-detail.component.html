@@ -1,0 +1,49 @@
+<h3 class="fw-bold my-3"><i class="bi bi-card-list"></i> Catalog Detail</h3>
+
+<app-catalog-detail-box [images]="images">
+  <div class="h-100 d-flex flex-column ps-lg-3 p-md-0 justify-content-between">
+    <div>
+      <h3>Catalog Name</h3>
+      <h5 class="my-2" style="color: #707070">Category</h5>
+    </div>
+    <div>
+      <app-star-rating [rating]="3" [isBlock]="false" marginSide="e" marginUnit="5"></app-star-rating>
+      <a [routerLink]="['']" class="text-decoration-none text-dark">4 Reviews</a>
+    </div>
+
+    <div>
+      <small>PRICE</small>
+      <p style="font-size: 23px;">{{ '400000' | number }}</p>
+    </div>
+
+    <div>
+      <small>WEIGHT</small>
+      <p class="fs-5 fw-semibold">13 YWE</p>
+    </div>
+
+    <div>
+      <button class="btn btn-dark" style="font-size: 17px;">
+        <i class="bi bi-cart-plus"></i> Add to cart
+      </button>
+    </div>
+
+  </div>
+</app-catalog-detail-box>
+
+<hr class="mx-3 d-lg-none d-md-block">
+
+<ul class="catalog-tab mt-3">
+  <li class="catalog-item" id="catalogDescriptionTab" (click)="selectDescription($event)">
+    Description
+  </li>
+  <li class="catalog-item" id="catalogDetailTab" (click)="selectDetail($event)">
+    Detail
+  </li>
+  <li class="catalog-item active" id="catalogReviewTab" (click)="selectReview($event)">
+    Review
+  </li>
+</ul>
+
+<app-catalog-description-tab id="catalogDescriptionContent" [data]="descriptionData"></app-catalog-description-tab>
+<app-catalog-detail-tab id="catalogDetailContent" [data]="detailData"></app-catalog-detail-tab>
+<app-catalog-review-tab id="catalogReviewContent" [data]="reviews"></app-catalog-review-tab>

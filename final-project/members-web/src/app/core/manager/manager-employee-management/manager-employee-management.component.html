@@ -1,0 +1,21 @@
+<app-master-layout viewIcon="bi-person-fill-gear" viewTitle="Employee Management">
+  <div class="row mt-4 g-2" search>
+    <div class="col-lg-auto col-md-auto col-12">
+      <input type="text" class="form-control" placeholder="Search employee">
+    </div>
+
+    <div class="col-lg-auto col-md-auto col">
+      <button class="btn btn-outline-success w-100">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+
+    <div class="col-lg-auto col-md-auto col">
+      <button class="btn btn-success w-100" (click)="employeeForm?.openEmployeeForm()">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </div>
+  </div>
+</app-master-layout>
+
+<app-manager-employee-form></app-manager-employee-form>

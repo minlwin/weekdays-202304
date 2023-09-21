@@ -1,7 +1,7 @@
-<div class="cat-box p-2 ps-3 d-flex align-items-center">
-  <i class="h4 text-dark bi me-2" [ngClass]="icon ?? 'bi-x-diamond-fill'"></i>
-  <p class="fs-5 text-start w-100 mt-2 ">{{ name ?? 'Category' }}</p>
-  <div>
+<div class="category-box p-3">
+  <p class="m-0">{{ name ?? 'Category Name' }}</p>
+  <small *ngIf="count > 0" style="font-size: 0.8rem">{{ count }} {{ count == 1 ? 'item' : 'items' }}</small>
+  <div class="mt-2 d-flex gap-2">
     <ng-content></ng-content>
   </div>
 </div>

@@ -1,0 +1,77 @@
+<form [formGroup]="form">
+  <app-modal-dialog modalId="employeeModalId" [modalIcon]="id.value > 0 ? 'bi-pencil-square' : 'bi-plus-square'"
+    [modalTitle]="id.value > 0 ? 'Employee Edit' : 'Add Employee'">
+
+    <ng-container body>
+      <!-- Name and Phone -->
+      <div class="row mb-3">
+        <div class="col">
+          <app-form-group label="Name" [valid]="name.valid">
+            <input formControlName="name" id="name" type="text" class="form-control" placeholder="Employee name">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="Phone" [valid]="phone.valid">
+            <input formControlName="phone" id="phone" type="tel" class="form-control" placeholder="09xxxx">
+          </app-form-group>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <app-form-group label="Email" [valid]="email.valid">
+            <input formControlName="email" id="email" type="email" class="form-control" placeholder="example@gmail.com">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="NRC No" [valid]="nrcNumber.valid">
+            <input formControlName="nrcNumber" id="nrc_no" type="text" class="form-control"
+              placeholder="1/KaKaKa(N)000000">
+          </app-form-group>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <app-form-group label="Assign Date" [valid]="assignDate.valid">
+            <input formControlName="assignDate" id="assign_date" type="date" class="form-control">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="Retire Date" [valid]="true">
+            <input formControlName="retireDate" id="retire_date" type="date" class="form-control">
+          </app-form-group>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input formControlName="role" type="radio" id="customer" name="role" value="Customer"
+          class="form-check-inline me-1">
+        <label for="customer" class="form-check-label me-3">Customer</label>
+
+        <input formControlName="role" type="radio" id="employee" name="role" value="Employee"
+          class="form-check-inline me-1">
+        <label for="employee" class="form-check-label me-3">Employee</label>
+
+        <input formControlName="role" type="radio" id="manager" name="role" value="Manager"
+          class="form-check-inline me-1">
+        <label for="manager" class="form-check-label me-3">Manager</label>
+
+        <input formControlName="role" type="radio" id="owner" name="role" value="Owner" class="form-check-inline me-1">
+        <label for="owner" class="form-check-label">Owner</label>
+      </div>
+
+      <label for-remark class="form-label">Remark</label>
+      <textarea formControlName="remark" id="remark" cols="auto" rows="2" class="form-control"
+        placeholder="Remark"></textarea>
+    </ng-container>
+
+    <button footer class="btn btn-outline-dark">
+      <i class="bi bi-save"></i> Save
+    </button>
+
+  </app-modal-dialog>
+</form>

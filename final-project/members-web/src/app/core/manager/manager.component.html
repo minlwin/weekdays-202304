@@ -1,1 +1,41 @@
-<p>manager works!</p>
+<div class="container-fluid">
+  <div class="row g-3">
+
+    <nav class="left-nav col-2 pr-3 pt-2 shadow ps-0 h-100">
+      <div class="text-center mb-4">
+        <a [routerLink]="['/employee']" class="fs-4 text-dark text-decoration-none btn-link fw-bold">
+          <i class="bi bi-house"></i>
+          <span class="d-none d-lg-inline"> Dashboard</span>
+        </a>
+      </div>
+
+      <div class="text-center text-lg-start mb-auto">
+
+        <a [routerLink]="['/manager', 'employee']" routerLinkActive="active" class="nav-menu-link ps-lg-3 ps-md-0 mb-2">
+          <i class="bi bi-person-fill-gear"></i>
+          <span class="d-none d-lg-inline"> Employee</span>
+        </a>
+        <a [routerLink]="['/manager', 'setting']" routerLinkActive="active" class="nav-menu-link ps-lg-3 ps-md-0 mb-2">
+          <i class="bi bi-gear"></i>
+          <span class="d-none d-lg-inline"> Setting</span>
+        </a>
+      </div>
+
+      <div class="ps-2 row align-items-end" style="height: calc(100% - 165px)">
+        <div class="col">
+          <button class="btn btn-outline-success w-100">
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="d-none d-lg-inline"> Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="col-10">
+      <div class="mt-3 ps-3">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+  </div>
+</div>

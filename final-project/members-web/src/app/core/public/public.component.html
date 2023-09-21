@@ -16,7 +16,7 @@
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <button class="btn btn-warning" (click)="openForm()">
+          <button class="btn btn-light" (click)="openForm()">
             <i class="bi bi-unlock"></i> Sign In
           </button>
         </li>
@@ -31,7 +31,7 @@
 </section>
 
 <form [formGroup]="form">
-  <app-modal-dialog modalId="signInModalId" modalIcon="bi-box-arrow-right" modalTitle="Sign In">
+  <app-modal-dialog modalId="signInModalId" modalIcon="bi-box-arrow-in-right" modalTitle="Sign In">
 
     <ng-container body>
 
@@ -44,7 +44,7 @@
       </app-form-group>
     </ng-container>
 
-    <button footer class="btn btn-outline-dark">
+    <button footer class="btn btn-outline-dark" (click)="signIn()">
       <i class="bi bi-unlock"></i> Sign In
     </button>
 
