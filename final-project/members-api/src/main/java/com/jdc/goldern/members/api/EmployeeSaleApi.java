@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jdc.goldern.members.model.dto.PageResponse;
@@ -21,7 +22,9 @@ import com.jdc.goldern.members.model.dto.output.SaleList;
 public class EmployeeSaleApi {
 
 	@GetMapping
-	public PageResponse<SaleList> search(SaleSearch form) {
+	public PageResponse<SaleList> search(SaleSearch form,
+			@RequestParam(defaultValue = "0") int page,  
+			@RequestParam(defaultValue = "10") int max) {
 		// TODO implement here
 		return null;
 	}

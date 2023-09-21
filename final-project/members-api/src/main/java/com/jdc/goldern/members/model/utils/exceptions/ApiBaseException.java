@@ -12,7 +12,7 @@ public abstract class ApiBaseException extends RuntimeException {
 	private List<String> messages;
 
 	public ApiBaseException(Type type, List<String> messages) {
-		super("% exception in api.".formatted(type));
+		super("%s exception in api.".formatted(type.name()));
 		this.type = type;
 		this.messages = messages;
 		

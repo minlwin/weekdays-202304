@@ -22,7 +22,7 @@ public class PublicCatalogApi {
 
 	@GetMapping
 	public PageResponse<CatalogList> search(CatalogSearch form, 
-			@RequestParam(defaultValue = "1") int page,  
+			@RequestParam(defaultValue = "0") int page,  
 			@RequestParam(defaultValue = "10") int max) {
 		return service.search(form, page, max);
 	}

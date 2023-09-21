@@ -8,6 +8,6 @@ public enum Role {
 	Admin;
 	
 	public String getValue() {
-		return "ROLE_%s".formatted(name().toUpperCase());
+		return name().toUpperCase();
 	}
 }

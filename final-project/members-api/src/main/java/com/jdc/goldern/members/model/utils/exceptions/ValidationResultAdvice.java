@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 @Configuration
 public class ValidationResultAdvice {
 
-	@Pointcut("within(com.com.jdc.goldern.members.api.*)")
+	@Pointcut("within(com.jdc.goldern.members.api.*)")
 	public void apiMethods() {}
 	
 	@Before(value = "apiMethods() and args(..,result)", argNames = "result")

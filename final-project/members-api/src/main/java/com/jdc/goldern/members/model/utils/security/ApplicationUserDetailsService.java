@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jdc.goldern.members.model.entity.Account;
 import com.jdc.goldern.members.model.entity.Customer;
 import com.jdc.goldern.members.model.entity.Employee;
+import com.jdc.goldern.members.model.entity.consts.Role;
 import com.jdc.goldern.members.model.repo.AccountRepo;
 
 @Service
@@ -55,7 +56,16 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 					.accountExpired(null !=  employee.getRetireAt() && employee.getRetireAt().isAfter(LocalDate.now()))
 					.accountLocked(acc.getAudit().isDeleted())
 					.build();
+		} 
+		
+		if(acc.getRole() == Role.Admin) {
+			return User.builder()
+					.username(acc.getEmail())
+					.password(acc.getPassword())
+					.roles(acc.getRole().getValue())
+					.build();
 		}
+		
 		throw new UsernameNotFoundException(acc.getEmail());
 	}
 }

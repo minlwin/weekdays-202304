@@ -28,7 +28,7 @@ public class ManagerEmployeeApi {
 
 	@GetMapping
 	public PageResponse<EmployeeDto> search(EmployeeSearch form,
-			@RequestParam(defaultValue = "1") int page,  
+			@RequestParam(defaultValue = "0") int page,  
 			@RequestParam(defaultValue = "10") int max) {
 		return service.search(form, page, max);
 	}
