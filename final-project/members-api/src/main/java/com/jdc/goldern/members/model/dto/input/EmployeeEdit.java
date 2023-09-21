@@ -46,7 +46,7 @@ public class EmployeeEdit {
 		dto.setPhone(entity.getPhone());
 		dto.setEmail(entity.getEmail());
 		dto.setNrcNumber(entity.getNrcNumber());
-		dto.setAssignDate(LocalDate.now());
+		dto.setAssignDate(entity.getAssignAt());
 		dto.setRetireDate(entity.getRetireAt());
 		dto.setRole(entity.getRole());
 		dto.setRemark(entity.getRemark());

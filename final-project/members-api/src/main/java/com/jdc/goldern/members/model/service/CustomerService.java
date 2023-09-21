@@ -11,7 +11,9 @@ import com.jdc.goldern.members.model.dto.input.CustomerEdit;
 import com.jdc.goldern.members.model.dto.input.CustomerSearch;
 import com.jdc.goldern.members.model.dto.output.CustomerDetails;
 import com.jdc.goldern.members.model.dto.output.CustomerList;
+import com.jdc.goldern.members.model.repo.AccountRepo;
 import com.jdc.goldern.members.model.repo.CustomerRepo;
+import com.jdc.goldern.members.model.repo.TownshipRepo;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,6 +21,12 @@ public class CustomerService {
 	
 	@Autowired
 	public CustomerRepo repo;
+	
+	@Autowired
+	private TownshipRepo townshipRepo;
+	
+	@Autowired
+	private AccountRepo accountRepo;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -38,7 +46,7 @@ public class CustomerService {
 
 	@Transactional
 	public CustomerDetails create(CustomerEdit form) {
-		var entity = repo.save(form.entity(passwordEncoder));
+		var entity = repo.save(form.entity(passwordEncoder, accountRepo, townshipRepo));
 		return new CustomerDetails(entity);
 	}
 

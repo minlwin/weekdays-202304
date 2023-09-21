@@ -5,8 +5,12 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.jdc.goldern.members.model.entity.Address;
 import com.jdc.goldern.members.model.entity.Customer;
 import com.jdc.goldern.members.model.entity.consts.Gender;
+import com.jdc.goldern.members.model.entity.consts.Role;
+import com.jdc.goldern.members.model.repo.AccountRepo;
+import com.jdc.goldern.members.model.repo.TownshipRepo;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -44,12 +48,52 @@ public class CustomerEdit {
 
 	private boolean deleted;
 	
-	public static CustomerEdit from(Customer dto) {
-		return null;
+	public static CustomerEdit from(Customer entity) {
+		var dto = new CustomerEdit();
+		dto.setName(entity.getName());
+		dto.setPhone(entity.getPhone());
+		dto.setEmail(entity.getEmail());
+		dto.setNrcNumber(entity.getNrcNumber());
+		dto.setRemark(entity.getRemark());
+		dto.setGender(entity.getGender());
+		dto.setDateOfBirth(entity.getDateOfBirth());
+		
+		var referer = entity.getReferer();
+		if(null != referer) {
+			dto.setRefererId(referer.getId());
+		}
+		
+		var address = entity.getAddress();
+		if(null != address) {
+			dto.setAddress(address.getAddress());
+			dto.setTownship(address.getTownship().getId());
+		}
+		
+		dto.setDeleted(entity.getAudit().isDeleted());
+		return dto;
 	}
 	
-	public Customer entity(PasswordEncoder passwordEncoder) {
-		return null;
+	public Customer entity(PasswordEncoder encoder, AccountRepo accountRepo, TownshipRepo townshipRepo) {
+		
+		var dto = new Customer();
+		dto.setName(name);
+		dto.setPhone(phone);
+		dto.setPassword(encoder.encode(phone));
+		dto.setEmail(email);
+		dto.setNrcNumber(nrcNumber);
+		dto.setRole(Role.Customer);
+		dto.setRemark(remark);
+		dto.getAudit().setDeleted(deleted);
+		dto.setGender(gender);
+		dto.setDateOfBirth(dateOfBirth);
+		dto.setReferer(accountRepo.getReferenceById(refererId));
+		
+		var addressEntity = new Address();
+		addressEntity.setAddress(address);
+		addressEntity.setCustomer(dto);
+		addressEntity.setTownship(townshipRepo.getReferenceById(township));
+		
+		return dto;
 	}
 
 }

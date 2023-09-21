@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.jdc.goldern.members.model.entity.consts.Gender;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -29,7 +30,7 @@ public class Customer extends Account {
 	@Column(nullable = false)
 	private LocalDate registerAt;
 
-	@OneToOne(mappedBy = "customer")
+	@OneToOne(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Address address;
 
 	@ManyToOne
@@ -37,5 +38,10 @@ public class Customer extends Account {
 	
 	@OneToMany(mappedBy = "customer")
 	private List<Sale> purchases;
+	
+	public void setAddress(Address address) {
+		this.address = address;
+		address.setCustomer(this);
+	}
 
 }
