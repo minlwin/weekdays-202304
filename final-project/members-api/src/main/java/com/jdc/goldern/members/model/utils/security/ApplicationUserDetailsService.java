@@ -52,8 +52,8 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 					.username(acc.getEmail())
 					.password(acc.getPassword())
 					.roles(acc.getRole().getValue())
-					.disabled(employee.getAssignAt().isBefore(LocalDate.now()))
-					.accountExpired(null !=  employee.getRetireAt() && employee.getRetireAt().isAfter(LocalDate.now()))
+					.disabled(employee.getAssignAt().isAfter(LocalDate.now()))
+					.accountExpired(null !=  employee.getRetireAt() && employee.getRetireAt().isBefore(LocalDate.now()))
 					.accountLocked(acc.getAudit().isDeleted())
 					.build();
 		} 

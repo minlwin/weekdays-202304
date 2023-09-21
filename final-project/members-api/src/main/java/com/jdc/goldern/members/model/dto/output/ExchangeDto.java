@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-public class ExchangeList {
+public class ExchangeDto {
 
 	private long id;
 
