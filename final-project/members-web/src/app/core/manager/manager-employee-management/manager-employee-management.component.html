@@ -11,11 +11,43 @@
     </div>
 
     <div class="col-lg-auto col-md-auto col">
-      <button class="btn btn-success w-100" (click)="employeeForm?.openEmployeeForm()">
+      <button class="btn btn-success w-100" (click)="openEmployeeForm()">
         <i class="bi bi-plus-lg"></i>
       </button>
     </div>
   </div>
+
+  <table list class="table table-striped">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>NRC No</td>
+        <td>Assign At</td>
+        <td>Retire At</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>{{ employee.nrcNumber }}</td>
+        <td>{{ employee.assignAt }}</td>
+        <td>{{ employee.retireAt }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-outline-primary me-2" (click)="updateEmployee(employee)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <a href="" class="btn btn-sm btn-outline-warning">
+            <i class="bi bi-send"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </app-master-layout>
 
-<app-manager-employee-form></app-manager-employee-form>
+<app-manager-employee-form [employee]="targetEmplyoee" (onSave)="saveEmployee($event)"></app-manager-employee-form>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jdc.goldern.members.model.entity.Employee;
+import com.jdc.goldern.members.model.entity.consts.Role;
 
 import lombok.Data;
 
@@ -19,6 +20,8 @@ public class EmployeeDto {
 	private String email;
 
 	private String nrcNumber;
+	
+	private Role role;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate assignAt;
@@ -36,6 +39,7 @@ public class EmployeeDto {
 		dto.setEmail(entity.getEmail());
 		dto.setPhone(entity.getPhone());
 		dto.setNrcNumber(entity.getNrcNumber());
+		dto.setRole(entity.getRole());
 		dto.setAssignAt(entity.getAssignAt());
 		dto.setRetireAt(entity.getRetireAt());
 		dto.setRemark(entity.getRemark());

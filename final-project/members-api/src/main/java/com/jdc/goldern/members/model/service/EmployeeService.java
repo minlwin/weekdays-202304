@@ -51,8 +51,8 @@ public class EmployeeService {
 			dto.setNrcNumber(form.getNrcNumber());
 			dto.setRole(form.getRole());
 			dto.setRemark(form.getRemark());
-			dto.setAssignAt(form.getAssignDate());
-			dto.setRetireAt(form.getRetireDate());
+			dto.setAssignAt(form.getAssignAt());
+			dto.setRetireAt(form.getRetireAt());
 			return new EmployeeDetails(dto);
 		}).orElseThrow();
 	}

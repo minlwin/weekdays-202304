@@ -29,10 +29,10 @@ public class EmployeeEdit {
 
 	@NotNull(message = "Please enter assign date.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate assignDate;
+	private LocalDate assignAt;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate retireDate;
+	private LocalDate retireAt;
 
 	@NotNull(message = "Please define role for employee.")
 	private Role role;
@@ -46,8 +46,8 @@ public class EmployeeEdit {
 		dto.setPhone(entity.getPhone());
 		dto.setEmail(entity.getEmail());
 		dto.setNrcNumber(entity.getNrcNumber());
-		dto.setAssignDate(LocalDate.now());
-		dto.setRetireDate(entity.getRetireAt());
+		dto.setAssignAt(LocalDate.now());
+		dto.setRetireAt(entity.getRetireAt());
 		dto.setRole(entity.getRole());
 		dto.setRemark(entity.getRemark());
 		return dto;
@@ -63,8 +63,8 @@ public class EmployeeEdit {
 		dto.setNrcNumber(nrcNumber);
 		dto.setRole(role);
 		dto.setRemark(remark);
-		dto.setAssignAt(assignDate);
-		dto.setRetireAt(retireDate);
+		dto.setAssignAt(assignAt);
+		dto.setRetireAt(retireAt);
 		return dto;
 	}
 }
