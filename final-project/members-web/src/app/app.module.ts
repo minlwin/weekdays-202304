@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
-import { ErrorInterceptor } from './utils/apis/error/error-interceptor';
 import { AppErrorHandler } from './utils/apis/error/app-error-handler';
 import { WidgetsModule } from './utils/widgets/widgets.module';
+import { TokenInterceptor } from './utils/apis/security/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { WidgetsModule } from './utils/widgets/widgets.module';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor, multi: true },
+      useClass: TokenInterceptor, multi: true },
     { provide: ErrorHandler,
       useClass: AppErrorHandler }
   ],

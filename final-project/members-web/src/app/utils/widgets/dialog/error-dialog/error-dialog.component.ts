@@ -20,7 +20,12 @@ export class ErrorDialogComponent {
   }
 
   openDialog(error: any) {
-    this.messages = error.error.messages
+    if(error.error) {
+      this.messages = error.error.messages
+    } else {
+      console.log(error)
+      this.messages.push('Application Error!')
+    }
     this.dialog.show()
   }
 

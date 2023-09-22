@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { convert } from 'src/app/utils/apis/dto/input-date-converter';
 import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
 
 @Component({
@@ -13,6 +14,9 @@ export class ManagerEmployeeFormComponent {
 
   form: FormGroup
 
+  @Output()
+  onSave = new EventEmitter<any>
+
   constructor(fb: FormBuilder) {
     this.form = fb.group({
       id: 0,
@@ -20,11 +24,21 @@ export class ManagerEmployeeFormComponent {
       phone: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
       nrcNumber: ['', Validators.required],
-      assignDate: ['', Validators.required],
-      retireDate: '',
+      assignAt: ['', Validators.required],
+      retireAt: '',
       role: ['Customer', Validators.required],
       remark: ''
     })
+  }
+
+  @Input()
+  set employee(employee: any) {
+    this.initEmployeeForm()
+
+
+    if(employee) {
+      this.form.patchValue(employee)
+    }
   }
 
   get id(): FormControl {
@@ -48,7 +62,7 @@ export class ManagerEmployeeFormComponent {
   }
 
   get assignDate(): FormControl {
-    return this.form.get('assignDate') as FormControl
+    return this.form.get('assignAt') as FormControl
   }
 
   get role(): FormControl {
@@ -57,6 +71,28 @@ export class ManagerEmployeeFormComponent {
 
   openEmployeeForm() {
     this.dialog?.openDialog()
+  }
+
+  hideEmployeeForm() {
+    this.dialog?.hideDialog()
+  }
+
+  saveEmployee() {
+    this.onSave.emit(this.form.value)
+  }
+
+  initEmployeeForm() {
+    this.form.patchValue({
+      id: 0,
+      name: '',
+      phone: '',
+      email: '',
+      nrcNumber: '',
+      assignAt: '',
+      retireAt: '',
+      role: 'Customer',
+      remark: ''
+    })
   }
 
 }

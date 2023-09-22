@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { SignInResult } from "../dto/signin-result";
 
 const APP_USER_KEY = 'com.jdc.members'
 
@@ -7,7 +8,7 @@ const APP_USER_KEY = 'com.jdc.members'
 })
 export class SecurityContextHolder {
 
-  private _activeUser: any
+  private _activeUser: SignInResult | null | undefined
 
   constructor() {
     let data = localStorage.getItem(APP_USER_KEY)
