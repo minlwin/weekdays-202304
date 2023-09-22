@@ -1,6 +1,7 @@
 package com.jdc.goldern.members.model.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,6 +15,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,11 +34,11 @@ public class Catalog extends AuditingEntity{
 	@Column(nullable = false)
 	private String name;
 
-	@ManyToMany(mappedBy = "catalogs")
-	private List<Category> categories;
+	@ManyToMany
+	private List<Category> categories = new ArrayList<>();
 	
 	@ElementCollection
-	private List<String> images;
+	private List<String> images = new ArrayList<>();
 	
 	private String coverImage;
 
@@ -57,5 +59,13 @@ public class Catalog extends AuditingEntity{
 
 	@Column(nullable = false)
 	private BigDecimal price;
+	
+	@OneToMany(mappedBy = "catalog")
+	private List<SaleItem> saleItems;
+	
+	@OneToMany(mappedBy = "catalog")
+	private List<CatalogReview> reviews;
+	
+	
 
 }

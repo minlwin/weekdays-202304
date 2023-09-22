@@ -9,7 +9,7 @@ public class SaleItemDto {
 
 	private long id;
 
-	private CatalogList catalog;
+	private CatalogDto catalog;
 
 	private BigDecimal salePrice;
 

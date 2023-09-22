@@ -21,5 +21,5 @@ public class PublicCategoryApi {
 	@GetMapping
 	public List<CategoryDto> findAll() {
 		return service.findAll();
-	}
+	}	
 }

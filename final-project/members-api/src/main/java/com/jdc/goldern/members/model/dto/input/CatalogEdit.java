@@ -1,7 +1,12 @@
 package com.jdc.goldern.members.model.dto.input;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+
+import com.jdc.goldern.members.model.entity.Catalog;
+import com.jdc.goldern.members.model.entity.Category;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -15,7 +20,7 @@ public class CatalogEdit {
 	private String name;
 
 	@NotEmpty(message = "Please select category for catalog.")
-	private List<Integer> categories;
+	private List<Integer> categories = new ArrayList<>();
 
 	@NotBlank(message = "Please enter catalog description.")
 	private String description;
@@ -34,5 +39,18 @@ public class CatalogEdit {
 
 	@NotNull(message = "Please enter price.")
 	private BigDecimal price;
+
+	public Catalog entity(Function<Integer, Category> catagoryFinder) {
+		var entity = new Catalog();
+		entity.setName(name);
+		entity.setCategories(categories.stream().map(catagoryFinder).toList());
+		entity.setDescription(description);
+		entity.setWeight(weight);
+		entity.setPurity(purity);
+		entity.setGoldSmithFees(goldSmithFees);
+		entity.setLostWeight(lostWeight);
+		entity.setPrice(price);
+		return entity;
+	}
 
 }
