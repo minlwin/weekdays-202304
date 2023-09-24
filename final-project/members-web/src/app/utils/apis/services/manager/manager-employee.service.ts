@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { PageResult } from '../dto/page-result';
+import { PageResult } from '../../dto/page-result';
 
 const API = `${environment.baseApi}/manager/employees`
 

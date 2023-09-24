@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AppErrorHandler } from './utils/apis/error/app-error-handler';
-import { WidgetsModule } from './utils/widgets/widgets.module';
 import { TokenInterceptor } from './utils/apis/security/token-interceptor';
+import { WidgetsModule } from './utils/widgets/widgets.module';
 
 @NgModule({
   declarations: [

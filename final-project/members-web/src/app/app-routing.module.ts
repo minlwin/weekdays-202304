@@ -15,25 +15,25 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/customer/customer.module')
         .then(m => m.CustomerModule),
-    canMatch: [customerGuard]
+    canActivate: [customerGuard]
   },
   { path: 'employee',
     loadChildren: () =>
       import('./core/employee/employee.module')
         .then(m => m.EmployeeModule),
-    canMatch: [employeeGuard]
+    canActivate: [employeeGuard]
   },
   { path: 'manager',
     loadChildren: () =>
       import('./core/manager/manager.module')
         .then(m => m.ManagerModule),
-    canMatch: [managerGuard]
+    canActivate: [managerGuard]
   },
   { path: 'owner',
     loadChildren: () =>
       import('./core/owner/owner.module')
         .then(m => m.OwnerModule),
-    canMatch: [ownerGuard]
+    canActivate: [ownerGuard]
   },
   { path: '', redirectTo: '/public', pathMatch: 'full' }
 ];

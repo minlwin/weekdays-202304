@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './manager.component';
 import { ManagerEmployeeManagementComponent } from './manager-employee-management/manager-employee-management.component';
-import { ManagerEmployeeDetailComponent } from './manager-employee-detail/manager-employee-detail.component';
+import { ManagerEmployeeDetailComponent } from './manager-employee-management/manager-employee-detail/manager-employee-detail.component';
 import { ManagerSettingComponent } from './manager-setting/manager-setting.component';
 
 const routes: Routes = [

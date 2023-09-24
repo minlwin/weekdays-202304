@@ -1,0 +1,7 @@
+<div class="category-box p-3">
+  <p class="m-0">{{ name ?? 'Category Name' }}</p>
+  <small style="font-size: 0.8rem">{{ count }} {{ count <= 1 ? 'item' : 'items' }}</small>
+      <div class="mt-2 d-flex gap-2">
+        <ng-content></ng-content>
+      </div>
+</div>

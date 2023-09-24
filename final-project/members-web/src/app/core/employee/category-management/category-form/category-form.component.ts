@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
 
@@ -12,6 +12,9 @@ export class CategoryFormComponent {
 
   @ViewChild(ModalDialogComponent)
   dialog?: ModalDialogComponent
+
+  @Output()
+  onSave = new EventEmitter<any>
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
@@ -43,7 +46,12 @@ export class CategoryFormComponent {
     this.dialog?.openDialog()
   }
 
+  hideCategoryForm() {
+    this.dialog?.hideDialog()
+  }
+
   saveCategory() {
+    this.onSave.emit(this.form.value)
   }
 
   initCategoryForm() {

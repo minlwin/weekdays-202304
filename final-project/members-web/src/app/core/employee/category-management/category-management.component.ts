@@ -1,44 +1,30 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { EmployeeCategoryService } from 'src/app/utils/apis/services/employee/employee-category.service';
 
 @Component({
   selector: 'app-category-management',
   templateUrl: './category-management.component.html'
 })
-export class CategoryManagementComponent {
+export class CategoryManagementComponent implements OnInit {
 
   @ViewChild(CategoryFormComponent)
   categoryForm?: CategoryFormComponent
 
   targetCategory: any
-  categories: any[] = [
-    {
-      id: 1,
-      name: 'Gold Ring',
-      deleted: false,
-      items: 21
-    },
-    {
-      id: 2,
-      name: 'Gold Ear Ring',
-      deleted: false,
-      items: 14
-    },
-    {
-      id: 3,
-      name: 'Hand Chain',
-      deleted: true,
-      items: 30
-    },
-    {
-      id: 4,
-      name: 'Necklace',
-      deleted: false,
-      items: 44
-    }
-  ]
+  categories: any[] = []
 
   categoryNamesForSearch: any[] = []
+
+  constructor(private empCategoryService: EmployeeCategoryService) {}
+
+  ngOnInit(): void {
+    this.search()
+  }
+
+  search() {
+    this.empCategoryService.search().subscribe(resp => this.categories = resp)
+  }
 
   addValue(value: any) {
     this.categoryNamesForSearch.push(value)
@@ -51,6 +37,16 @@ export class CategoryManagementComponent {
   openCategoryForm() {
     this.targetCategory = undefined
     this.categoryForm?.openCategoryForm()
+  }
+
+  saveCategory(category: any) {
+    this.empCategoryService.save(category).subscribe(resp => {
+      if(resp) {
+        this.categoryForm?.hideCategoryForm()
+        this.categoryForm?.initCategoryForm()
+        this.search()
+      }
+    })
   }
 
   editCategory(category: any) {

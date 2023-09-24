@@ -1,39 +1,51 @@
-<app-master-layout [middle]="true" viewIcon="bi-tags" viewTitle="Category Management">
-  <div class="row mt-4 g-2" search>
-    <div class="col-lg-auto col-md-auto col-12">
-      <input (keyup.enter)="addValue(catName.value); catName.value = ''" #catName type="text" class="form-control"
-        placeholder="Type name and hit Enter">
-    </div>
+<h3 class="view-title"><i class="bi bi-tags"></i> Category Management</h3>
+<div class="row g-2 justify-content-between">
+  <div class="col-lg-auto col-md-auto col-12 order-lg-first order-md-first order-last">
+    <div class="row g-2">
+      <div class="col-lg-auto col-md-auto col">
+        <button class="btn btn-success w-100" (click)="openCategoryForm()">
+          <i class="bi bi-plus-lg"></i> Add New Category
+        </button>
+      </div>
 
-    <div class="col-lg-auto col-md-auto col">
-      <button class="btn btn-outline-success w-100">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-
-    <div class="col-lg-auto col-md-auto col">
-      <button class="btn btn-success w-100" (click)="openCategoryForm()">
-        <i class="bi bi-plus-lg"></i>
-      </button>
-    </div>
-
-    <div class="col-lg-auto col-md-auto col">
-      <button class="btn btn-outline-success w-100">
-        <i class="bi bi-upload"></i>
-      </button>
+      <div class="col-lg-auto col-md-auto col">
+        <button class="btn btn-outline-success w-100">
+          <i class="bi bi-upload"></i> Upload Category
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="row g-2 ps-2 filter-category-name-wrapper">
-    <div class="col-auto">
-      <span class="rounded-pill" *ngFor="let name of categoryNamesForSearch; index as i">{{ name }}
-        <i class="bi bi-x" (click)="removeName(i)"></i>
-      </span>
+  <div class="col-lg-auto col-md-auto col">
+    <div class="row g-2">
+      <div class="col">
+        <input (keyup.enter)="addValue(catName.value); catName.value = ''" #catName type="text"
+          class="form-control w-100" placeholder="Type name and hit Enter">
+      </div>
+
+      <div class="col-auto">
+        <button class="btn btn-outline-success">
+          <i class="bi bi-search"></i>
+          <span class="d-none d-md-inline"> Search</span>
+        </button>
+      </div>
     </div>
   </div>
+</div>
 
-  <div list class="row g-3 mt-3">
+<div class="row g-2 ps-2 justify-content-end filter-category-name-wrapper">
+  <div class="col-auto">
+    <span class="rounded-pill" *ngFor="let name of categoryNamesForSearch; index as i">{{ name }}
+      <i class="bi bi-x" (click)="removeName(i)"></i>
+    </span>
+  </div>
+</div>
 
+<div class="row g-3 mt-3">
+
+  <app-no-data image="assets/no-category.jpg" text="Category" *ngIf="categories.length == 0"></app-no-data>
+
+  <ng-container *ngIf="categories.length > 0">
     <app-category-box [count]="category.items" [name]="category.name" class="col-lg-3 col-md-3 col-sm-4 col-xs-12"
       *ngFor="let category of categories">
       <button class="col btn btn-sm btn-secondary" (click)="deleteCategory(category.id)">
@@ -43,8 +55,8 @@
         <i class="bi bi-pencil-square"></i>
       </button>
     </app-category-box>
+  </ng-container>
 
-  </div>
-</app-master-layout>
+</div>
 
-<app-category-form [category]="targetCategory"></app-category-form>
+<app-category-form [category]="targetCategory" (onSave)="saveCategory($event)"></app-category-form>

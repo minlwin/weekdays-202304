@@ -5,9 +5,9 @@ import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { PublicCatalogComponent } from './public-catalog/public-catalog.component';
 import { HomeComponent } from './home/home.component';
-import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublicCatalogDetailComponent } from './public-catalog/public-catalog-detail/public-catalog-detail.component';
+import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
 
 
 @NgModule({

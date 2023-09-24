@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row g-3">
 
-    <nav class="left-nav col-2 pr-3 pt-2 shadow ps-0 h-100">
-      <div class="text-center mb-4">
-        <a [routerLink]="['/employee']" class="fs-4 text-dark text-decoration-none btn-link fw-bold">
+    <nav class="left-nav col-2 pr-3 shadow ps-0 h-100">
+      <div class="text-center brand">
+        <a [routerLink]="['/employee']" class="text-dark text-decoration-none btn-link fw-bold">
           <i class="bi bi-house"></i>
           <span class="d-none d-lg-inline"> Dashboard</span>
         </a>
@@ -32,7 +32,7 @@
 
       </div>
 
-      <div class="ps-2 row align-items-end" style="height: calc(100% - 255px)">
+      <div class="ps-2 row align-items-end" style="height: calc(100% - 275px)">
         <div class="col">
           <button class="btn btn-outline-success w-100" (click)="logOut()">
             <i class="bi bi-box-arrow-right"></i>
@@ -50,7 +50,7 @@
         </button>
       </div>
 
-      <div class="mt-3 ps-3">
+      <div class="ps-3">
         <router-outlet></router-outlet>
       </div>
     </main>

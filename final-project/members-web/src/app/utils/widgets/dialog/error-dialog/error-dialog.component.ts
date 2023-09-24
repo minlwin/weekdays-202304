@@ -19,7 +19,7 @@ export class ErrorDialogComponent {
     this.dialog = new bootstrap.Modal(`#${this.modalId}`)
   }
 
-  openDialog(error: any) {
+  openDialog(error: Error | any) {
     if(error.error) {
       this.messages = error.error.messages
     } else {

@@ -33,6 +33,11 @@ body {
   font-weight: 400;
 }
 
+.view-title {
+  font-size: 25px;
+  margin: 25px auto;
+}
+
 .text-overflow-ellipse {
   text-overflow:ellipsis;
   overflow:hidden;
@@ -42,18 +47,21 @@ body {
   white-space: normal;
 }
 
-.no-data {
-  margin: $spacer 0;
-  padding: $spacer;
-  border: 1px solid $warning;
-  border-left: 5px solid $warning;
-}
-
 .left-nav {
   position: fixed;
   top: -1;
   left: 0;
   bottom: 0;
+}
+
+.left-nav .brand {
+  height: 80px;
+  padding: 24px 0;
+}
+
+.left-nav .brand > a {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .left-nav .nav-menu-link {
@@ -258,31 +266,42 @@ main {
 
 .floating-cart {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
 }
 
-// .floating-cart-btn {
-//   height: 45px;
-//   width: 45px;
-//   border: none;
-//   background-color: #2ddf5c;
-//   color: #065a1c;
-//   border-radius: 4px;
-//   box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.1);
-// }
+.cat-filter-box {
+  padding: $spacer;
+  border: 1px solid rgb(0, 0, 0, 0.175);
+}
 
-// .floating-cart-btn > span {
-//   display: inline-block;
-//   width: 28px;
-//   height: 28px;
-//   font-size: 0.8rem;
-//   border-radius: 50px;
-//   background-color: #0a952f;
-//   color: $light;
-// }
+.cat-filter-box > .cat-filter-box-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: rgb(151, 151, 152);
+}
 
-// .floating-cart-btn:hover {
-//   cursor: pointer;
-//   background-color: #47f676;
-// }
+.cat-filter-box .cat-filter-name {
+  color: rgb(42, 42, 42);
+}
+
+.cat-filter-box .item-count {
+  font-size: 13px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  background-color: rgb(0, 0, 0, 0.175);
+  color: rgb(128, 128, 130);
+}
+
+.cat-filter-box button {
+  padding: 2px 6px;
+  border: none;
+  font-size: 12px;
+  color: $primary;
+  background-color: #c7deed;
+  border-radius: 10px;
+}
+
+.cat-filter-box button:hover {
+  background-color: #9dd2f6;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ManagerEmployeeFormComponent } from '../manager-employee-form/manager-employee-form.component';
-import { ManagerEmployeeService } from 'src/app/utils/apis/services/manager-employee.service';
+import { ManagerEmployeeFormComponent } from './manager-employee-form/manager-employee-form.component';
+import { ManagerEmployeeService } from 'src/app/utils/apis/services/manager/manager-employee.service';
 
 @Component({
   selector: 'app-manager-employee-management',
@@ -34,13 +34,13 @@ export class ManagerEmployeeManagementComponent implements OnInit {
     this.manEmpService.save(data).subscribe(resp => {
       if(resp) {
         this.employeeForm?.hideEmployeeForm()
+        this.employeeForm?.initEmployeeForm()
         this.search()
       }
     })
   }
 
   updateEmployee(employee: any) {
-    console.log(employee)
     this.targetEmplyoee = employee
     this.employeeForm?.openEmployeeForm()
   }

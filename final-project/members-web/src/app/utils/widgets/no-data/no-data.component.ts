@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 export class NoDataComponent {
 
   @Input()
+  image: any
+
+  @Input()
   text: any
 
 }
