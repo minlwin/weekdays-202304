@@ -14,7 +14,7 @@ public class CatalogDto {
 	private String name;
 	private BigDecimal price;
 	private BigDecimal weight;
-	private int raiting;
+	private int rating;
 	private boolean isNew;
 	private boolean isPopular;
 	private String coverImage;
@@ -26,7 +26,7 @@ public class CatalogDto {
 	public static CatalogDto from(Catalog entity) {
 		var dto = new CatalogDto();
 		Double rating = entity.getReviews().stream().mapToInt(a -> a.getRating()).average().orElse(0);
-		dto.setRaiting(rating.intValue());
+		dto.setRating(rating.intValue());
 		dto.setId(entity.getId());
 		dto.setName(entity.getName());
 		dto.setPrice(entity.getPrice());

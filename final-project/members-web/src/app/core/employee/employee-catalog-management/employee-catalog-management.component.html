@@ -29,11 +29,13 @@
       (onGetNext)="getNext($event)"></app-category-filter-box>
   </div>
 
-  <div class="col-lg-9 col-12">
+  <div class="col-lg-9 col-12 mt-lg-0 mt-3">
     <app-no-data text="Catalog" *ngIf="catalogs.length == 0"></app-no-data>
 
-    <app-catalog-box role="Employee" *ngFor="let item of catalogs" [data]="item" ngIf="catalogs.length > 0">
-    </app-catalog-box>
+    <div *ngIf="catalogs.length > 0" class="row row-cols-lg-3 row-cols-md-3 row-cols-1">
+      <app-catalog-box [role]="currentRole" *ngFor="let item of catalogs" [data]="item">
+      </app-catalog-box>
+    </div>
   </div>
 
 </div>

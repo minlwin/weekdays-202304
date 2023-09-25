@@ -16,7 +16,6 @@ import { CustomerFormComponent } from './customer-management/customer-form/custo
 import { PosCustomerComponent } from './pos/pos-customer/pos-customer.component';
 import { PosCatalogComponent } from './pos/pos-catalog/pos-catalog.component';
 import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
-import { CategoryNamePipe } from 'src/app/utils/pipe/category-name.pipe';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { CategoryNamePipe } from 'src/app/utils/pipe/category-name.pipe';
     EmployeeCatalogFormComponent,
     CustomerFormComponent,
     PosCustomerComponent,
-    PosCatalogComponent,
-    CategoryNamePipe
+    PosCatalogComponent
   ],
   imports: [
     CommonModule,

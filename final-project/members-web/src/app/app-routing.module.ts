@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { customerGuard } from './utils/apis/guards/customer.guard';
-import { employeeGuard } from './utils/apis/guards/employee.guard';
-import { managerGuard } from './utils/apis/guards/manager.guard';
-import { ownerGuard } from './utils/apis/guards/owner.guard';
+import { customerGuard } from './utils/guards/customer.guard';
+import { employeeGuard } from './utils/guards/employee.guard';
+import { managerGuard } from './utils/guards/manager.guard';
+import { ownerGuard } from './utils/guards/owner.guard';
 
 const routes: Routes = [
   { path: 'public',
@@ -34,6 +34,7 @@ const routes: Routes = [
       import('./core/owner/owner.module')
         .then(m => m.OwnerModule),
     canActivate: [ownerGuard]
+
   },
   { path: '', redirectTo: '/public', pathMatch: 'full' }
 ];

@@ -1,31 +1,28 @@
 <div class="mb-3 position-relative catalog-box">
   <div class="card">
-    <span *ngIf="data.status" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">{{
-      data.status }}</span>
-    <a [routerLink]="role == 'Employee' ? ['/employee', 'catalog', 'detail'] : ['/public', 'catalog', 'detail']">
-      <img [src]="data.images[0] ?? 'assets/default-image.png'" class="card-img-top" height="200px">
+    <span *ngIf="data?.new" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">New</span>
+    <a [routerLink]="role && (role == 'Employee' || role == 'Manager' || role == 'Owner') ? ['/employee', 'catalog', 'detail'] : ['/public', 'catalog', 'detail']"
+      [queryParams]="{id: data?.id}">
+      <img [src]="data?.coverImage ?? 'assets/default-image.png'" class="card-img-top" height="200px">
       <div class="card-body">
         <div class="card-title">
           <h5>{{ data.name ?? 'Catalog Name' }}</h5>
         </div>
-        <p class="catalog-box-description text-overflow-ellipse">{{ data.description ?? 'Lorem ipsum dolor sit,
-          consectetur adipisicing elit.
-          Fugiat aliquam magni
-          vel sequi officiis odio eaque.' }}</p>
+        <p class="catalog-box-description text-overflow-ellipse">{{ data?.description || '#NA' }}</p>
 
-        <app-star-rating marginSide="b" marginUnit="3" [rating]="rating ?? 7" [isBlock]="true"></app-star-rating>
+        <app-star-rating marginSide="b" marginUnit="3" [rating]="data?.rating ?? 7" [isBlock]="true"></app-star-rating>
 
         <div class="infos">
           <div class="cat-weight">
-            <div>{{ data.category ?? 'Category' }}</div>
-            <div>{{ data.weight ?? 14 }} YWE</div>
+            <div>{{ data?.lostWeight }} UC</div>
+            <div>{{ data?.weight ?? 14 }} YWE</div>
           </div>
-          <div class="align-self-center price">{{ data.price ?? '350000' | number }}</div>
+          <div class="align-self-center price">{{ data?.price ?? '350000' | number }}</div>
         </div>
       </div>
     </a>
   </div>
-  <div *ngIf="role != 'Employee'">
+  <div *ngIf="role && role == 'Customer'">
     <ng-content></ng-content>
   </div>
 </div>
