@@ -1,13 +1,82 @@
-<form [formGroup]="form">
-  <app-modal-dialog modalId="catalogEditModalId" modalTitle="CatalogForm" modalIcon="bi-pen">
-    <ng-container body>
-      <app-form-group label="Name" icon="bi-type" [margin]="true">
-        <input type="text" id="name" class="form-control" placeholder="Catalog name">
-      </app-form-group>
-    </ng-container>
+<h3 class="view-title">
+  <i class="bi" [ngClass]="id.value > 0 ? 'bi-pencil-square' : 'bi-plus-square'"></i>
+  {{ id.value > 0 ? 'Catalog Edit' : 'Add Catalog' }}
+</h3>
 
-    <button footer class="btn btn-outline-dark">
-      <i class="bi bi-save"></i> Save
-    </button>
-  </app-modal-dialog>
-</form>
+<div class="row">
+  <div class="col-lg-6 col">
+    <form [formGroup]="form">
+      <app-form-group label="Categories" [valid]="categoriesControl.length > 0">
+        <input #val (keyup.enter)="selectCategory(val.value); val.value = ''" type="text" list="categories"
+          class="form-control" placeholder="Type category name and hit enter">
+        <datalist id="categories">
+          <option *ngFor="let category of categories">{{
+            category.name }}</option>
+        </datalist>
+      </app-form-group>
+
+      <div formArrayName="categories" class="row g-2 justify-content-end filter-category-name-wrapper m-0">
+        <div class="col-auto" *ngFor="let ctrl of categoriesControl.controls; index as i">
+          <input #input [formControlName]="i" type="text" class="d-none">
+          <span class="rounded-pill">{{ input.value }}
+            <i class="bi bi-x" (click)="removeSelected(i)"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="my-3">
+        <app-form-group label="Name" [valid]="name.valid">
+          <input formControlName="name" type="text" id="Name" class="form-control" placeholder="Catalog name">
+        </app-form-group>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <app-form-group label="Weight" [valid]="weight.valid">
+            <input formControlName="weight" id="Weight" type="number" class="form-control">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="Purity" [valid]="purity.valid">
+            <input formControlName="purity" id="Purity" type="number" class="form-control">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="Undercount" [valid]="underCount.valid">
+            <input formControlName="lostWeight" id="Undercount" type="number" class="form-control">
+          </app-form-group>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <app-form-group label="Goldsmith Fees" [valid]="goldSmithFees.valid">
+            <input formControlName="goldSmithFees" type="number" id="Goldsmith Fees" class="form-control">
+          </app-form-group>
+        </div>
+
+        <div class="col">
+          <app-form-group label="Price" [valid]="price.valid">
+            <input formControlName="price" type="number" id="Price" class="form-control">
+          </app-form-group>
+        </div>
+      </div>
+
+      <app-form-group label="Description" [valid]="description.valid" [margin]="true">
+        <textarea formControlName="description" id="Description" cols="auto" rows="2" class="form-control"
+          placeholder="Catalog description"></textarea>
+      </app-form-group>
+
+      <div class="text-end">
+        <button type="button" [routerLink]="['../management']" class="btn btn-dark me-2">
+          <i class="bi bi-x-lg"></i> Cancel
+        </button>
+        <button type="button" class=" btn btn-outline-dark" (click)="saveCatalog()">
+          <i class="bi bi-save"></i> Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
 export class CustomerManagementComponent {
 
   form: FormGroup
+  customers: any[] = []
 
   @ViewChild(CustomerFormComponent)
   customerForm?: CustomerFormComponent
@@ -20,4 +21,6 @@ export class CustomerManagementComponent {
   openCustomerForm() {
     this.customerForm?.openCustomerForm()
   }
+
+  updateCustomer(customer: any) {}
 }

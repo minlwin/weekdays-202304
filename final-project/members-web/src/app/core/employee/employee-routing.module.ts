@@ -8,6 +8,7 @@ import { EmployeeCatalogDetailComponent } from './employee-catalog-management/em
 import { CategoryManagementComponent } from './category-management/category-management.component';
 import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
 import { CheckOutComponent } from 'src/app/utils/widgets/check-out/check-out.component';
+import { EmployeeCatalogFormComponent } from './employee-catalog-management/employee-catalog-form/employee-catalog-form.component';
 
 const routes: Routes = [
   { path: '', component: EmployeeComponent, children: [
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'category', component: CategoryManagementComponent, title: 'Employee | Category Management' },
     { path: 'catalog', children: [
       { path: 'management', component: EmployeeCatalogManagementComponent, title: 'Employee | Catalog Management' },
+      { path: 'edit', component: EmployeeCatalogFormComponent, title: 'Employee | Catalog Edit' },
       { path: 'detail', component: EmployeeCatalogDetailComponent, title: 'Employee | Catalog Detail' },
       { path: '', redirectTo: '/employee/catalog/management', pathMatch: 'full' }
     ]},

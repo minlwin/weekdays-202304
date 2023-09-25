@@ -1,5 +1,5 @@
 <h3 class="view-title"><i class="bi bi-tags"></i> Category Management</h3>
-<div class="row g-2 justify-content-between">
+<div class="row g-2 justify-content-between mb-3">
   <div class="col-lg-auto col-md-auto col-12 order-lg-first order-md-first order-last">
     <div class="row g-2">
       <div class="col-lg-auto col-md-auto col">
@@ -19,8 +19,7 @@
   <div class="col-lg-auto col-md-auto col">
     <div class="row g-2">
       <div class="col">
-        <input (keyup.enter)="addValue(catName.value); catName.value = ''" #catName type="text"
-          class="form-control w-100" placeholder="Type name and hit Enter">
+        <input type="text" class="form-control w-100" placeholder="Category name">
       </div>
 
       <div class="col-auto">
@@ -33,15 +32,7 @@
   </div>
 </div>
 
-<div class="row g-2 ps-2 justify-content-end filter-category-name-wrapper">
-  <div class="col-auto">
-    <span class="rounded-pill" *ngFor="let name of categoryNamesForSearch; index as i">{{ name }}
-      <i class="bi bi-x" (click)="removeName(i)"></i>
-    </span>
-  </div>
-</div>
-
-<div class="row g-3 mt-3">
+<div class="row g-3">
 
   <app-no-data image="assets/no-category.jpg" text="Category" *ngIf="categories.length == 0"></app-no-data>
 

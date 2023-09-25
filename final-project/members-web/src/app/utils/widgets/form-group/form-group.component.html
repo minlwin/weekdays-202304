@@ -1,5 +1,4 @@
-<label for="{{ label?.includes(' ') ? label?.replace(' ', '_')?.toLowerCase() : label?.toLowerCase() }}"
-  class="form-label">{{ label }}</label>
+<label for="{{ label }}" class="form-label">{{ label }}</label>
 <div class="input-group" [class.mb-3]="margin">
   <ng-content></ng-content>
   <span class="input-group-text">

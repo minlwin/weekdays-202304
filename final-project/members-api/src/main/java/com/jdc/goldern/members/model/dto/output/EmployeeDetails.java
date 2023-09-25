@@ -9,7 +9,7 @@ public class EmployeeDetails {
 
 	private EmployeeDto employee;
 	private SaleSummary dailySales;
-	private SaleSummary montnlySales;
+	private SaleSummary monthlySales;
 	private SaleSummary yearlySales;
 	private SaleSummary totalSales;
 	

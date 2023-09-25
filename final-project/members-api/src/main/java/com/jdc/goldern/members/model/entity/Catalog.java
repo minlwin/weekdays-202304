@@ -61,10 +61,10 @@ public class Catalog extends AuditingEntity{
 	private BigDecimal price;
 	
 	@OneToMany(mappedBy = "catalog")
-	private List<SaleItem> saleItems;
+	private List<SaleItem> saleItems = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "catalog")
-	private List<CatalogReview> reviews;
+	private List<CatalogReview> reviews = new ArrayList<>();
 	
 	
 

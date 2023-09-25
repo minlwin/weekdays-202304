@@ -1,46 +1,66 @@
-<div class="row g-2 mb-3 mt-4">
-  <div class="col-lg-auto col-md-auto col-12">
-    <input type="text" class="form-control" placeholder="Search customer">
-  </div>
-  <div class="col-lg-auto col-md-auto col-6">
-    <button class="btn btn-outline-success w-100">
-      <i class="bi bi-search"></i>
-    </button>
-  </div>
-  <div class="col-lg-auto col-md-auto col-6" (click)="openCustomerForm()">
-    <button class="btn btn-success w-100">
-      <i class="bi bi-plus-lg"></i>
-    </button>
-  </div>
-</div>
+<h3 class="view-title"><i class="bi bi-person-raised-hand"></i> Cusomter Management</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Phone</td>
-      <td>Email</td>
-      <td>Address</td>
-      <td></td>
-    </tr>
-  </thead>
+<div class="row g-2">
+  <div class="col-lg-9 col-12 order-lg-first order-last">
+    <button class="btn btn-success" (click)="openCustomerForm()">
+      <i class="bi bi-plus-lg"></i> Add New Customer
+    </button>
 
-  <tbody>
-    <tr>
-      <td>Emily Rudd</td>
-      <td>+130203030</td>
-      <td>artist@emilyrudd@gmail.com</td>
-      <td>Arizona</td>
-      <td>
-        <button class="btn btn-tbl btn-sm btn-outline-primary me-2">
-          <i class="bi bi-pencil-square"></i>
+    <app-no-data image="assets/no-customer.jpg" text="Customer" *ngIf="customers.length == 0"></app-no-data>
+
+    <table class="table table-striped mt-2" *ngIf="customers.length > 0">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Phone</td>
+          <td>Email</td>
+          <td>NRC No</td>
+          <td>Register At</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.nrcNumber }}</td>
+          <td>{{ customer.registAt }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="updateCustomer(customer)">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <a href="" class="btn btn-sm btn-outline-warning">
+              <i class="bi bi-send"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-lg-3 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Search Cusomter</h4>
+      </div>
+
+      <div class="card-body">
+        <label class="form-label" for="cust_code">Customer Code</label>
+        <input type="text" id="cust_code" class="form-control mb-3" placeholder="Enter customer code">
+
+        <label for="name" class="form-label">Customer Name</label>
+        <input type="text" id="name" class="form-control mb-3" placeholder="Enter customer name">
+
+        <label for="phone" class="form-label">Customer Phone</label>
+        <input type="text" id="phone" class="form-control mb-3" placeholder="Enter customer phone">
+
+        <label for="address" class="form-label">Customer Address</label>
+        <input type="text" id="address" class="form-control mb-3" placeholder="Enter customer address">
+
+        <button class="btn btn-success w-100">
+          <i class="bi bi-search"></i> Search
         </button>
-        <a [routerLink]="['/employee', 'customer', '#']" class="btn btn-tbl btn-sm btn-outline-dark">
-          <i class="bi bi-send"></i>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<app-customer-form></app-customer-form>
+      </div>
+    </div>
+  </div>

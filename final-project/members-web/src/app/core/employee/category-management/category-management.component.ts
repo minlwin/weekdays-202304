@@ -14,8 +14,6 @@ export class CategoryManagementComponent implements OnInit {
   targetCategory: any
   categories: any[] = []
 
-  categoryNamesForSearch: any[] = []
-
   constructor(private empCategoryService: EmployeeCategoryService) {}
 
   ngOnInit(): void {
@@ -24,14 +22,6 @@ export class CategoryManagementComponent implements OnInit {
 
   search() {
     this.empCategoryService.search().subscribe(resp => this.categories = resp)
-  }
-
-  addValue(value: any) {
-    this.categoryNamesForSearch.push(value)
-  }
-
-  removeName(index: number) {
-    this.categoryNamesForSearch.splice(index, 1)
   }
 
   openCategoryForm() {
