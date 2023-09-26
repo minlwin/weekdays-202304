@@ -11,7 +11,7 @@ import lombok.Data;
 public class CatalogDetails {
 
 	private CatalogDto info;
-
+	
 	private List<String> images;
 
 	private List<Review> reviews;

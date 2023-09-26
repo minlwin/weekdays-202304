@@ -39,8 +39,8 @@ body {
 }
 
 .text-overflow-ellipse {
-  text-overflow:ellipsis;
-  overflow:hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -304,4 +304,20 @@ main {
 
 .cat-filter-box button:hover {
   background-color: #9dd2f6;
+}
+
+.search-card h4 {
+  font-size: 20px;
+}
+
+.search-card label, .search-card button {
+  font-size: 16px;
+}
+
+.search-card input {
+  height: 35px;
+}
+
+.search-card input::placeholder {
+  font-size: 15px;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeCatalogService } from 'src/app/utils/apis/services/employee/employee-catalog.service';
 import { EmployeeCategoryService } from 'src/app/utils/apis/services/employee/employee-category.service';
 import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
@@ -20,6 +20,7 @@ export class EmployeeCatalogFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private empCategoryService: EmployeeCategoryService,
     private empCatalogService: EmployeeCatalogService,
+    private route: ActivatedRoute,
     private router: Router) {
     this.form = fb.group({
       id: 0,
@@ -36,6 +37,18 @@ export class EmployeeCatalogFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.empCategoryService.search().subscribe(resp => this.categories = resp)
+
+    this.route.queryParamMap.subscribe(param => {
+      if(param.get('id')) {
+        this.empCatalogService.findById(+ (param.get('id') as string)).subscribe(resp => {
+          if(resp) {
+            this.form.patchValue(resp.info)
+            let arr: string[] = resp.info.categories
+            arr.map(name => this.categoriesControl.push(this.fb.control(name)))
+          }
+        })
+      }
+    })
   }
 
   get id() {

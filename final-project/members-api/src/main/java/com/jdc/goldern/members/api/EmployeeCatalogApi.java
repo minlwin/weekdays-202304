@@ -50,7 +50,7 @@ public class EmployeeCatalogApi {
 		return service.update(id, form);
 	}
 
-	@GetMapping("{id}/uploads")
+	@PostMapping("{id}/uploads")
 	public CatalogDetails uploadPhotots(@PathVariable long id, @RequestParam MultipartFile[] files) {
 		return service.photoUpload(id, files);
 	}

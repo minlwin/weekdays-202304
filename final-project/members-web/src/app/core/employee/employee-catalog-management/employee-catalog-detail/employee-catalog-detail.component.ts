@@ -1,17 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeCatalogService } from 'src/app/utils/apis/services/employee/employee-catalog.service';
 
 @Component({
   selector: 'app-catalog-detail',
   templateUrl: './employee-catalog-detail.component.html'
 })
-export class EmployeeCatalogDetailComponent {
+export class EmployeeCatalogDetailComponent implements OnInit {
 
-  images = [
-    "https://images.unsplash.com/photo-1565034582189-195bb0084dcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80",
-    "https://images.unsplash.com/photo-1567523977592-7959bc5df51e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1402&q=80"
-  ]
+  images: any[] = []
 
   activeCarousel: string = this.images[0]
+  catalog: any
 
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private empCatalogService: EmployeeCatalogService) {}
+
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe(param => {
+      if(param.get('id')) {
+        this.empCatalogService.findById(+ (param.get('id') as string)).subscribe(resp => this.setData(resp))
+      }
+    })
+  }
+
+  editCatalog() {
+    this.router.navigate(['/employee', 'catalog', 'edit'], {queryParams: {id: this.catalog.id}})
+  }
+
+  uploadPhoto(images: FileList) {
+    this.empCatalogService.uploadPhotos(this.catalog.id, images).subscribe(resp => this.setData(resp))
+  }
+
+  private setData(data: any) {
+    this.catalog = data.info
+    this.images = data.images
+  }
 }

@@ -37,7 +37,14 @@ export class EmployeeCatalogService {
     return this.http.get<any>(`${API}/${id}`)
   }
 
-  uploadPhotos(id: number, photos: any) {
-    return this.http.get<any>(`${API}/${id}/uploads`)
+  uploadPhotos(id: number, photos: FileList) {
+
+    var files = new FormData
+
+    for (let i = 0; i < photos.length; i++) {
+      files.append('file', photos[i], photos[i].name)
+    }
+
+    return this.http.post<any>(`${API}/${id}/uploads`, files)
   }
 }
