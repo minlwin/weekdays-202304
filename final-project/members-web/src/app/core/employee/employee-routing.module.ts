@@ -9,6 +9,7 @@ import { CategoryManagementComponent } from './category-management/category-mana
 import { CustomerDetailComponent } from './customer-management/customer-detail/customer-detail.component';
 import { CheckOutComponent } from 'src/app/utils/widgets/check-out/check-out.component';
 import { EmployeeCatalogFormComponent } from './employee-catalog-management/employee-catalog-form/employee-catalog-form.component';
+import { CustomerFormComponent } from './customer-management/customer-form/customer-form.component';
 
 const routes: Routes = [
   { path: '', component: EmployeeComponent, children: [
@@ -25,7 +26,9 @@ const routes: Routes = [
     ]},
     { path: 'customer', children: [
       { path: 'management', component: CustomerManagementComponent, title: 'Employee | Customer Management' },
-      { path: 'detail', component: CustomerDetailComponent, title: 'Employee | Customer Detail' }
+      { path: 'edit', component: CustomerFormComponent, title: 'Employee | Customer Edit' },
+      { path: 'detail', component: CustomerDetailComponent, title: 'Employee | Customer Detail' },
+      { path: '', redirectTo: '/employee/customer/management', pathMatch: 'full' }
     ]},
     { path: '', redirectTo: '/employee/sale', pathMatch: 'full' }
   ]}

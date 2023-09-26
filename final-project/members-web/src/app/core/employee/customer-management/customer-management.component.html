@@ -2,7 +2,7 @@
 
 <div class="row g-2">
   <div class="col-lg-9 col-12 order-lg-first order-last">
-    <button class="btn btn-success" (click)="openCustomerForm()">
+    <button class="btn btn-success" [routerLink]="['..', 'edit']">
       <i class="bi bi-plus-lg"></i> Add New Customer
     </button>
 
@@ -64,5 +64,3 @@
       </div>
     </div>
   </div>
-
-  <app-customer-form></app-customer-form>

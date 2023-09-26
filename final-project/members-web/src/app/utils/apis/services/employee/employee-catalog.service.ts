@@ -42,7 +42,7 @@ export class EmployeeCatalogService {
     var files = new FormData
 
     for (let i = 0; i < photos.length; i++) {
-      files.append('file', photos[i], photos[i].name)
+      files.append('files', photos[i], photos[i].name)
     }
 
     return this.http.post<any>(`${API}/${id}/uploads`, files)

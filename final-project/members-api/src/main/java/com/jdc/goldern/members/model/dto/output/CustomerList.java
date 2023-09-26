@@ -27,7 +27,15 @@ public class CustomerList {
 	private boolean deleted;
 	
 	public static CustomerList from(Customer entity) {
-		return null;
+		var list = new CustomerList();
+		list.setId(entity.getId());
+		list.setName(entity.getName());
+		list.setPhone(entity.getPhone());
+		list.setEmail(entity.getEmail());
+		list.setNrcNumber(entity.getNrcNumber());
+		list.setRegistAt(LocalDateTime.of(entity.getRegisterAt(), null));
+		list.setRemark(entity.getRemark());
+		return list;
 	}
 
 }

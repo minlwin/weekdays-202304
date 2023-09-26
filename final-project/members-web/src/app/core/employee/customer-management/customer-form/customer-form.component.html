@@ -1,13 +1,101 @@
-<form [formGroup]="form">
-  <app-modal-dialog modalId="customerEditModalId" modalTitle="Customer Form" modalIcon="bi-pen">
-    <ng-container body>
-      <app-form-group label="Name" icon="bi-type" [margin]="true">
-        <input type="text" id="name" class="form-control" placeholder="Catalog name">
-      </app-form-group>
-    </ng-container>
+<h3 class="view-title">
+  <i class="bi" [ngClass]="id.value > 0 ? 'bi-pencil-square' : 'bi-plus-square'"></i>
+  {{ id.value > 0 ? 'Customer Edit' : 'Add Customer' }}
+</h3>
 
-    <button footer class="btn btn-outline-dark">
-      <i class="bi bi-save"></i> Save
-    </button>
-  </app-modal-dialog>
+<form [formGroup]="form">
+  <div class="row g-3 mb-4">
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Name" [valid]="name.valid">
+        <input formControlName="name" id="Name" type="text" class="form-control" placeholder="Customer name">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Phone" [valid]="phone.valid">
+        <input formControlName="phone" type="tel" id="Phone" class="form-control" placeholder="09xxxxxx">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Email" [valid]="email.valid">
+        <input formControlName="email" type="email" id="Email" class="form-control" placeholder="example@gmail.com">
+      </app-form-group>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Refer ID" [valid]="true">
+        <input formControlName="refererId" type="number" id="Refer ID" class="form-control">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Birth Date" [valid]="true">
+        <input formControlName="dateOfBirth" type="date" id="Birth Date" class="form-control">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="NRC Number" [valid]="nrcNumber.valid">
+        <input formControlName="nrcNumber" type="text" id="NRc Number" class="form-control"
+          placeholder="1/BaBaBa(N)xxxxxx">
+      </app-form-group>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Township" [valid]="township.valid">
+        <input formControlName="township" type="text" id="Township" class="form-control"
+          placeholder="Customer township">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Address" [valid]="address.valid">
+        <input formControlName="address" type="text" id="Address" class="form-control" placeholder="Customer address">
+      </app-form-group>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <app-form-group label="Remark" [valid]="true">
+        <input formControlName="remark" type="text" id="Remark" class="form-control" placeholder="Remark for customer">
+      </app-form-group>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-3 justify-content-lg-center">
+    <div class="col-lg-4 col-12">
+      <input formControlName="gender" name="gender" value="Male" type="radio" id="male" class="form-check-input me-2">
+      <label for="male" class="form-check-label me-3">Male</label>
+
+      <input formControlName="gender" name="gender" value="Female" type="radio" id="female"
+        class="form-check-input me-2">
+      <label for="female" class="form-check-label me-3">Female</label>
+
+      <input formControlName="gender" name="gender" value="Other" type="radio" id="other" class="form-check-input me-2">
+      <label for="other" class="form-check-label">Other</label>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <input formControlName="deleted" type="checkbox" id="deleted" class="form-check-input me-2">
+      <label for="deleted" class="form-check-label">Deleted</label>
+    </div>
+  </div>
+
+  <div class="row g-3 justify-content-lg-center justify-content-md-center">
+    <div class="col-lg-4 col-md-4 col-12">
+      <button class="btn btn-dark me-3 w-100">
+        <i class="bi bi-x-lg"></i> Close
+      </button>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-12">
+      <button class="btn btn-outline-dark w-100">
+        <i class="bi bi-save"></i> Save
+      </button>
+    </div>
+  </div>
 </form>

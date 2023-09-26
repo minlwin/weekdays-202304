@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class PhotoStorageService {
 	
-	@Value("${com.jdc.goldern.members.photo.path}")
+	@Value("${com.jdc.goldern.members.photo.storage}")
 	private String storage;
 
 	public List<String> save(long id, MultipartFile ... files) {
