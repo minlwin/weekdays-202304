@@ -39,7 +39,7 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 					.username(acc.getEmail())
 					.password(acc.getPassword())
 					.roles(acc.getRole().getValue())
-					.disabled(cust.getRegisterAt().isBefore(LocalDate.now()))
+					.disabled(cust.getRegisterAt().isBefore(LocalDate.now().atStartOfDay()))
 					.accountLocked(acc.getAudit().isDeleted())
 					.build();
 		}

@@ -1,5 +1,6 @@
 package com.jdc.goldern.members.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,41 +17,40 @@ import com.jdc.goldern.members.model.dto.input.SaleEdit;
 import com.jdc.goldern.members.model.dto.input.SaleSearch;
 import com.jdc.goldern.members.model.dto.output.SaleDetails;
 import com.jdc.goldern.members.model.dto.output.SaleList;
+import com.jdc.goldern.members.model.service.SaleService;
 
 @RestController
 @RequestMapping("employee/sales")
 public class EmployeeSaleApi {
+	
+	@Autowired
+	private SaleService service;
 
 	@GetMapping
 	public PageResponse<SaleList> search(SaleSearch form,
 			@RequestParam(defaultValue = "0") int page,  
 			@RequestParam(defaultValue = "10") int max) {
-		// TODO implement here
-		return null;
+		return service.searchForEmployee(form, page, max);
 	}
 
 	@GetMapping("{id}")
 	public SaleDetails findById(@PathVariable long id) {
-		// TODO implement here
-		return null;
+		return service.findDetails(id);
 	}
 
 	@PostMapping
 	public SaleDetails create(@Validated @RequestBody SaleEdit form, BindingResult result) {
-		// TODO implement here
-		return null;
+		return service.create(form);
 	}
 	
 	@PutMapping("{id}")
 	public SaleDetails update(@PathVariable long id, @Validated @RequestBody SaleEdit form, BindingResult result) {
-		// TODO implement here
-		return null;
+		return service.update(id, form);
 	}
 
 	@PutMapping("{id}/edit")
 	public SaleEdit findByIdForEdit(@PathVariable long id) {
-		// TODO implement here
-		return null;
+		return service.findForEdit(id);
 	}
 
 }

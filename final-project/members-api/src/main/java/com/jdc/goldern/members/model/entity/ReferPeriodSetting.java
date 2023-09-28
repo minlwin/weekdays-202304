@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @EntityListeners(value = AuditingEntityListener.class)
-public class ReferRewardPeriodSetting extends AuditingEntity{
+public class ReferPeriodSetting extends AuditingEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

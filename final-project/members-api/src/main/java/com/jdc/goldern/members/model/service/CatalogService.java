@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jdc.goldern.members.model.dto.input.CatalogEdit;
 import com.jdc.goldern.members.model.dto.input.CatalogSearch;
+import com.jdc.goldern.members.model.dto.input.ReviewForm;
 import com.jdc.goldern.members.model.dto.output.CatalogDetails;
 import com.jdc.goldern.members.model.dto.output.CatalogDto;
 import com.jdc.goldern.members.model.repo.CatalogRepo;
@@ -67,6 +68,11 @@ public class CatalogService {
 			}
 		});
 		return findDetails(id);
+	}
+
+	public CatalogDetails makeReview(long catalogId, String username, ReviewForm form) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
