@@ -25,7 +25,7 @@
           <td>{{ customer.email }}</td>
           <td>{{ customer.phone }}</td>
           <td>{{ customer.nrcNumber }}</td>
-          <td>{{ customer.registAt }}</td>
+          <td>{{ customer.registAt | date: 'MMM dd yyyy' }}</td>
           <td class="text-center">
             <button class="btn btn-sm btn-outline-primary me-2" (click)="updateCustomer(customer)">
               <i class="bi bi-pencil-square"></i>

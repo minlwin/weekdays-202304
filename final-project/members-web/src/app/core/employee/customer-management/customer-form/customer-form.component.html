@@ -48,8 +48,11 @@
   <div class="row g-3 mb-4">
     <div class="col-lg-4 col-12">
       <app-form-group label="Township" [valid]="township.valid">
-        <input formControlName="township" type="text" id="Township" class="form-control"
-          placeholder="Customer township">
+        <input formControlName="township" type="text" class="form-control" placeholder="Type township name"
+          list="township">
+        <datalist id="township">
+          <option *ngFor="let township of townships" [value]="township.id">{{ township.name }}</option>
+        </datalist>
       </app-form-group>
     </div>
 
@@ -87,13 +90,13 @@
 
   <div class="row g-3 justify-content-lg-center justify-content-md-center">
     <div class="col-lg-4 col-md-4 col-12">
-      <button class="btn btn-dark me-3 w-100">
+      <button class="btn btn-dark me-3 w-100" [routerLink]="['./..', 'management']">
         <i class="bi bi-x-lg"></i> Close
       </button>
     </div>
 
     <div class="col-lg-4 col-md-4 col-12">
-      <button class="btn btn-outline-dark w-100">
+      <button class="btn btn-outline-dark w-100" (click)="saveCustomer()">
         <i class="bi bi-save"></i> Save
       </button>
     </div>

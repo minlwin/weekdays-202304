@@ -1,6 +1,7 @@
 package com.jdc.goldern.members.model.dto.input;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -81,6 +82,7 @@ public class CustomerEdit {
 		dto.setPassword(encoder.encode(phone));
 		dto.setEmail(email);
 		dto.setNrcNumber(nrcNumber);
+		dto.setRegisterAt(LocalDateTime.now());
 		dto.setRole(Role.Customer);
 		dto.setRemark(remark);
 		dto.getAudit().setDeleted(deleted);

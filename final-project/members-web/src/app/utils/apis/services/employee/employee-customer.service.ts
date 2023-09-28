@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { PageResult } from '../../dto/page-result';
 
 const API = `${environment.baseApi}/employee/customers`
 
@@ -26,5 +27,9 @@ export class EmployeeCustomerService {
 
   private update(id: number, data: any) {
     return this.http.put<any>(`${API}/${id}`, data)
+  }
+
+  search(params: any) {
+    return this.http.get<PageResult>(API, { params })
   }
 }

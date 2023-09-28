@@ -1,19 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmployeeCustomerService } from 'src/app/utils/apis/services/employee/employee-customer.service';
+import { PublicLocationService } from 'src/app/utils/apis/services/public/public-location.service';
 import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-customer-form',
   templateUrl: './customer-form.component.html'
 })
-export class CustomerFormComponent {
+export class CustomerFormComponent implements OnInit {
 
   form: FormGroup
+
+  townships: any[] = []
 
   @ViewChild(ModalDialogComponent)
   dialog?: ModalDialogComponent
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private router: Router,
+    private empCustomerService: EmployeeCustomerService,
+    private pubLocationService: PublicLocationService) {
     this.form = fb.group({
       id: 0,
       name: ['', Validators.required],
@@ -23,11 +30,15 @@ export class CustomerFormComponent {
       gender: 'Male',
       dateOfBirth: '',
       address: ['', Validators.required],
-      township: [0, Validators.required],
+      township: ['', Validators.required],
       remark: '',
       refererId: 0,
       deleted: false
     })
+  }
+
+  ngOnInit(): void {
+    this.pubLocationService.getTownshipByDivision(0).subscribe(resp => this.townships = resp)
   }
 
   get id() {
@@ -60,6 +71,14 @@ export class CustomerFormComponent {
 
   openCustomerForm() {
     this.dialog?.openDialog()
+  }
+
+  saveCustomer() {
+    this.empCustomerService.save(this.form.value).subscribe(resp => {
+      if(resp) {
+        this.router.navigate(['/employee', 'customer', 'management'])
+      }
+    })
   }
 
 }

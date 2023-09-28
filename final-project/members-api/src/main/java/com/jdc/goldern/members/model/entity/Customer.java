@@ -1,6 +1,7 @@
 package com.jdc.goldern.members.model.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,7 +29,7 @@ public class Customer extends Account {
 	private LocalDate dateOfBirth;
 	
 	@Column(nullable = false)
-	private LocalDate registerAt;
+	private LocalDateTime registerAt;
 
 	@OneToOne(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Address address;

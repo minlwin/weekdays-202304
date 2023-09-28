@@ -33,7 +33,7 @@ public class CustomerList {
 		list.setPhone(entity.getPhone());
 		list.setEmail(entity.getEmail());
 		list.setNrcNumber(entity.getNrcNumber());
-		list.setRegistAt(LocalDateTime.of(entity.getRegisterAt(), null));
+		list.setRegistAt(entity.getRegisterAt());
 		list.setRemark(entity.getRemark());
 		return list;
 	}
