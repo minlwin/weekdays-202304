@@ -15,12 +15,30 @@ export class CartService {
     this._carts.push(item)
   }
 
-  remove(item: CartCatalog) {
-    this._carts.splice(this._carts.indexOf(item), 1)
+  remove(index: number) {
+    this._carts.splice(index, 1)
+    return this._carts
   }
 
   get carts() {
     return this._carts
+  }
+
+  findByIndex(index: number) {
+    return this._carts.at(index) as CartCatalog
+  }
+
+  plusQuantity(index: number) {
+    let result = this.findByIndex(index)
+    result.quantity = result.quantity + 1
+    return this._carts
+  }
+
+  minusQuantity(index: number) {
+    let result = this.findByIndex(index)
+    if(result.quantity > 1)
+      result.quantity = result.quantity - 1
+    return this.carts
   }
 
   isExist(item: any) {

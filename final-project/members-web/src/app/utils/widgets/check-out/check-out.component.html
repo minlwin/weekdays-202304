@@ -2,30 +2,54 @@
   <i class="bi bi-cart-check"></i> Check out
 </h3>
 
+
+
 <div class="row g-3 ps-2">
   <!-- Catalog Item Detail -->
   <div class="col-lg-7 col-12">
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col text-center" *ngIf="null == customer || undefined == customer">
+        <p class="fs-5 text-danger">Please find customer first!</p>
+      </div>
+      <div class="col" *ngIf="customer">
+        <p>{{ customer | json }}</p>
+      </div>
+      <div class="col-lg-5 col">
+        <div class="card search-card mb-3">
+          <div class="card-body">
+
+            <input #custCode type="text" class="form-control mb-2" placeholder="Customer code">
+            <button class="btn btn-success w-100" (click)="search(custCode.value)">
+              <i class="bi bi-search"></i> Find
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button class="btn btn-outline-success">
       <i class="bi bi-x-lg"></i> Clear Cart
     </button>
     <hr class="me-2">
 
-    <div class="row align-items-center mb-5">
-      <div class="col">Catalog Name</div>
-      <div class="col">Catalog Price</div>
-      <div class="col">
-        <button class="checkout-catalog-btn"><i class="bi bi-dash"></i></button>
-        <span> Quantity </span>
-        <button class="checkout-catalog-btn"><i class="bi bi-plus"></i></button>
-      </div>
+    <div class="text-center" *ngIf="items.length == 0">
+      <p class="fs-5 text-danger">Please add to cart catalog first!</p>
     </div>
-    <div class="row align-items-center mb-2">
-      <div class="col">Catalog Name</div>
-      <div class="col">Catalog Price</div>
-      <div class="col">
-        <button class="checkout-catalog-btn"><i class="bi bi-dash"></i></button>
-        <span> Quantity </span>
-        <button class="checkout-catalog-btn"><i class="bi bi-plus"></i></button>
+
+    <div *ngIf="items.length > 0">
+      <div class="row align-items-center mb-5" *ngFor="let item of items; index as i">
+        <div class="col">{{ item.item.name }}</div>
+        <div class="col">{{ item.item.price }}</div>
+        <div class="col">
+          <button class="checkout-item-btn" (click)="minus(i)"><i class="bi bi-dash"></i></button>
+          <span> {{ item.quantity }} </span>
+          <button class="checkout-item-btn" (click)="plus(i)"><i class="bi bi-plus"></i></button>
+        </div>
+        <div class="col">
+          <button class="checkout-item-btn" (click)="remove(i)"><i class="bi bi-trash"></i></button>
+        </div>
       </div>
     </div>
   </div>

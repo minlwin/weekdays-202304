@@ -13,7 +13,13 @@ public class CustomerDetails {
 	
 	
 	public CustomerDetails(Customer entity) {
+		this.customer = CustomerList.from(entity);
 		
+		address = new AddressDto();
+		address.setId(entity.getAddress().getId());
+		address.setAddress(entity.getAddress().getAddress());
+		address.setTownship(entity.getAddress().getTownship().getName());
+		address.setDivision(entity.getAddress().getTownship().getDivision().getName());
 	}
 	
 }

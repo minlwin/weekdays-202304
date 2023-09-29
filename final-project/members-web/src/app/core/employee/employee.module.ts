@@ -13,8 +13,6 @@ import { CustomerDetailComponent } from './customer-management/customer-detail/c
 import { CategoryFormComponent } from './category-management/category-form/category-form.component';
 import { EmployeeCatalogFormComponent } from './employee-catalog-management/employee-catalog-form/employee-catalog-form.component';
 import { CustomerFormComponent } from './customer-management/customer-form/customer-form.component';
-import { PosCustomerComponent } from './pos/pos-customer/pos-customer.component';
-import { PosCatalogComponent } from './pos/pos-catalog/pos-catalog.component';
 import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
 
 
@@ -29,9 +27,7 @@ import { WidgetsModule } from 'src/app/utils/widgets/widgets.module';
     CustomerDetailComponent,
     CategoryFormComponent,
     EmployeeCatalogFormComponent,
-    CustomerFormComponent,
-    PosCustomerComponent,
-    PosCatalogComponent
+    CustomerFormComponent
   ],
   imports: [
     CommonModule,

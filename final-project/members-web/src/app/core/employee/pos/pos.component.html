@@ -1,8 +1,30 @@
 <h3 class="view-title"><i class="bi bi-cart"></i> Pos</h3>
-<div class="row">
-  <div class="col">
-    <app-pos-customer></app-pos-customer>
-  </div>
-</div>
 
-<app-pos-catalog></app-pos-catalog>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Name</th>
+      <th class="text-center pe-3">Weight</th>
+      <th class="text-center pe-3">Undercount</th>
+      <th class="text-center pe-3">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let catalog of catalogs">
+      <td>{{ catalog.categories }}</td>
+      <td>{{ catalog.name }}</td>
+      <td class="text-end pe-3">{{ catalog.weight }}</td>
+      <td class="text-end pe-3">{{ catalog.lostWeight }}</td>
+      <td class="text-end pe-3">{{ catalog.price | number }}</td>
+      <td>
+        <button [class.disabled]="isExistCatalog(catalog)" class="btn btn-sm btn-outline-success"
+          (click)="addToCart(catalog)">
+          <i class="bi bi-{{ isExistCatalog(catalog) ? 'cart-check' : 'cart-plus'}}"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
