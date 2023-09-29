@@ -44,7 +44,7 @@ public class PublicCatalogApi {
 			@PathVariable String username,
 			@RequestBody ReviewForm form, BindingResult result
 			) {
-		return null;
+		return service.makeReview(catalogId, username, form);
 	}
 
 }
