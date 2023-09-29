@@ -1,31 +1,34 @@
-<form class="row justify-content-lg-between justify-content-md-center g-2 mb-3">
+<div class="row justify-content-lg-between justify-content-md-center g-2 mb-3">
   <div class="col-lg-auto col-md-auto col-12">
-    <select class="form-select">
-      <option value="">Filter By Category</option>
-      <option value=""></option>
+    <select #catId class="form-select" (change)="select(catId.value)">
+      <option value="0">Filter By Category</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
     </select>
   </div>
   <div class="col-lg-auto col-md-auto col-12">
     <div class="row g-2">
       <div class="col-lg-auto col-md-auto col-9">
-        <input type="text" class="form-control" placeholder="Search Catalog">
+        <input #keyword (keyup)="searchParams.keyword = keyword.value" type="text" class="form-control"
+          placeholder="Search Catalog">
       </div>
 
       <div class="col-lg-auto col-md-auto col-3">
-        <button class="btn btn-success w-100">
+        <button class="btn btn-success w-100" (click)="search()">
           <i class="bi bi-search"></i>
           <span class="d-none d-md-inline"> Search</span>
         </button>
       </div>
     </div>
   </div>
-</form>
+</div>
 
-<div class="row g-3 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols">
-  <app-catalog-box *ngFor="let item of catalogs" [data]="item">
-    <button class="btn btn-success w-100">
-      <i class="bi bi-cart-plus"></i>
-      <span> Add to cart</span>
+<app-no-data text="Catalog" *ngIf="catalogs.length == 0"></app-no-data>
+
+<div *ngIf="catalogs.length > 0" class="row g-3 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols">
+  <app-catalog-box *ngFor="let catalog of catalogs" [data]="catalog">
+    <button [class.disabled]="isExistCatalog(catalog)" class="btn btn-success w-100" (click)="addToCart(catalog)">
+      <i class="bi bi-{{ isExistCatalog(catalog) ? 'check' : 'cart-plus'}}"></i>
+      <span> {{ isExistCatalog(catalog) ? 'Added' : 'Add to cart' }}</span>
     </button>
   </app-catalog-box>
 </div>

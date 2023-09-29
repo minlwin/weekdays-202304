@@ -43,8 +43,8 @@
 
     <main class="col-10">
 
-      <div class="floating-cart">
-        <button>
+      <div class="floating-cart" *ngIf="!isCheckoutView">
+        <button [routerLink]="['/employee', 'sale', 'checkout']">
           <i class="bi bi-cart-check-fill"></i>
         </button>
       </div>

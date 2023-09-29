@@ -14,6 +14,7 @@ import { CatalogReviewTabComponent } from './catalog/catalog-review-tab/catalog-
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.component';
 import { CategoryFilterBoxComponent } from './category/category-filter-box/category-filter-box.component';
+import { InfoDialogComponent } from './dialog/info-dialog/info-dialog.component';
 
 
 
@@ -31,7 +32,8 @@ import { CategoryFilterBoxComponent } from './category/category-filter-box/categ
     CatalogReviewTabComponent,
     StarRatingComponent,
     ErrorDialogComponent,
-    CategoryFilterBoxComponent
+    CategoryFilterBoxComponent,
+    InfoDialogComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { CategoryFilterBoxComponent } from './category/category-filter-box/categ
     CatalogReviewTabComponent,
     StarRatingComponent,
     ErrorDialogComponent,
-    CategoryFilterBoxComponent
+    CategoryFilterBoxComponent,
+    InfoDialogComponent
   ]
 })
 export class WidgetsModule { }

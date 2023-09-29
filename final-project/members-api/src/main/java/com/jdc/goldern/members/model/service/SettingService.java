@@ -18,8 +18,9 @@ public class SettingService {
 	private ReferPeriodSettingRepo repo;
 
 	public List<SettingDto> findAll() {
-		return repo.findAllOederByCreateAtDesc().stream()
-				.map(SettingDto::from).toList();
+		return null;
+//		return repo.findAllOederByCreateAtDesc().stream()
+//				.map(SettingDto::from).toList();
 	}
 
 	@Transactional
