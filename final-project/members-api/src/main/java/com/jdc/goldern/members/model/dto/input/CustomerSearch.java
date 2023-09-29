@@ -23,13 +23,13 @@ public class CustomerSearch {
 		spec = null == id || id.filter(a -> a > 0).isEmpty() ? spec :
 			(root, query, cb) -> cb.equal(root.get("id"), id.get());
 		
-		spec = null == name || name.filter(a -> !StringUtils.hasLength(a)).isEmpty() ? spec :
+		spec = null == name || name.filter(a -> StringUtils.hasLength(a)).isEmpty() ? spec :
 			(root, query, cb) -> cb.like(cb.lower(root.get("name")), name.get().toLowerCase().concat("%"));
 
-		spec = null == phone || phone.filter(a -> !StringUtils.hasLength(a)).isEmpty() ? spec :
+		spec = null == phone || phone.filter(a -> StringUtils.hasLength(a)).isEmpty() ? spec :
 			(root, query, cb) -> cb.like(cb.lower(root.get("phone")), phone.get().toLowerCase().concat("%"));
 
-		spec = null == address || address.filter(a -> !StringUtils.hasLength(a)).isEmpty() ? spec :
+		spec = null == address || address.filter(a -> StringUtils.hasLength(a)).isEmpty() ? spec :
 			(root, query, cb) -> cb.or(
 				cb.like(cb.lower(root.get("address").get("address")), address.get().toLowerCase().concat("%")),
 				cb.like(cb.lower(root.get("address").get("township").get("name")), address.get().toLowerCase().concat("%")),

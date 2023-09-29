@@ -92,8 +92,9 @@ export class EmployeeCatalogFormComponent implements OnInit {
   }
 
   selectCategory(name: any) {
+    let isSame = this.categories.filter(cat => name == cat.name)
     let isExist = this.categoriesControl.controls.filter(ctrl => ctrl.value == name)
-    if(name && isExist.length == 0)
+    if(name && isExist.length == 0 && isSame.length == 1)
       this.categoriesControl.push(this.fb.control(name))
   }
 

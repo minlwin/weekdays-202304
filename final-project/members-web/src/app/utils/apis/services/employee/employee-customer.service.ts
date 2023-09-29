@@ -30,6 +30,14 @@ export class EmployeeCustomerService {
   }
 
   search(params: any) {
-    return this.http.get<PageResult>(API, { params })
+    return this.http.get<PageResult>(API, { params: params } )
+  }
+
+  findById(id: number) {
+    return this.http.get<any>(`${API}/${id}`)
+  }
+
+  findByIdForEdit(id: number) {
+    return this.http.get<any>(`${API}/${id}/edit`)
   }
 }

@@ -3,6 +3,7 @@ import { EmployeeCatalogFormComponent } from './employee-catalog-form/employee-c
 import { EmployeeCatalogService } from 'src/app/utils/apis/services/employee/employee-catalog.service';
 import { EmployeeCategoryService } from 'src/app/utils/apis/services/employee/employee-category.service';
 import { SecurityContextHolder } from 'src/app/utils/apis/security/security-context-holder';
+import { CatalogSearchParams } from 'src/app/utils/apis/dto/search-params';
 
 @Component({
   selector: 'app-catalog-management',
@@ -10,9 +11,9 @@ import { SecurityContextHolder } from 'src/app/utils/apis/security/security-cont
 })
 export class EmployeeCatalogManagementComponent implements OnInit {
 
-  searchParams = {
+  searchParams: CatalogSearchParams = {
     keyword: '',
-    categoryId: 0
+    categoryIds: []
   }
 
   currentRole = undefined
@@ -54,6 +55,28 @@ export class EmployeeCatalogManagementComponent implements OnInit {
         this.sharedCategories.push(copy[i])
       }
 
+    }
+  }
+
+  select(id: any) {
+    let prevId: any = 0
+    length = this.searchParams.categoryIds.length
+
+    if(length) {
+      for (let i = 0; i < this.searchParams.categoryIds.length; i++) {
+
+        if(id == this.searchParams.categoryIds[i]) {
+          prevId = this.searchParams.categoryIds[i]
+          break
+        }
+
+      }
+    }
+
+    if(prevId) {
+      this.searchParams.categoryIds.splice(this.searchParams.categoryIds.indexOf(prevId), 1)
+    } else {
+      this.searchParams.categoryIds.push(id)
     }
   }
 

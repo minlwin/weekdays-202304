@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ManagerEmployeeFormComponent } from './manager-employee-form/manager-employee-form.component';
 import { ManagerEmployeeService } from 'src/app/utils/apis/services/manager/manager-employee.service';
+import { EmployeeSearchParams } from 'src/app/utils/apis/dto/search-params';
 
 @Component({
   selector: 'app-manager-employee-management',
@@ -8,7 +9,7 @@ import { ManagerEmployeeService } from 'src/app/utils/apis/services/manager/mana
 })
 export class ManagerEmployeeManagementComponent implements OnInit {
 
-  searchParams: any = {
+  searchParams: EmployeeSearchParams = {
     id: 0,
     name: '',
     phone: ''

@@ -6,8 +6,6 @@
       <i class="bi bi-plus-lg"></i> Add New Customer
     </button>
 
-    <app-no-data image="assets/no-customer.jpg" text="Customer" *ngIf="customers.length == 0"></app-no-data>
-
     <table class="table table-striped mt-2" *ngIf="customers.length > 0">
       <thead>
         <tr>
@@ -27,9 +25,10 @@
           <td>{{ customer.nrcNumber }}</td>
           <td>{{ customer.registAt | date: 'MMM dd yyyy' }}</td>
           <td class="text-center">
-            <button class="btn btn-sm btn-outline-primary me-2" (click)="updateCustomer(customer)">
+            <a class="btn btn-sm btn-outline-primary me-2" [routerLink]="['/employee', 'customer', 'edit']"
+              [queryParams]="{ id: customer.id }">
               <i class="bi bi-pencil-square"></i>
-            </button>
+            </a>
             <a href="" class="btn btn-sm btn-outline-warning">
               <i class="bi bi-send"></i>
             </a>
@@ -37,6 +36,8 @@
         </tr>
       </tbody>
     </table>
+
+    <app-no-data text="Customer" *ngIf="customers.length == 0" image="assets/no-customer.jpg"></app-no-data>
   </div>
 
   <div class="col-lg-3 col-12">
@@ -47,18 +48,22 @@
 
       <div class="card-body">
         <label class="form-label" for="cust_code">Customer Code</label>
-        <input type="text" id="cust_code" class="form-control mb-3" placeholder="Enter customer code">
+        <input #custId (change)="searchParams.id = +custId.value" type="number" id="cust_code" class="form-control mb-3"
+          placeholder="Enter customer code">
 
         <label for="name" class="form-label">Customer Name</label>
-        <input type="text" id="name" class="form-control mb-3" placeholder="Enter customer name">
+        <input #custName (change)="searchParams.name = custName.value" type="text" id="name" class="form-control mb-3"
+          placeholder="Enter customer name">
 
         <label for="phone" class="form-label">Customer Phone</label>
-        <input type="text" id="phone" class="form-control mb-3" placeholder="Enter customer phone">
+        <input #custPhone (change)="searchParams.phone = custPhone.value" type="text" id="phone"
+          class="form-control mb-3" placeholder="Enter customer phone">
 
         <label for="address" class="form-label">Customer Address</label>
-        <input type="text" id="address" class="form-control mb-3" placeholder="Enter customer address">
+        <input #custAddress (change)="searchParams.address = custAddress.value" type="text" id="address"
+          class="form-control mb-3" placeholder="Enter customer address">
 
-        <button class="btn btn-success w-100">
+        <button class="btn btn-success w-100" (click)="search()">
           <i class="bi bi-search"></i> Search
         </button>
       </div>

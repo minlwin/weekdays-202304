@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SecurityContextHolder } from 'src/app/utils/apis/security/security-context-holder';
@@ -9,21 +9,26 @@ import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/
   selector: 'app-public',
   templateUrl: './public.component.html'
 })
-export class PublicComponent {
+export class PublicComponent implements OnInit {
 
   form: FormGroup
+  activeUser: any
 
   @ViewChild(ModalDialogComponent)
   modalDialog?: ModalDialogComponent
 
   constructor(fb: FormBuilder,
     private securityService: SecurityService,
-    private securitycontextHolder: SecurityContextHolder,
+    private context: SecurityContextHolder,
     private router: Router) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]] // Validators.pattern('[a-zA-Z0-9]{8,}')
     })
+  }
+
+  ngOnInit(): void {
+    this.activeUser = this.context.activeUser
   }
 
   get email(): FormControl {
@@ -42,11 +47,20 @@ export class PublicComponent {
     this.securityService.singIn(this.form.value)
         .subscribe(resp => {
           if(resp) {
-            this.securitycontextHolder.activeUser = resp
+            this.context.activeUser = resp
             this.modalDialog?.hideDialog()
             this.router.navigate(['/', resp.role == 'Admin' ? 'manager' : resp.role.toLowerCase()])
           }
         })
+  }
+
+  logOut() {
+    this.activeUser = undefined
+    this.context.signOut()
+  }
+
+  navigateDashboard() {
+    this.router.navigate(['/', this.activeUser.role.toLowerCase()])
   }
 
 }

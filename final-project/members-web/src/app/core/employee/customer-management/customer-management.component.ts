@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerSearchParams } from 'src/app/utils/apis/dto/search-params';
 import { EmployeeCustomerService } from 'src/app/utils/apis/services/employee/employee-customer.service';
 
 @Component({
@@ -7,20 +8,23 @@ import { EmployeeCustomerService } from 'src/app/utils/apis/services/employee/em
 })
 export class CustomerManagementComponent implements OnInit {
 
+  searchParams: CustomerSearchParams = {
+    id: 0,
+    name: '',
+    phone: '',
+    address: ''
+  }
   customers: any[] = []
-
 
   constructor(private empCustomerService: EmployeeCustomerService) {
   }
 
   ngOnInit(): void {
-    this.search(undefined)
+    this.search()
   }
 
-  search(params: any) {
-    this.empCustomerService.search(params).subscribe(resp => this.customers = resp.content)
+  search() {
+    this.empCustomerService.search(this.searchParams).subscribe(resp => this.customers = resp.content)
   }
-
-  updateCustomer(customer: any) {}
 
 }

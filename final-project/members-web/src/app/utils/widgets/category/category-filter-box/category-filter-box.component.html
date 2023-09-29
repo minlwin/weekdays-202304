@@ -1,8 +1,9 @@
 <div class="cat-filter-box">
   <h5 class="cat-filter-box-title">Categories</h5>
-  <div class="d-flex justify-content-between align-items-end mb-2" *ngFor="let category of categories">
+  <div class="d-flex justify-content-between align-items-end mb-2" *ngFor="let category of categories; index as i">
     <div class="category-name ms-2">
-      <input type="checkbox" [id]="category.name" [value]="category.name" class="form-check-input me-1">
+      <input (change)="selectCategory($event)" type="checkbox" [id]="category.name" [value]="category.id"
+        class="form-check-input me-1">
       <label [for]="category.name" class="cat-filter-name">{{ category.name }}</label>
     </div>
     <span class="d-inline-block item-count">{{ category.items }}</span>

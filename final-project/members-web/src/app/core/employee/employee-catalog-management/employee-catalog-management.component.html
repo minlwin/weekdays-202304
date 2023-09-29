@@ -1,4 +1,5 @@
 <h3 class="view-title"><i class="bi bi-layers"></i> Catalog Management</h3>
+
 <div class="row g-2 justify-content-between mb-3">
   <div class="col-lg-auto col-md-auto col-12">
     <a [routerLink]="['./../edit']" class="btn btn-success w-100">
@@ -9,11 +10,12 @@
   <div class="col-lg-auto col-md-auto col-12">
     <div class="row g-2">
       <div class="col">
-        <input type="text" class="form-control" placeholder="Search catalog">
+        <input #keyword (keyup)="searchParams.keyword = keyword.value" type="text" class="form-control"
+          placeholder="Search catalog">
       </div>
 
       <div class="col-auto">
-        <button class="btn btn-success">
+        <button class="btn btn-success" (click)="search()">
           <i class="bi bi-search"></i>
           <span class="d-none d-md-inline"> Search</span>
         </button>
@@ -25,17 +27,17 @@
 <div class="row">
 
   <div class="col-lg-3 col-12">
-    <app-category-filter-box [showMore]="isShowMore" [categories]="sharedCategories"
+    <app-category-filter-box (onSelect)="select($event)" [showMore]="isShowMore" [categories]="sharedCategories"
       (onGetNext)="getNext($event)"></app-category-filter-box>
   </div>
 
   <div class="col-lg-9 col-12 mt-lg-0 mt-3">
-    <app-no-data text="Catalog" *ngIf="catalogs.length == 0"></app-no-data>
-
     <div *ngIf="catalogs.length > 0" class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1">
       <app-catalog-box [role]="currentRole" *ngFor="let item of catalogs" [data]="item">
       </app-catalog-box>
     </div>
+
+    <app-no-data text="Catalog" *ngIf="catalogs.length == 0"></app-no-data>
   </div>
 
 </div>

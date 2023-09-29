@@ -1,14 +1,14 @@
 <div class="mb-3 position-relative catalog-box">
   <div class="card">
     <span *ngIf="data?.new" class="position-absolute top-0 start-0 ms-2 mt-2 badge rounded-pill bg-success">New</span>
-    <a [routerLink]="role && (role == 'Employee' || role == 'Manager' || role == 'Owner') ? ['/employee', 'catalog', 'detail'] : ['/public', 'catalog', 'detail']"
+    <a [routerLink]="role && (role == 'Employee' || role == 'Manager' || role == 'Owner' || role == 'Admin') ? ['/employee', 'catalog', 'detail'] : ['/public', 'catalog', 'detail']"
       [queryParams]="{id: data?.id}">
       <img [src]="data?.coverImage ?? 'assets/default-image.png'" class="card-img-top" height="200px">
       <div class="card-body">
         <div class="card-title">
-          <h5>{{ data.name ?? 'Catalog Name' }}</h5>
+          <h5 class="text-overflow-ellipse one-line">{{ data.name ?? 'Catalog Name' }}</h5>
         </div>
-        <p class="catalog-box-description text-overflow-ellipse">{{ data?.description || '#NA' }}</p>
+        <p class="catalog-box-description text-overflow-ellipse three-line">{{ data?.description || '#NA' }}</p>
 
         <app-star-rating marginSide="b" marginUnit="3" [rating]="data?.rating ?? 7" [isBlock]="true"></app-star-rating>
 
@@ -22,7 +22,7 @@
       </div>
     </a>
   </div>
-  <div *ngIf="role && role == 'Customer'">
+  <div *ngIf="(role == undefined || role == null) || (role && role == 'Customer')">
     <ng-content></ng-content>
   </div>
 </div>

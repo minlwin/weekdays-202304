@@ -24,10 +24,10 @@ public class EmployeeSearch {
 		spec = null == id || id.filter(a -> a > 0).isEmpty() ? spec :
 			(root, query, cb) -> cb.equal(root.get("id"), id.get());
 		
-		spec = null == name || name.filter(a -> !StringUtils.hasLength(a)).isEmpty() ? spec :
+		spec = null == name || name.filter(a -> StringUtils.hasLength(a)).isEmpty() ? spec :
 			(root, query, cb) -> cb.like(cb.lower(root.get("name")), name.get().toLowerCase().concat("%"));
 
-		spec = null == phone || phone.filter(a -> !StringUtils.hasLength(a)).isEmpty() ? spec :
+		spec = null == phone || phone.filter(a -> StringUtils.hasLength(a)).isEmpty() ? spec :
 			(root, query, cb) -> cb.like(cb.lower(root.get("phone")), phone.get().toLowerCase().concat("%"));
 
 		return spec;

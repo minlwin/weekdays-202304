@@ -45,7 +45,7 @@ public class CustomerEdit {
 
 	private String remark;
 
-	private Long refererId;
+	private Long refererId = 0L;
 
 	private boolean deleted;
 	
@@ -88,12 +88,16 @@ public class CustomerEdit {
 		dto.getAudit().setDeleted(deleted);
 		dto.setGender(gender);
 		dto.setDateOfBirth(dateOfBirth);
-		dto.setReferer(accountRepo.getReferenceById(refererId));
+		
+		if(refererId > 0)
+			dto.setReferer(accountRepo.getReferenceById(refererId));
 		
 		var addressEntity = new Address();
 		addressEntity.setAddress(address);
 		addressEntity.setCustomer(dto);
 		addressEntity.setTownship(townshipRepo.getReferenceById(township));
+		
+		dto.setAddress(addressEntity);
 		
 		return dto;
 	}

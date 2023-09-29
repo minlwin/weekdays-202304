@@ -39,7 +39,7 @@ public class EmployeeCustomerApi {
 	}
 	
 	@GetMapping("{id}/edit")
-	public CustomerEdit findByIdForEdit(long id) {
+	public CustomerEdit findByIdForEdit(@PathVariable long id) {
 		return service.findForEdit(id);
 	}
 

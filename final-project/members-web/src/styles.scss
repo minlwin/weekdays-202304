@@ -43,8 +43,15 @@ body {
   overflow: hidden;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
   white-space: normal;
+}
+
+.one-line {
+  -webkit-line-clamp: 1;
+}
+
+.three-line {
+  -webkit-line-clamp: 3;
 }
 
 .left-nav {
@@ -115,6 +122,7 @@ main {
   color: #333;
   text-align: justify;
   margin-bottom: 0;
+  height: 54px;
 }
 
 .stars {
@@ -208,12 +216,11 @@ main {
 .filter-category-name-wrapper span {
   display: inline-block;
   padding: 3px 10px;
-  background-color: #333;
-  color: $light;
+  background-color: #d2d2d2;
+  color: $dark;
   font-size: 12px;
   margin-right: 4px;
 }
-
 
 .floating-cart button {
   background: #ecf0f3;
@@ -304,6 +311,16 @@ main {
 
 .cat-filter-box button:hover {
   background-color: #9dd2f6;
+}
+
+.cat-input {
+  border: none;
+}
+
+.cat-input:focus {
+  border: none;
+  border-color: $light;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255);
 }
 
 .search-card h4 {

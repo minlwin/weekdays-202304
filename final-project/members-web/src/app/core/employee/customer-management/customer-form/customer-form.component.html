@@ -48,11 +48,10 @@
   <div class="row g-3 mb-4">
     <div class="col-lg-4 col-12">
       <app-form-group label="Township" [valid]="township.valid">
-        <input formControlName="township" type="text" class="form-control" placeholder="Type township name"
-          list="township">
-        <datalist id="township">
+        <select formControlName="township" id="township" class="form-select">
+          <option value="0">Select Township</option>
           <option *ngFor="let township of townships" [value]="township.id">{{ township.name }}</option>
-        </datalist>
+        </select>
       </app-form-group>
     </div>
 

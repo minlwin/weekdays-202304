@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeCustomerService } from 'src/app/utils/apis/services/employee/employee-customer.service';
 import { PublicLocationService } from 'src/app/utils/apis/services/public/public-location.service';
 import { ModalDialogComponent } from 'src/app/utils/widgets/dialog/modal-dialog/modal-dialog.component';
@@ -19,6 +19,7 @@ export class CustomerFormComponent implements OnInit {
   dialog?: ModalDialogComponent
 
   constructor(fb: FormBuilder, private router: Router,
+    private route: ActivatedRoute,
     private empCustomerService: EmployeeCustomerService,
     private pubLocationService: PublicLocationService) {
     this.form = fb.group({
@@ -30,7 +31,7 @@ export class CustomerFormComponent implements OnInit {
       gender: 'Male',
       dateOfBirth: '',
       address: ['', Validators.required],
-      township: ['', Validators.required],
+      township: [0, Validators.required],
       remark: '',
       refererId: 0,
       deleted: false
@@ -38,6 +39,16 @@ export class CustomerFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe(param => {
+      if(param.get('id')) {
+        this.empCustomerService.findByIdForEdit(+(param.get('id') as string)).subscribe(resp => {
+          if(resp) {
+            console.log(resp)
+            this.form.patchValue(resp)
+          }
+        })
+      }
+    })
     this.pubLocationService.getTownshipByDivision(0).subscribe(resp => this.townships = resp)
   }
 

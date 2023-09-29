@@ -28,8 +28,7 @@ public class EmployeeCatalogApi {
 	private CatalogService service;
 
 	@GetMapping
-	public PageResponse<CatalogDto> search(
-			CatalogSearch form, 
+	public PageResponse<CatalogDto> search(CatalogSearch form, 
 			@RequestParam(required = false, defaultValue = "0") int page, 
 			@RequestParam(required = false, defaultValue = "10") int size) {
 		return PageResponse.from(service.search(form, page, size));

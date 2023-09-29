@@ -1,6 +1,7 @@
 package com.jdc.goldern.members.model.utils.security;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -39,7 +40,7 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 					.username(acc.getEmail())
 					.password(acc.getPassword())
 					.roles(acc.getRole().getValue())
-					.disabled(cust.getRegisterAt().isBefore(LocalDate.now()))
+					.disabled(cust.getRegisterAt().isBefore(LocalDateTime.now()))
 					.accountLocked(acc.getAudit().isDeleted())
 					.build();
 		}
